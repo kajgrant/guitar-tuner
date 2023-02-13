@@ -1,0 +1,36 @@
+Nothing to build in platform 'ip_design_wrapper'
+
+20:22:04 **** Incremental Build of configuration Debug for project audio ****
+make all 
+make --no-print-directory pre-build
+a9-linaro-pre-build-step
+' '
+make --no-print-directory main-build
+'Building file: ../src/fft.c'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/fft.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -IC:/KDevelop/guitar-tuner/Vitis/ip_design_wrapper/export/ip_design_wrapper/sw/ip_design_wrapper/standalone_ps7_cortexa9_0/bspinclude/include -MMD -MP -MF"src/fft.d" -MT"src/fft.o" -o "src/fft.o" "../src/fft.c"
+'Finished building: ../src/fft.c'
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -IC:/KDevelop/guitar-tuner/Vitis/ip_design_wrapper/export/ip_design_wrapper/sw/ip_design_wrapper/standalone_ps7_cortexa9_0/bspinclude/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: audio.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -LC:/KDevelop/guitar-tuner/Vitis/ip_design_wrapper/export/ip_design_wrapper/sw/ip_design_wrapper/standalone_ps7_cortexa9_0/bsplib/lib -o "audio.elf"  ./src/fft.o ./src/helloworld.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: audio.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size audio.elf  |tee "audio.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  40392	   2256	  24504	  67152	  10650	audio.elf
+'Finished building: audio.elf.size'
+' '
+20:22:05 **** Incremental Build of configuration Debug for project audio_system ****
+make all 
+Generating bif file for the system project
+generate_system_bif.bat 62513 C:/KDevelop/guitar-tuner/Vitis/ip_design_wrapper/export/ip_design_wrapper/ip_design_wrapper.xpfm standalone_ps7_cortexa9_0 C:/KDevelop/guitar-tuner/Vitis/audio_system/Debug/system.bif
+sdcard_gen --xpfm C:/KDevelop/guitar-tuner/Vitis/ip_design_wrapper/export/ip_design_wrapper/ip_design_wrapper.xpfm --sys_config ip_design_wrapper --bif C:/KDevelop/guitar-tuner/Vitis/audio_system/Debug/system.bif --bitstream C:/KDevelop/guitar-tuner/Vitis/audio/_ide/bitstream/ip_design_wrapper.bit --elf C:/KDevelop/guitar-tuner/Vitis/audio/Debug/audio.elf,ps7_cortexa9_0
+creating BOOT.BIN using C:/KDevelop/guitar-tuner/Vitis/audio/_ide/bitstream/ip_design_wrapper.bit
+Running C:/Xilinx/Vitis/2020.2/bin/bootgen  -image C:/KDevelop/guitar-tuner/Vitis/audio_system/Debug/sd_card_temp/boot.bif -w -o i BOOT.BIN
