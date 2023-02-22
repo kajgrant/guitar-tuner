@@ -29,3 +29,12 @@ platform clean
 platform generate
 platform clean
 platform generate
+platform active {design_1_wrapper}
+bsp reload
+bsp reload
+domain active {zynq_fsbl}
+bsp reload
+platform generate -domains 
+platform clean
+platform generate
+platform active {design_1_wrapper}

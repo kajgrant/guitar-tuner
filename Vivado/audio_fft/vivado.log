@@ -1,0 +1,31 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Tue Feb 21 15:32:47 2023
+# Process ID: 3852
+# Current directory: C:/KDevelop/guitar-tuner/Vivado/audio_fft
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent14852 C:\KDevelop\guitar-tuner\Vivado\audio_fft\audio_fft.xpr
+# Log file: C:/KDevelop/guitar-tuner/Vivado/audio_fft/vivado.log
+# Journal file: C:/KDevelop/guitar-tuner/Vivado/audio_fft\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.xpr
+WARNING: [filemgmt 56-3] IP Repository Path: Could not find the directory 'C:/KDevelop/guitar-tuner/Vivado/dma_ex_fft/lib'.
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository 'c:/KDevelop/guitar-tuner/Vivado/dma_ex_fft/lib'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2020.2/data/ip'.
+WARNING: [BD 41-1661] One or more IPs have been locked in the design 'design_1.bd'. Please run report_ip_status for more details and recommendations on how to fix this issue.
+List of locked IPs:
+design_1_edge_detect_0_0
+
+open_project: Time (s): cpu = 00:00:13 ; elapsed = 00:00:10 . Memory (MB): peak = 1105.375 ; gain = 0.000
+update_compile_order -fileset sources_1
+INFO: [Vivado 12-8231] Launching Vitis
+INFO: [Vivado 12-417] Running vitis
+INFO: [Vivado 12-8232] Vitis launch initiated. Please check console for any further messages.
+exit
+INFO: [Common 17-206] Exiting Vivado at Tue Feb 21 16:03:23 2023...
