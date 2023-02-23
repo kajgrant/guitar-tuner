@@ -59,7 +59,7 @@ USE xfft_v9_1_5.xfft_v9_1_5;
 ENTITY design_1_xfft_0_0 IS
   PORT (
     aclk : IN STD_LOGIC;
-    s_axis_config_tdata : IN STD_LOGIC_VECTOR(23 DOWNTO 0);
+    s_axis_config_tdata : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     s_axis_config_tvalid : IN STD_LOGIC;
     s_axis_config_tready : OUT STD_LOGIC;
     s_axis_data_tdata : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -123,7 +123,7 @@ ARCHITECTURE design_1_xfft_0_0_arch OF design_1_xfft_0_0 IS
       aclk : IN STD_LOGIC;
       aclken : IN STD_LOGIC;
       aresetn : IN STD_LOGIC;
-      s_axis_config_tdata : IN STD_LOGIC_VECTOR(23 DOWNTO 0);
+      s_axis_config_tdata : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       s_axis_config_tvalid : IN STD_LOGIC;
       s_axis_config_tready : OUT STD_LOGIC;
       s_axis_data_tdata : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -188,7 +188,7 @@ ARCHITECTURE design_1_xfft_0_0_arch OF design_1_xfft_0_0 IS
   ATTRIBUTE X_INTERFACE_INFO OF s_axis_data_tdata: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_DATA TDATA";
   ATTRIBUTE X_INTERFACE_INFO OF s_axis_config_tready: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_CONFIG TREADY";
   ATTRIBUTE X_INTERFACE_INFO OF s_axis_config_tvalid: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_CONFIG TVALID";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF s_axis_config_tdata: SIGNAL IS "XIL_INTERFACENAME S_AXIS_CONFIG, TDATA_NUM_BYTES 3, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN design_1_processing_system7_0_0_FCLK_CLK0, LAYERED_METADATA undef, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF s_axis_config_tdata: SIGNAL IS "XIL_INTERFACENAME S_AXIS_CONFIG, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN design_1_processing_system7_0_0_FCLK_CLK0, LAYERED_METADATA undef, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF s_axis_config_tdata: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_CONFIG TDATA";
   ATTRIBUTE X_INTERFACE_PARAMETER OF aclk: SIGNAL IS "XIL_INTERFACENAME aclk_intf, ASSOCIATED_BUSIF S_AXIS_CONFIG:M_AXIS_DATA:M_AXIS_STATUS:S_AXIS_DATA, ASSOCIATED_RESET aresetn, ASSOCIATED_CLKEN aclken, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN design_1_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF aclk: SIGNAL IS "xilinx.com:signal:clock:1.0 aclk_intf CLK";
@@ -197,15 +197,15 @@ BEGIN
     GENERIC MAP (
       C_XDEVICEFAMILY => "zynq",
       C_PART => "xc7z020clg484-1",
-      C_S_AXIS_CONFIG_TDATA_WIDTH => 24,
+      C_S_AXIS_CONFIG_TDATA_WIDTH => 32,
       C_S_AXIS_DATA_TDATA_WIDTH => 32,
       C_M_AXIS_DATA_TDATA_WIDTH => 32,
       C_M_AXIS_DATA_TUSER_WIDTH => 1,
       C_M_AXIS_STATUS_TDATA_WIDTH => 1,
       C_THROTTLE_SCHEME => 1,
       C_CHANNELS => 1,
-      C_NFFT_MAX => 14,
-      C_ARCH => 3,
+      C_NFFT_MAX => 16,
+      C_ARCH => 1,
       C_HAS_NFFT => 1,
       C_USE_FLT_PT => 0,
       C_INPUT_WIDTH => 16,
@@ -223,7 +223,7 @@ BEGIN
       C_HAS_XK_INDEX => 0,
       C_DATA_MEM_TYPE => 1,
       C_TWIDDLE_MEM_TYPE => 1,
-      C_BRAM_STAGES => 7,
+      C_BRAM_STAGES => 0,
       C_REORDER_MEM_TYPE => 1,
       C_USE_HYBRID_RAM => 0,
       C_OPTIMIZE_GOAL => 0,

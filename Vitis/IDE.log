@@ -676,3 +676,780 @@ con
 12:42:03 INFO  : Platform repository initialization has completed.
 12:42:03 INFO  : Registering command handlers for Vitis TCF services
 12:42:06 INFO  : Successfully done query RDI_DATADIR 
+13:25:45 INFO  : Result from executing command 'getProjects': design_1_wrapper
+13:25:45 INFO  : Result from executing command 'getPlatforms': design_1_wrapper|C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/design_1_wrapper.xpfm
+13:25:45 INFO  : Checking for BSP changes to sync application flags for project 'audio_fft'...
+13:27:12 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:27:13 INFO  : Jtag cable 'Digilent Zed 210248469740' is selected.
+13:27:13 INFO  : 'jtag frequency' command is executed.
+13:27:13 INFO  : Context for 'APU' is selected.
+13:27:13 INFO  : System reset is completed.
+13:27:16 INFO  : 'after 3000' command is executed.
+13:27:16 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248469740" && level==0 && jtag_device_ctx=="jsn-Zed-210248469740-03727093-0"}' command is executed.
+13:27:18 INFO  : Device configured successfully with "C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/bitstream/design_1_wrapper.bit"
+13:27:18 INFO  : Context for 'APU' is selected.
+13:27:18 INFO  : Hardware design and registers information is loaded from 'C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+13:27:18 INFO  : 'configparams force-mem-access 1' command is executed.
+13:27:18 INFO  : Context for 'APU' is selected.
+13:27:18 INFO  : Sourcing of 'C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/psinit/ps7_init.tcl' is done.
+13:27:19 INFO  : 'ps7_init' command is executed.
+13:27:19 INFO  : 'ps7_post_config' command is executed.
+13:27:19 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:27:19 INFO  : The application 'C:/KDevelop/guitar-tuner/Vitis/audio_fft/Debug/audio_fft.elf' is downloaded to processor 'ps7_cortexa9_0'.
+13:27:19 INFO  : 'configparams force-mem-access 0' command is executed.
+13:27:19 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248469740" && level==0 && jtag_device_ctx=="jsn-Zed-210248469740-03727093-0"}
+fpga -file C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/bitstream/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/KDevelop/guitar-tuner/Vitis/audio_fft/Debug/audio_fft.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+13:27:19 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:27:19 INFO  : 'con' command is executed.
+13:27:19 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+13:27:19 INFO  : Launch script is exported to file 'C:\KDevelop\guitar-tuner\Vitis\audio_fft_system\_ide\scripts\systemdebugger_audio_fft_system_standalone.tcl'
+13:31:53 INFO  : Disconnected from the channel tcfchan#3.
+13:33:02 INFO  : Checking for BSP changes to sync application flags for project 'audio_fft'...
+13:33:48 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:33:48 INFO  : Jtag cable 'Digilent Zed 210248469740' is selected.
+13:33:48 INFO  : 'jtag frequency' command is executed.
+13:33:48 INFO  : Context for 'APU' is selected.
+13:33:48 INFO  : System reset is completed.
+13:33:51 INFO  : 'after 3000' command is executed.
+13:33:51 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248469740" && level==0 && jtag_device_ctx=="jsn-Zed-210248469740-03727093-0"}' command is executed.
+13:33:54 INFO  : Device configured successfully with "C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/bitstream/design_1_wrapper.bit"
+13:33:54 INFO  : Context for 'APU' is selected.
+13:33:54 INFO  : Hardware design and registers information is loaded from 'C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+13:33:54 INFO  : 'configparams force-mem-access 1' command is executed.
+13:33:54 INFO  : Context for 'APU' is selected.
+13:33:54 INFO  : Sourcing of 'C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/psinit/ps7_init.tcl' is done.
+13:33:54 INFO  : 'ps7_init' command is executed.
+13:33:54 INFO  : 'ps7_post_config' command is executed.
+13:33:54 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:33:54 INFO  : The application 'C:/KDevelop/guitar-tuner/Vitis/audio_fft/Debug/audio_fft.elf' is downloaded to processor 'ps7_cortexa9_0'.
+13:33:54 INFO  : 'configparams force-mem-access 0' command is executed.
+13:33:54 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248469740" && level==0 && jtag_device_ctx=="jsn-Zed-210248469740-03727093-0"}
+fpga -file C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/bitstream/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/KDevelop/guitar-tuner/Vitis/audio_fft/Debug/audio_fft.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+13:33:55 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:33:55 INFO  : 'con' command is executed.
+13:33:55 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+13:33:55 INFO  : Launch script is exported to file 'C:\KDevelop\guitar-tuner\Vitis\audio_fft_system\_ide\scripts\systemdebugger_audio_fft_system_standalone.tcl'
+13:34:42 INFO  : Disconnected from the channel tcfchan#5.
+13:34:46 INFO  : Checking for BSP changes to sync application flags for project 'audio_fft'...
+13:35:04 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:35:04 INFO  : Jtag cable 'Digilent Zed 210248469740' is selected.
+13:35:04 INFO  : 'jtag frequency' command is executed.
+13:35:04 INFO  : Context for 'APU' is selected.
+13:35:04 INFO  : System reset is completed.
+13:35:07 INFO  : 'after 3000' command is executed.
+13:35:08 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248469740" && level==0 && jtag_device_ctx=="jsn-Zed-210248469740-03727093-0"}' command is executed.
+13:35:10 INFO  : Device configured successfully with "C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/bitstream/design_1_wrapper.bit"
+13:35:10 INFO  : Context for 'APU' is selected.
+13:35:10 INFO  : Hardware design and registers information is loaded from 'C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+13:35:10 INFO  : 'configparams force-mem-access 1' command is executed.
+13:35:10 INFO  : Context for 'APU' is selected.
+13:35:10 INFO  : Sourcing of 'C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/psinit/ps7_init.tcl' is done.
+13:35:10 INFO  : 'ps7_init' command is executed.
+13:35:10 INFO  : 'ps7_post_config' command is executed.
+13:35:10 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:35:11 INFO  : The application 'C:/KDevelop/guitar-tuner/Vitis/audio_fft/Debug/audio_fft.elf' is downloaded to processor 'ps7_cortexa9_0'.
+13:35:11 INFO  : 'configparams force-mem-access 0' command is executed.
+13:35:11 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248469740" && level==0 && jtag_device_ctx=="jsn-Zed-210248469740-03727093-0"}
+fpga -file C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/bitstream/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/KDevelop/guitar-tuner/Vitis/audio_fft/Debug/audio_fft.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+13:35:11 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:35:11 INFO  : 'con' command is executed.
+13:35:11 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+13:35:11 INFO  : Launch script is exported to file 'C:\KDevelop\guitar-tuner\Vitis\audio_fft_system\_ide\scripts\systemdebugger_audio_fft_system_standalone.tcl'
+13:36:37 INFO  : Disconnected from the channel tcfchan#7.
+13:36:41 INFO  : Checking for BSP changes to sync application flags for project 'audio_fft'...
+13:37:18 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:37:18 INFO  : Jtag cable 'Digilent Zed 210248469740' is selected.
+13:37:18 INFO  : 'jtag frequency' command is executed.
+13:37:18 INFO  : Context for 'APU' is selected.
+13:37:18 INFO  : System reset is completed.
+13:37:21 INFO  : 'after 3000' command is executed.
+13:37:21 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248469740" && level==0 && jtag_device_ctx=="jsn-Zed-210248469740-03727093-0"}' command is executed.
+13:37:24 INFO  : Device configured successfully with "C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/bitstream/design_1_wrapper.bit"
+13:37:24 INFO  : Context for 'APU' is selected.
+13:37:24 INFO  : Hardware design and registers information is loaded from 'C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+13:37:24 INFO  : 'configparams force-mem-access 1' command is executed.
+13:37:24 INFO  : Context for 'APU' is selected.
+13:37:24 INFO  : Sourcing of 'C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/psinit/ps7_init.tcl' is done.
+13:37:24 INFO  : 'ps7_init' command is executed.
+13:37:24 INFO  : 'ps7_post_config' command is executed.
+13:37:24 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:37:24 INFO  : The application 'C:/KDevelop/guitar-tuner/Vitis/audio_fft/Debug/audio_fft.elf' is downloaded to processor 'ps7_cortexa9_0'.
+13:37:24 INFO  : 'configparams force-mem-access 0' command is executed.
+13:37:24 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248469740" && level==0 && jtag_device_ctx=="jsn-Zed-210248469740-03727093-0"}
+fpga -file C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/bitstream/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/KDevelop/guitar-tuner/Vitis/audio_fft/Debug/audio_fft.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+13:37:25 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:37:25 INFO  : 'con' command is executed.
+13:37:25 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+13:37:25 INFO  : Launch script is exported to file 'C:\KDevelop\guitar-tuner\Vitis\audio_fft_system\_ide\scripts\systemdebugger_audio_fft_system_standalone.tcl'
+13:39:18 INFO  : Disconnected from the channel tcfchan#9.
+13:39:54 INFO  : Checking for BSP changes to sync application flags for project 'audio_fft'...
+13:40:09 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:40:10 INFO  : Jtag cable 'Digilent Zed 210248469740' is selected.
+13:40:10 INFO  : 'jtag frequency' command is executed.
+13:40:10 INFO  : Context for 'APU' is selected.
+13:40:10 INFO  : System reset is completed.
+13:40:13 INFO  : 'after 3000' command is executed.
+13:40:13 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248469740" && level==0 && jtag_device_ctx=="jsn-Zed-210248469740-03727093-0"}' command is executed.
+13:40:15 INFO  : Device configured successfully with "C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/bitstream/design_1_wrapper.bit"
+13:40:15 INFO  : Context for 'APU' is selected.
+13:40:15 INFO  : Hardware design and registers information is loaded from 'C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+13:40:15 INFO  : 'configparams force-mem-access 1' command is executed.
+13:40:15 INFO  : Context for 'APU' is selected.
+13:40:15 INFO  : Sourcing of 'C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/psinit/ps7_init.tcl' is done.
+13:40:16 INFO  : 'ps7_init' command is executed.
+13:40:16 INFO  : 'ps7_post_config' command is executed.
+13:40:16 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:40:16 INFO  : The application 'C:/KDevelop/guitar-tuner/Vitis/audio_fft/Debug/audio_fft.elf' is downloaded to processor 'ps7_cortexa9_0'.
+13:40:16 INFO  : 'configparams force-mem-access 0' command is executed.
+13:40:16 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248469740" && level==0 && jtag_device_ctx=="jsn-Zed-210248469740-03727093-0"}
+fpga -file C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/bitstream/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/KDevelop/guitar-tuner/Vitis/audio_fft/Debug/audio_fft.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+13:40:16 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:40:16 INFO  : 'con' command is executed.
+13:40:16 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+13:40:16 INFO  : Launch script is exported to file 'C:\KDevelop\guitar-tuner\Vitis\audio_fft_system\_ide\scripts\systemdebugger_audio_fft_system_standalone.tcl'
+13:40:29 INFO  : Disconnected from the channel tcfchan#11.
+13:41:43 INFO  : Result from executing command 'getProjects': design_1_wrapper
+13:41:43 INFO  : Result from executing command 'getPlatforms': design_1_wrapper|C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/design_1_wrapper.xpfm
+13:41:43 INFO  : Checking for BSP changes to sync application flags for project 'audio_fft'...
+13:42:18 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:42:18 INFO  : Jtag cable 'Digilent Zed 210248469740' is selected.
+13:42:18 INFO  : 'jtag frequency' command is executed.
+13:42:18 INFO  : Context for 'APU' is selected.
+13:42:18 INFO  : System reset is completed.
+13:42:21 INFO  : 'after 3000' command is executed.
+13:42:22 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248469740" && level==0 && jtag_device_ctx=="jsn-Zed-210248469740-03727093-0"}' command is executed.
+13:42:24 INFO  : Device configured successfully with "C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/bitstream/design_1_wrapper.bit"
+13:42:24 INFO  : Context for 'APU' is selected.
+13:42:24 INFO  : Hardware design and registers information is loaded from 'C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+13:42:24 INFO  : 'configparams force-mem-access 1' command is executed.
+13:42:24 INFO  : Context for 'APU' is selected.
+13:42:24 INFO  : Sourcing of 'C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/psinit/ps7_init.tcl' is done.
+13:42:24 INFO  : 'ps7_init' command is executed.
+13:42:24 INFO  : 'ps7_post_config' command is executed.
+13:42:24 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:42:25 INFO  : The application 'C:/KDevelop/guitar-tuner/Vitis/audio_fft/Debug/audio_fft.elf' is downloaded to processor 'ps7_cortexa9_0'.
+13:42:25 INFO  : 'configparams force-mem-access 0' command is executed.
+13:42:25 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248469740" && level==0 && jtag_device_ctx=="jsn-Zed-210248469740-03727093-0"}
+fpga -file C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/bitstream/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/KDevelop/guitar-tuner/Vitis/audio_fft/Debug/audio_fft.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+13:42:25 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:42:25 INFO  : 'con' command is executed.
+13:42:25 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+13:42:25 INFO  : Launch script is exported to file 'C:\KDevelop\guitar-tuner\Vitis\audio_fft_system\_ide\scripts\systemdebugger_audio_fft_system_standalone.tcl'
+13:51:18 INFO  : Disconnected from the channel tcfchan#15.
+13:51:54 INFO  : Checking for BSP changes to sync application flags for project 'audio_fft'...
+13:52:21 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:52:22 INFO  : Jtag cable 'Digilent Zed 210248469740' is selected.
+13:52:22 INFO  : 'jtag frequency' command is executed.
+13:52:22 INFO  : Context for 'APU' is selected.
+13:52:22 INFO  : System reset is completed.
+13:52:25 INFO  : 'after 3000' command is executed.
+13:52:25 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248469740" && level==0 && jtag_device_ctx=="jsn-Zed-210248469740-03727093-0"}' command is executed.
+13:52:27 INFO  : Device configured successfully with "C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/bitstream/design_1_wrapper.bit"
+13:52:27 INFO  : Context for 'APU' is selected.
+13:52:27 INFO  : Hardware design and registers information is loaded from 'C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+13:52:27 INFO  : 'configparams force-mem-access 1' command is executed.
+13:52:27 INFO  : Context for 'APU' is selected.
+13:52:27 INFO  : Sourcing of 'C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/psinit/ps7_init.tcl' is done.
+13:52:27 INFO  : 'ps7_init' command is executed.
+13:52:27 INFO  : 'ps7_post_config' command is executed.
+13:52:27 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:52:28 INFO  : The application 'C:/KDevelop/guitar-tuner/Vitis/audio_fft/Debug/audio_fft.elf' is downloaded to processor 'ps7_cortexa9_0'.
+13:52:28 INFO  : 'configparams force-mem-access 0' command is executed.
+13:52:28 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248469740" && level==0 && jtag_device_ctx=="jsn-Zed-210248469740-03727093-0"}
+fpga -file C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/bitstream/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/KDevelop/guitar-tuner/Vitis/audio_fft/Debug/audio_fft.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+13:52:28 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:52:28 INFO  : 'con' command is executed.
+13:52:28 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+13:52:28 INFO  : Launch script is exported to file 'C:\KDevelop\guitar-tuner\Vitis\audio_fft_system\_ide\scripts\systemdebugger_audio_fft_system_standalone.tcl'
+13:52:56 INFO  : Disconnected from the channel tcfchan#17.
+13:57:55 INFO  : Result from executing command 'getProjects': design_1_wrapper
+13:57:55 INFO  : Result from executing command 'getPlatforms': design_1_wrapper|C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/design_1_wrapper.xpfm
+13:57:55 INFO  : Checking for BSP changes to sync application flags for project 'audio_fft'...
+13:58:12 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:58:12 INFO  : Jtag cable 'Digilent Zed 210248469740' is selected.
+13:58:12 INFO  : 'jtag frequency' command is executed.
+13:58:12 INFO  : Context for 'APU' is selected.
+13:58:13 INFO  : System reset is completed.
+13:58:16 INFO  : 'after 3000' command is executed.
+13:58:16 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248469740" && level==0 && jtag_device_ctx=="jsn-Zed-210248469740-03727093-0"}' command is executed.
+13:58:18 INFO  : Device configured successfully with "C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/bitstream/design_1_wrapper.bit"
+13:58:18 INFO  : Context for 'APU' is selected.
+13:58:18 INFO  : Hardware design and registers information is loaded from 'C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+13:58:18 INFO  : 'configparams force-mem-access 1' command is executed.
+13:58:18 INFO  : Context for 'APU' is selected.
+13:58:18 INFO  : Sourcing of 'C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/psinit/ps7_init.tcl' is done.
+13:58:18 INFO  : 'ps7_init' command is executed.
+13:58:18 INFO  : 'ps7_post_config' command is executed.
+13:58:18 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:58:19 INFO  : The application 'C:/KDevelop/guitar-tuner/Vitis/audio_fft/Debug/audio_fft.elf' is downloaded to processor 'ps7_cortexa9_0'.
+13:58:19 INFO  : 'configparams force-mem-access 0' command is executed.
+13:58:19 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248469740" && level==0 && jtag_device_ctx=="jsn-Zed-210248469740-03727093-0"}
+fpga -file C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/bitstream/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/KDevelop/guitar-tuner/Vitis/audio_fft/Debug/audio_fft.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+13:58:19 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:58:19 INFO  : 'con' command is executed.
+13:58:19 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+13:58:19 INFO  : Launch script is exported to file 'C:\KDevelop\guitar-tuner\Vitis\audio_fft_system\_ide\scripts\systemdebugger_audio_fft_system_standalone.tcl'
+14:07:06 INFO  : Disconnected from the channel tcfchan#21.
+14:10:22 INFO  : Checking for BSP changes to sync application flags for project 'audio_fft'...
+14:10:44 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:10:45 INFO  : Jtag cable 'Digilent Zed 210248469740' is selected.
+14:10:45 INFO  : 'jtag frequency' command is executed.
+14:10:45 INFO  : Context for 'APU' is selected.
+14:10:45 INFO  : System reset is completed.
+14:10:48 INFO  : 'after 3000' command is executed.
+14:10:48 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248469740" && level==0 && jtag_device_ctx=="jsn-Zed-210248469740-03727093-0"}' command is executed.
+14:10:50 INFO  : Device configured successfully with "C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/bitstream/design_1_wrapper.bit"
+14:10:50 INFO  : Context for 'APU' is selected.
+14:10:50 INFO  : Hardware design and registers information is loaded from 'C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+14:10:50 INFO  : 'configparams force-mem-access 1' command is executed.
+14:10:50 INFO  : Context for 'APU' is selected.
+14:10:50 INFO  : Sourcing of 'C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/psinit/ps7_init.tcl' is done.
+14:10:50 INFO  : 'ps7_init' command is executed.
+14:10:50 INFO  : 'ps7_post_config' command is executed.
+14:10:50 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+14:10:51 INFO  : The application 'C:/KDevelop/guitar-tuner/Vitis/audio_fft/Debug/audio_fft.elf' is downloaded to processor 'ps7_cortexa9_0'.
+14:10:51 INFO  : 'configparams force-mem-access 0' command is executed.
+14:10:51 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248469740" && level==0 && jtag_device_ctx=="jsn-Zed-210248469740-03727093-0"}
+fpga -file C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/bitstream/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/KDevelop/guitar-tuner/Vitis/audio_fft/Debug/audio_fft.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+14:10:51 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+14:10:51 INFO  : 'con' command is executed.
+14:10:51 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+14:10:51 INFO  : Launch script is exported to file 'C:\KDevelop\guitar-tuner\Vitis\audio_fft_system\_ide\scripts\systemdebugger_audio_fft_system_standalone.tcl'
+14:11:03 INFO  : Disconnected from the channel tcfchan#23.
+14:13:17 INFO  : Checking for BSP changes to sync application flags for project 'audio_fft'...
+14:13:38 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:13:38 INFO  : Jtag cable 'Digilent Zed 210248469740' is selected.
+14:13:38 INFO  : 'jtag frequency' command is executed.
+14:13:38 INFO  : Context for 'APU' is selected.
+14:13:38 INFO  : System reset is completed.
+14:13:41 INFO  : 'after 3000' command is executed.
+14:13:41 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248469740" && level==0 && jtag_device_ctx=="jsn-Zed-210248469740-03727093-0"}' command is executed.
+14:13:43 INFO  : Device configured successfully with "C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/bitstream/design_1_wrapper.bit"
+14:13:43 INFO  : Context for 'APU' is selected.
+14:13:43 INFO  : Hardware design and registers information is loaded from 'C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+14:13:43 INFO  : 'configparams force-mem-access 1' command is executed.
+14:13:43 INFO  : Context for 'APU' is selected.
+14:13:43 INFO  : Sourcing of 'C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/psinit/ps7_init.tcl' is done.
+14:13:44 INFO  : 'ps7_init' command is executed.
+14:13:44 INFO  : 'ps7_post_config' command is executed.
+14:13:44 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+14:13:44 INFO  : The application 'C:/KDevelop/guitar-tuner/Vitis/audio_fft/Debug/audio_fft.elf' is downloaded to processor 'ps7_cortexa9_0'.
+14:13:44 INFO  : 'configparams force-mem-access 0' command is executed.
+14:13:44 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248469740" && level==0 && jtag_device_ctx=="jsn-Zed-210248469740-03727093-0"}
+fpga -file C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/bitstream/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/KDevelop/guitar-tuner/Vitis/audio_fft/Debug/audio_fft.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+14:13:44 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+14:13:44 INFO  : 'con' command is executed.
+14:13:44 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+14:13:44 INFO  : Launch script is exported to file 'C:\KDevelop\guitar-tuner\Vitis\audio_fft_system\_ide\scripts\systemdebugger_audio_fft_system_standalone.tcl'
+14:13:55 INFO  : Disconnected from the channel tcfchan#25.
+14:15:13 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:15:13 INFO  : Jtag cable 'Digilent Zed 210248469740' is selected.
+14:15:13 INFO  : 'jtag frequency' command is executed.
+14:15:13 INFO  : Context for 'APU' is selected.
+14:15:13 INFO  : System reset is completed.
+14:15:16 INFO  : 'after 3000' command is executed.
+14:15:16 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248469740" && level==0 && jtag_device_ctx=="jsn-Zed-210248469740-03727093-0"}' command is executed.
+14:15:19 INFO  : Device configured successfully with "C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/bitstream/design_1_wrapper.bit"
+14:15:19 INFO  : Context for 'APU' is selected.
+14:15:19 INFO  : Hardware design and registers information is loaded from 'C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+14:15:19 INFO  : 'configparams force-mem-access 1' command is executed.
+14:15:19 INFO  : Context for 'APU' is selected.
+14:15:19 INFO  : Sourcing of 'C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/psinit/ps7_init.tcl' is done.
+14:15:19 INFO  : 'ps7_init' command is executed.
+14:15:19 INFO  : 'ps7_post_config' command is executed.
+14:15:19 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+14:15:19 INFO  : The application 'C:/KDevelop/guitar-tuner/Vitis/audio_fft/Debug/audio_fft.elf' is downloaded to processor 'ps7_cortexa9_0'.
+14:15:19 INFO  : 'configparams force-mem-access 0' command is executed.
+14:15:19 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248469740" && level==0 && jtag_device_ctx=="jsn-Zed-210248469740-03727093-0"}
+fpga -file C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/bitstream/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/KDevelop/guitar-tuner/Vitis/audio_fft/Debug/audio_fft.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+14:15:19 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+14:15:19 INFO  : 'con' command is executed.
+14:15:19 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+14:15:19 INFO  : Launch script is exported to file 'C:\KDevelop\guitar-tuner\Vitis\audio_fft_system\_ide\scripts\systemdebugger_audio_fft_system_standalone.tcl'
+14:37:29 INFO  : Disconnected from the channel tcfchan#26.
+14:38:31 INFO  : Result from executing command 'getProjects': design_1_wrapper
+14:38:31 INFO  : Result from executing command 'getPlatforms': 
+14:38:32 INFO  : Platform 'design_1_wrapper' is added to custom repositories.
+14:38:41 INFO  : Platform 'design_1_wrapper' is added to custom repositories.
+14:39:25 INFO  : Result from executing command 'getProjects': design_1_wrapper
+14:39:25 INFO  : Result from executing command 'getPlatforms': design_1_wrapper|C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/design_1_wrapper.xpfm
+14:39:25 INFO  : Checking for BSP changes to sync application flags for project 'audio_fft'...
+14:40:02 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:40:03 INFO  : Jtag cable 'Digilent Zed 210248469740' is selected.
+14:40:03 INFO  : 'jtag frequency' command is executed.
+14:40:03 INFO  : Context for 'APU' is selected.
+14:40:03 INFO  : System reset is completed.
+14:40:06 INFO  : 'after 3000' command is executed.
+14:40:06 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248469740" && level==0 && jtag_device_ctx=="jsn-Zed-210248469740-03727093-0"}' command is executed.
+14:40:08 INFO  : Device configured successfully with "C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/bitstream/design_1_wrapper.bit"
+14:40:08 INFO  : Context for 'APU' is selected.
+14:40:08 INFO  : Hardware design and registers information is loaded from 'C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+14:40:08 INFO  : 'configparams force-mem-access 1' command is executed.
+14:40:08 INFO  : Context for 'APU' is selected.
+14:40:08 INFO  : Sourcing of 'C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/psinit/ps7_init.tcl' is done.
+14:40:09 INFO  : 'ps7_init' command is executed.
+14:40:09 INFO  : 'ps7_post_config' command is executed.
+14:40:09 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+14:40:09 INFO  : The application 'C:/KDevelop/guitar-tuner/Vitis/audio_fft/Debug/audio_fft.elf' is downloaded to processor 'ps7_cortexa9_0'.
+14:40:09 INFO  : 'configparams force-mem-access 0' command is executed.
+14:40:09 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248469740" && level==0 && jtag_device_ctx=="jsn-Zed-210248469740-03727093-0"}
+fpga -file C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/bitstream/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/KDevelop/guitar-tuner/Vitis/audio_fft/Debug/audio_fft.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+14:40:09 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+14:40:09 INFO  : 'con' command is executed.
+14:40:09 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+14:40:09 INFO  : Launch script is exported to file 'C:\KDevelop\guitar-tuner\Vitis\audio_fft_system\_ide\scripts\systemdebugger_audio_fft_system_standalone.tcl'
+14:40:49 INFO  : Disconnected from the channel tcfchan#29.
+14:43:03 INFO  : Checking for BSP changes to sync application flags for project 'audio_fft'...
+14:43:23 INFO  : Checking for BSP changes to sync application flags for project 'audio_fft'...
+14:46:47 INFO  : Result from executing command 'getProjects': design_1_wrapper
+14:46:47 INFO  : Result from executing command 'getPlatforms': design_1_wrapper|C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/design_1_wrapper.xpfm
+14:46:47 INFO  : Checking for BSP changes to sync application flags for project 'audio_fft'...
+14:47:01 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:47:01 INFO  : Jtag cable 'Digilent Zed 210248469740' is selected.
+14:47:01 INFO  : 'jtag frequency' command is executed.
+14:47:01 INFO  : Context for 'APU' is selected.
+14:47:01 INFO  : System reset is completed.
+14:47:04 INFO  : 'after 3000' command is executed.
+14:47:04 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248469740" && level==0 && jtag_device_ctx=="jsn-Zed-210248469740-03727093-0"}' command is executed.
+14:47:06 INFO  : Device configured successfully with "C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/bitstream/design_1_wrapper.bit"
+14:47:06 INFO  : Context for 'APU' is selected.
+14:47:06 INFO  : Hardware design and registers information is loaded from 'C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+14:47:06 INFO  : 'configparams force-mem-access 1' command is executed.
+14:47:06 INFO  : Context for 'APU' is selected.
+14:47:06 INFO  : Sourcing of 'C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/psinit/ps7_init.tcl' is done.
+14:47:07 INFO  : 'ps7_init' command is executed.
+14:47:07 INFO  : 'ps7_post_config' command is executed.
+14:47:07 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+14:47:07 INFO  : The application 'C:/KDevelop/guitar-tuner/Vitis/audio_fft/Debug/audio_fft.elf' is downloaded to processor 'ps7_cortexa9_0'.
+14:47:07 INFO  : 'configparams force-mem-access 0' command is executed.
+14:47:07 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248469740" && level==0 && jtag_device_ctx=="jsn-Zed-210248469740-03727093-0"}
+fpga -file C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/bitstream/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/KDevelop/guitar-tuner/Vitis/audio_fft/Debug/audio_fft.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+14:47:07 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+14:47:07 INFO  : 'con' command is executed.
+14:47:07 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+14:47:07 INFO  : Launch script is exported to file 'C:\KDevelop\guitar-tuner\Vitis\audio_fft_system\_ide\scripts\systemdebugger_audio_fft_system_standalone.tcl'
+14:51:43 INFO  : Disconnected from the channel tcfchan#35.
+14:51:49 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:51:49 INFO  : Jtag cable 'Digilent Zed 210248469740' is selected.
+14:51:49 INFO  : 'jtag frequency' command is executed.
+14:51:49 INFO  : Context for 'APU' is selected.
+14:51:49 INFO  : System reset is completed.
+14:51:52 INFO  : 'after 3000' command is executed.
+14:51:52 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248469740" && level==0 && jtag_device_ctx=="jsn-Zed-210248469740-03727093-0"}' command is executed.
+14:51:55 INFO  : Device configured successfully with "C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/bitstream/design_1_wrapper.bit"
+14:51:55 INFO  : Context for 'APU' is selected.
+14:51:55 INFO  : Hardware design and registers information is loaded from 'C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+14:51:55 INFO  : 'configparams force-mem-access 1' command is executed.
+14:51:55 INFO  : Context for 'APU' is selected.
+14:51:55 INFO  : Sourcing of 'C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/psinit/ps7_init.tcl' is done.
+14:51:55 INFO  : 'ps7_init' command is executed.
+14:51:55 INFO  : 'ps7_post_config' command is executed.
+14:51:55 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+14:51:56 INFO  : The application 'C:/KDevelop/guitar-tuner/Vitis/audio_fft/Debug/audio_fft.elf' is downloaded to processor 'ps7_cortexa9_0'.
+14:51:56 INFO  : 'configparams force-mem-access 0' command is executed.
+14:51:56 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248469740" && level==0 && jtag_device_ctx=="jsn-Zed-210248469740-03727093-0"}
+fpga -file C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/bitstream/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/KDevelop/guitar-tuner/Vitis/audio_fft/Debug/audio_fft.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+14:51:56 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+14:51:56 INFO  : 'con' command is executed.
+14:51:56 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+14:51:56 INFO  : Launch script is exported to file 'C:\KDevelop\guitar-tuner\Vitis\audio_fft_system\_ide\scripts\systemdebugger_audio_fft_system_standalone.tcl'
+15:09:20 INFO  : Disconnected from the channel tcfchan#36.
+15:12:32 INFO  : Result from executing command 'getProjects': design_1_wrapper
+15:12:32 INFO  : Result from executing command 'getPlatforms': 
+15:12:32 INFO  : Platform 'design_1_wrapper' is added to custom repositories.
+15:12:41 INFO  : Platform 'design_1_wrapper' is added to custom repositories.
+15:13:16 INFO  : Result from executing command 'getProjects': design_1_wrapper
+15:13:16 INFO  : Result from executing command 'getPlatforms': design_1_wrapper|C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/design_1_wrapper.xpfm
+15:13:16 INFO  : Checking for BSP changes to sync application flags for project 'audio_fft'...
+15:13:46 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:13:46 INFO  : Jtag cable 'Digilent Zed 210248469740' is selected.
+15:13:46 INFO  : 'jtag frequency' command is executed.
+15:13:46 INFO  : Context for 'APU' is selected.
+15:13:46 INFO  : System reset is completed.
+15:13:49 INFO  : 'after 3000' command is executed.
+15:13:49 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248469740" && level==0 && jtag_device_ctx=="jsn-Zed-210248469740-03727093-0"}' command is executed.
+15:13:52 INFO  : Device configured successfully with "C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/bitstream/design_1_wrapper.bit"
+15:13:52 INFO  : Context for 'APU' is selected.
+15:13:52 INFO  : Hardware design and registers information is loaded from 'C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+15:13:52 INFO  : 'configparams force-mem-access 1' command is executed.
+15:13:52 INFO  : Context for 'APU' is selected.
+15:13:52 INFO  : Sourcing of 'C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/psinit/ps7_init.tcl' is done.
+15:13:52 INFO  : 'ps7_init' command is executed.
+15:13:52 INFO  : 'ps7_post_config' command is executed.
+15:13:52 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+15:13:53 INFO  : The application 'C:/KDevelop/guitar-tuner/Vitis/audio_fft/Debug/audio_fft.elf' is downloaded to processor 'ps7_cortexa9_0'.
+15:13:53 INFO  : 'configparams force-mem-access 0' command is executed.
+15:13:53 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248469740" && level==0 && jtag_device_ctx=="jsn-Zed-210248469740-03727093-0"}
+fpga -file C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/bitstream/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/KDevelop/guitar-tuner/Vitis/audio_fft/Debug/audio_fft.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+15:13:53 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+15:13:53 INFO  : 'con' command is executed.
+15:13:53 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+15:13:53 INFO  : Launch script is exported to file 'C:\KDevelop\guitar-tuner\Vitis\audio_fft_system\_ide\scripts\systemdebugger_audio_fft_system_standalone.tcl'
+16:04:52 INFO  : Disconnected from the channel tcfchan#39.
+16:06:14 INFO  : Result from executing command 'getProjects': design_1_wrapper
+16:06:14 INFO  : Result from executing command 'getPlatforms': 
+16:06:15 INFO  : Platform 'design_1_wrapper' is added to custom repositories.
+16:06:24 INFO  : Platform 'design_1_wrapper' is added to custom repositories.
+16:07:04 INFO  : Result from executing command 'getProjects': design_1_wrapper
+16:07:04 INFO  : Result from executing command 'getPlatforms': C:\KDevelop\guitar-tuner\Vitis\design_1_wrapper\export\design_1_wrapper\design_1_wrapper.xpfm|C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/design_1_wrapper.xpfm
+16:07:04 INFO  : Checking for BSP changes to sync application flags for project 'audio_fft'...
+16:07:44 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:07:44 INFO  : Jtag cable 'Digilent Zed 210248469740' is selected.
+16:07:44 INFO  : 'jtag frequency' command is executed.
+16:07:44 INFO  : Context for 'APU' is selected.
+16:07:44 INFO  : System reset is completed.
+16:07:47 INFO  : 'after 3000' command is executed.
+16:07:47 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248469740" && level==0 && jtag_device_ctx=="jsn-Zed-210248469740-03727093-0"}' command is executed.
+16:07:50 INFO  : Device configured successfully with "C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/bitstream/design_1_wrapper.bit"
+16:07:50 INFO  : Context for 'APU' is selected.
+16:07:50 INFO  : Hardware design and registers information is loaded from 'C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+16:07:50 INFO  : 'configparams force-mem-access 1' command is executed.
+16:07:50 INFO  : Context for 'APU' is selected.
+16:07:50 INFO  : Sourcing of 'C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/psinit/ps7_init.tcl' is done.
+16:07:50 INFO  : 'ps7_init' command is executed.
+16:07:50 INFO  : 'ps7_post_config' command is executed.
+16:07:50 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+16:07:50 INFO  : The application 'C:/KDevelop/guitar-tuner/Vitis/audio_fft/Debug/audio_fft.elf' is downloaded to processor 'ps7_cortexa9_0'.
+16:07:51 INFO  : 'configparams force-mem-access 0' command is executed.
+16:07:51 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248469740" && level==0 && jtag_device_ctx=="jsn-Zed-210248469740-03727093-0"}
+fpga -file C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/bitstream/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/KDevelop/guitar-tuner/Vitis/audio_fft/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/KDevelop/guitar-tuner/Vitis/audio_fft/Debug/audio_fft.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+16:07:51 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+16:07:51 INFO  : 'con' command is executed.
+16:07:51 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+16:07:51 INFO  : Launch script is exported to file 'C:\KDevelop\guitar-tuner\Vitis\audio_fft_system\_ide\scripts\systemdebugger_audio_fft_system_standalone.tcl'

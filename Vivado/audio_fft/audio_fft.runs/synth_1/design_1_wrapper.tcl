@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Users/kgrantma/Downloads/dma_ex_fft/proj/dma_ex_fft_v2_0/dma_ex_fft_v2_0.runs/synth_1/design_1_wrapper.tcl"
+  variable script "C:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.runs/synth_1/design_1_wrapper.tcl"
   variable category "vivado_synth"
 }
 
@@ -77,33 +77,34 @@ set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
-set_property webtalk.parent_dir C:/Users/kgrantma/Downloads/dma_ex_fft/proj/dma_ex_fft_v2_0/dma_ex_fft_v2_0.cache/wt [current_project]
-set_property parent.project_path C:/Users/kgrantma/Downloads/dma_ex_fft/proj/dma_ex_fft_v2_0/dma_ex_fft_v2_0.xpr [current_project]
+set_property webtalk.parent_dir C:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.cache/wt [current_project]
+set_property parent.project_path C:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.xpr [current_project]
 set_property XPM_LIBRARIES {XPM_CDC XPM_FIFO XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property board_part em.avnet.com:zed:part0:1.3 [current_project]
-set_property ip_repo_paths c:/Users/kgrantma/Downloads/dma_ex_fft/lib [current_project]
+set_property ip_repo_paths c:/KDevelop/guitar-tuner/Vivado/ip_repo [current_project]
 update_ip_catalog
-set_property ip_cache_permissions disable [current_project]
+set_property ip_output_repo c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.cache/ip [current_project]
+set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_verilog -library xil_defaultlib C:/Users/kgrantma/Downloads/dma_ex_fft/proj/dma_ex_fft_v2_0/dma_ex_fft_v2_0.srcs/sources_1/imports/hdl/design_1_wrapper.v
-add_files C:/Users/kgrantma/Downloads/dma_ex_fft/proj/dma_ex_fft_v2_0/dma_ex_fft_v2_0.srcs/sources_1/bd/design_1/design_1.bd
-set_property used_in_implementation false [get_files -all c:/Users/kgrantma/Downloads/dma_ex_fft/proj/dma_ex_fft_v2_0/dma_ex_fft_v2_0.srcs/sources_1/bd/design_1/ip/design_1_xfft_0_0/design_1_xfft_0_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/kgrantma/Downloads/dma_ex_fft/proj/dma_ex_fft_v2_0/dma_ex_fft_v2_0.srcs/sources_1/bd/design_1/ip/design_1_axi_dma_0_0/design_1_axi_dma_0_0.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/kgrantma/Downloads/dma_ex_fft/proj/dma_ex_fft_v2_0/dma_ex_fft_v2_0.srcs/sources_1/bd/design_1/ip/design_1_axi_dma_0_0/design_1_axi_dma_0_0_clocks.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/kgrantma/Downloads/dma_ex_fft/proj/dma_ex_fft_v2_0/dma_ex_fft_v2_0.srcs/sources_1/bd/design_1/ip/design_1_axi_dma_0_0/design_1_axi_dma_0_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/kgrantma/Downloads/dma_ex_fft/proj/dma_ex_fft_v2_0/dma_ex_fft_v2_0.srcs/sources_1/bd/design_1/ip/design_1_axi_gpio_0_0/design_1_axi_gpio_0_0_board.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/kgrantma/Downloads/dma_ex_fft/proj/dma_ex_fft_v2_0/dma_ex_fft_v2_0.srcs/sources_1/bd/design_1/ip/design_1_axi_gpio_0_0/design_1_axi_gpio_0_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/kgrantma/Downloads/dma_ex_fft/proj/dma_ex_fft_v2_0/dma_ex_fft_v2_0.srcs/sources_1/bd/design_1/ip/design_1_axi_gpio_0_0/design_1_axi_gpio_0_0.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/kgrantma/Downloads/dma_ex_fft/proj/dma_ex_fft_v2_0/dma_ex_fft_v2_0.srcs/sources_1/bd/design_1/ip/design_1_proc_sys_reset_0_0/design_1_proc_sys_reset_0_0_board.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/kgrantma/Downloads/dma_ex_fft/proj/dma_ex_fft_v2_0/dma_ex_fft_v2_0.srcs/sources_1/bd/design_1/ip/design_1_proc_sys_reset_0_0/design_1_proc_sys_reset_0_0.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/kgrantma/Downloads/dma_ex_fft/proj/dma_ex_fft_v2_0/dma_ex_fft_v2_0.srcs/sources_1/bd/design_1/ip/design_1_proc_sys_reset_0_0/design_1_proc_sys_reset_0_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/kgrantma/Downloads/dma_ex_fft/proj/dma_ex_fft_v2_0/dma_ex_fft_v2_0.srcs/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/kgrantma/Downloads/dma_ex_fft/proj/dma_ex_fft_v2_0/dma_ex_fft_v2_0.srcs/sources_1/bd/design_1/ip/design_1_auto_pc_0/design_1_auto_pc_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/kgrantma/Downloads/dma_ex_fft/proj/dma_ex_fft_v2_0/dma_ex_fft_v2_0.srcs/sources_1/bd/design_1/ip/design_1_auto_pc_1/design_1_auto_pc_1_ooc.xdc]
-set_property used_in_implementation false [get_files -all C:/Users/kgrantma/Downloads/dma_ex_fft/proj/dma_ex_fft_v2_0/dma_ex_fft_v2_0.srcs/sources_1/bd/design_1/design_1_ooc.xdc]
+read_verilog -library xil_defaultlib C:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/imports/hdl/design_1_wrapper.v
+add_files C:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/design_1.bd
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_xfft_0_0/design_1_xfft_0_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_axi_dma_0_0/design_1_axi_dma_0_0.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_axi_dma_0_0/design_1_axi_dma_0_0_clocks.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_axi_dma_0_0/design_1_axi_dma_0_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_axi_gpio_0_0/design_1_axi_gpio_0_0_board.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_axi_gpio_0_0/design_1_axi_gpio_0_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_axi_gpio_0_0/design_1_axi_gpio_0_0.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_proc_sys_reset_0_0/design_1_proc_sys_reset_0_0_board.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_proc_sys_reset_0_0/design_1_proc_sys_reset_0_0.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_proc_sys_reset_0_0/design_1_proc_sys_reset_0_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_auto_pc_0/design_1_auto_pc_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_auto_pc_1/design_1_auto_pc_1_ooc.xdc]
+set_property used_in_implementation false [get_files -all C:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/design_1_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being

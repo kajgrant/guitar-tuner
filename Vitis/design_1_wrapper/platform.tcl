@@ -15,26 +15,8 @@ platform create -name {design_1_wrapper}\
 platform write
 domain create -name {standalone_ps7_cortexa9_0} -display-name {standalone_ps7_cortexa9_0} -os {standalone} -proc {ps7_cortexa9_0} -runtime {cpp} -arch {32-bit} -support-app {empty_application}
 platform generate -domains 
-platform active {design_1_wrapper}
+platform write
 domain active {zynq_fsbl}
 domain active {standalone_ps7_cortexa9_0}
 platform generate -quick
 platform generate
-platform clean
-platform clean
-platform generate
-platform clean
-platform generate
-platform clean
-platform generate
-platform clean
-platform generate
-platform active {design_1_wrapper}
-bsp reload
-bsp reload
-domain active {zynq_fsbl}
-bsp reload
-platform generate -domains 
-platform clean
-platform generate
-platform active {design_1_wrapper}

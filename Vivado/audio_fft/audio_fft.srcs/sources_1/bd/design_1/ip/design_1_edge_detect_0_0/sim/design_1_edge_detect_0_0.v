@@ -60,11 +60,11 @@ module design_1_edge_detect_0_0 (
 );
 
 input wire clk;
-input wire [23 : 0] din;
+input wire [31 : 0] din;
 output wire edge_detected;
 
   edge_detect #(
-    .N(24)
+    .N(32)
   ) inst (
     .clk(clk),
     .din(din),

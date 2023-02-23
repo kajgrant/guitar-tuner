@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/kgrantma/Downloads/dma_ex_fft/proj/dma_ex_fft_v2_0/dma_ex_fft_v2_0.runs/synth_1'
+HD_PWD='C:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

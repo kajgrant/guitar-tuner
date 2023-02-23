@@ -52,7 +52,7 @@
 
 (* X_CORE_INFO = "edge_detect,Vivado 2020.2" *)
 (* CHECK_LICENSE_TYPE = "design_1_edge_detect_0_0,edge_detect,{}" *)
-(* CORE_GENERATION_INFO = "design_1_edge_detect_0_0,edge_detect,{x_ipProduct=Vivado 2020.2,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=edge_detect,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,N=24}" *)
+(* CORE_GENERATION_INFO = "design_1_edge_detect_0_0,edge_detect,{x_ipProduct=Vivado 2020.2,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=edge_detect,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,N=32}" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module design_1_edge_detect_0_0 (
   clk,
@@ -61,11 +61,11 @@ module design_1_edge_detect_0_0 (
 );
 
 input wire clk;
-input wire [23 : 0] din;
+input wire [31 : 0] din;
 output wire edge_detected;
 
   edge_detect #(
-    .N(24)
+    .N(32)
   ) inst (
     .clk(clk),
     .din(din),

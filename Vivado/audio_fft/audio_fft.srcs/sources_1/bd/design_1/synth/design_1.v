@@ -1,8 +1,8 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-//Date        : Mon Feb 13 16:29:44 2023
-//Host        : ensc-pit-w04 running 64-bit major release  (build 9200)
+//Date        : Wed Feb 22 15:54:48 2023
+//Host        : KAJ-MAIN running 64-bit major release  (build 9200)
 //Command     : generate_target design_1.bd
 //Design      : design_1
 //Purpose     : IP block netlist
@@ -30,14 +30,14 @@ module accelerator_imp_VJ4YIN
   output S_AXIS_DATA_tready;
   input S_AXIS_DATA_tvalid;
   input aclk;
-  input [23:0]s_axis_config_tdata;
+  input [31:0]s_axis_config_tdata;
   input s_axis_config_tvalid;
 
   wire [31:0]axi_dma_0_m_axis_mm2s_TDATA;
   wire axi_dma_0_m_axis_mm2s_TLAST;
   wire axi_dma_0_m_axis_mm2s_TREADY;
   wire axi_dma_0_m_axis_mm2s_TVALID;
-  wire [23:0]axi_gpio_0_gpio_io_o;
+  wire [31:0]axi_gpio_0_gpio_io_o;
   wire edge_detect_0_edge_detected;
   wire processing_system7_0_fclk_clk0;
   wire [31:0]xfft_0_m_axis_data_TDATA;
@@ -52,7 +52,7 @@ module accelerator_imp_VJ4YIN
   assign axi_dma_0_m_axis_mm2s_TDATA = S_AXIS_DATA_tdata[31:0];
   assign axi_dma_0_m_axis_mm2s_TLAST = S_AXIS_DATA_tlast;
   assign axi_dma_0_m_axis_mm2s_TVALID = S_AXIS_DATA_tvalid;
-  assign axi_gpio_0_gpio_io_o = s_axis_config_tdata[23:0];
+  assign axi_gpio_0_gpio_io_o = s_axis_config_tdata[31:0];
   assign edge_detect_0_edge_detected = s_axis_config_tvalid;
   assign processing_system7_0_fclk_clk0 = aclk;
   assign xfft_0_m_axis_data_TREADY = M_AXIS_DATA_tready;
@@ -247,7 +247,7 @@ module ctrl_imp_1POYFNJ
   input ctrl_aclk;
   output [1:0]dma_irqs;
   input ext_reset_in;
-  output [23:0]fft_config_tdata;
+  output [31:0]fft_config_tdata;
   output fft_config_tvalid;
 
   wire [31:0]axi_dma_0_m_axi_mm2s_ARADDR;
@@ -285,7 +285,7 @@ module ctrl_imp_1POYFNJ
   wire axi_dma_0_m_axis_mm2s_TVALID;
   wire axi_dma_0_mm2s_introut;
   wire axi_dma_0_s2mm_introut;
-  wire [23:0]axi_gpio_0_gpio_io_o;
+  wire [31:0]axi_gpio_0_gpio_io_o;
   wire [31:0]axi_interconnect_0_m00_axi_ARADDR;
   wire [1:0]axi_interconnect_0_m00_axi_ARBURST;
   wire [3:0]axi_interconnect_0_m00_axi_ARCACHE;
@@ -461,7 +461,7 @@ module ctrl_imp_1POYFNJ
   assign axi_interconnect_0_m00_axi_RVALID = M_AXI_DMA_DATA_rvalid;
   assign axi_interconnect_0_m00_axi_WREADY = M_AXI_DMA_DATA_wready;
   assign dma_irqs[1:0] = xlconcat_0_dout;
-  assign fft_config_tdata[23:0] = axi_gpio_0_gpio_io_o;
+  assign fft_config_tdata[31:0] = axi_gpio_0_gpio_io_o;
   assign fft_config_tvalid = edge_detect_0_edge_detected;
   assign processing_system7_0_FCLK_RESET0_N = ext_reset_in;
   assign processing_system7_0_fclk_clk0 = ctrl_aclk;
@@ -801,7 +801,7 @@ module design_1
   wire axi_dma_0_m_axis_mm2s_TLAST;
   wire axi_dma_0_m_axis_mm2s_TREADY;
   wire axi_dma_0_m_axis_mm2s_TVALID;
-  wire [23:0]axi_gpio_0_gpio_io_o;
+  wire [31:0]axi_gpio_0_gpio_io_o;
   wire [31:0]axi_interconnect_0_m00_axi_ARADDR;
   wire [1:0]axi_interconnect_0_m00_axi_ARBURST;
   wire [3:0]axi_interconnect_0_m00_axi_ARCACHE;
