@@ -51,6 +51,14 @@
 #define FFT_ILLEGAL_NUM_PTS -2
 #define FFT_DMA_FAIL        -3
 
+// Custom Scaling factor
+#define SCALE_FACTOR 4
+
+// Custom Constants
+#define WINDOW_SIZE 1 // in seconds
+#define SAMPLES_PER_SEC 1024
+#define CUTOFF_FREQ 500
+
 // Enumerated data types
 typedef enum
 {
@@ -169,6 +177,9 @@ int fft_get_scale_sch(fft_t* p_fft_inst);
 //
 int fft(fft_t* p_fft_inst, cplx_data_t* din, cplx_data_t* dout);
 
+
+void filter_fft(fft_t *p_fft_inst);
+
 // ******************************************************************************
 // Public functions for debugging
 
@@ -217,6 +228,8 @@ void fft_print_stim_buf(fft_t* p_fft_inst);
 //    - p_fft_inst: Pointer to the fft_t object.
 //
 void fft_print_result_buf(fft_t* p_fft_inst);
+
+void fft_print_normalized(fft_t* p_fft_inst);
 
 #endif /* FFT_H_ */
 

@@ -36,7 +36,7 @@
 #define UART_BASEADDR XPAR_PS7_UART_1_BASEADDR
 
 // External data
-extern int sig_two_sine_waves[FFT_MAX_NUM_PTS]; // FFT input data
+extern int test_data[FFT_MAX_NUM_PTS]; // FFT input data
 
 // Function prototypes
 void which_fft_param(fft_t *p_fft_inst);
@@ -78,7 +78,7 @@ int main()
 		return -1;
 	}
 
-	fft_set_num_pts(p_fft_inst, 8192);
+	fft_set_num_pts(p_fft_inst, 1024);
 
 	// Allocate data buffers
 	stim_buf = (cplx_data_t *)malloc(sizeof(cplx_data_t) * FFT_MAX_NUM_PTS);
@@ -96,7 +96,7 @@ int main()
 	}
 
 	// Fill stimulus buffer with some signal
-	memcpy(stim_buf, sig_two_sine_waves, sizeof(cplx_data_t) * FFT_MAX_NUM_PTS);
+	memcpy(stim_buf, test_data, sizeof(cplx_data_t) * FFT_MAX_NUM_PTS);
 
 	// Make sure the buffer is clear before we populate it (this is generally not necessary and wastes time doing memory accesses, but for proving the DMA working, we do it anyway)
 	memset(result_buf, 0, sizeof(cplx_data_t) * FFT_MAX_NUM_PTS);
@@ -107,9 +107,10 @@ int main()
 		xil_printf("ERROR! FFT failed.\n\r");
 		return -1;
 	}
+	filter_fft(p_fft_inst);
 
 	xil_printf("FFT complete!\n\r");
-	fft_print_result_buf(p_fft_inst);
+	fft_print_normalized(p_fft_inst);
 
 	free(stim_buf);
 	free(result_buf);
