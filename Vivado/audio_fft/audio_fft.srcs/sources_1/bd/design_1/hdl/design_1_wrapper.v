@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-//Date        : Wed Feb 22 15:54:48 2023
+//Date        : Sat Mar  4 14:46:16 2023
 //Host        : KAJ-MAIN running 64-bit major release  (build 9200)
 //Command     : generate_target design_1_wrapper.bd
 //Design      : design_1_wrapper
@@ -30,7 +30,12 @@ module design_1_wrapper
     FIXED_IO_mio,
     FIXED_IO_ps_clk,
     FIXED_IO_ps_porb,
-    FIXED_IO_ps_srstb);
+    FIXED_IO_ps_srstb,
+    VGA_B,
+    VGA_G,
+    VGA_HS,
+    VGA_R,
+    VGA_VS);
   inout [14:0]DDR_addr;
   inout [2:0]DDR_ba;
   inout DDR_cas_n;
@@ -52,6 +57,11 @@ module design_1_wrapper
   inout FIXED_IO_ps_clk;
   inout FIXED_IO_ps_porb;
   inout FIXED_IO_ps_srstb;
+  output [3:0]VGA_B;
+  output [3:0]VGA_G;
+  output VGA_HS;
+  output [3:0]VGA_R;
+  output VGA_VS;
 
   wire [14:0]DDR_addr;
   wire [2:0]DDR_ba;
@@ -74,6 +84,11 @@ module design_1_wrapper
   wire FIXED_IO_ps_clk;
   wire FIXED_IO_ps_porb;
   wire FIXED_IO_ps_srstb;
+  wire [3:0]VGA_B;
+  wire [3:0]VGA_G;
+  wire VGA_HS;
+  wire [3:0]VGA_R;
+  wire VGA_VS;
 
   design_1 design_1_i
        (.DDR_addr(DDR_addr),
@@ -96,5 +111,10 @@ module design_1_wrapper
         .FIXED_IO_mio(FIXED_IO_mio),
         .FIXED_IO_ps_clk(FIXED_IO_ps_clk),
         .FIXED_IO_ps_porb(FIXED_IO_ps_porb),
-        .FIXED_IO_ps_srstb(FIXED_IO_ps_srstb));
+        .FIXED_IO_ps_srstb(FIXED_IO_ps_srstb),
+        .VGA_B(VGA_B),
+        .VGA_G(VGA_G),
+        .VGA_HS(VGA_HS),
+        .VGA_R(VGA_R),
+        .VGA_VS(VGA_VS));
 endmodule

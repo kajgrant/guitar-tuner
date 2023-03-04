@@ -70,6 +70,7 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 3
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7z020clg484-1
 
@@ -102,6 +103,43 @@ set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tun
 set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_proc_sys_reset_0_0/design_1_proc_sys_reset_0_0.xdc]
 set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_proc_sys_reset_0_0/design_1_proc_sys_reset_0_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_board.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_1/bd_48ac_psr_aclk_0_board.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_1/bd_48ac_psr_aclk_0.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_2/bd_48ac_arinsw_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_3/bd_48ac_rinsw_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_4/bd_48ac_awinsw_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_5/bd_48ac_winsw_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_6/bd_48ac_binsw_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_7/bd_48ac_aroutsw_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_8/bd_48ac_routsw_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_9/bd_48ac_awoutsw_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_10/bd_48ac_woutsw_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_11/bd_48ac_boutsw_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_12/bd_48ac_arni_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_13/bd_48ac_rni_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_14/bd_48ac_awni_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_15/bd_48ac_wni_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_16/bd_48ac_bni_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_20/bd_48ac_s00a2s_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_21/bd_48ac_sarn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_22/bd_48ac_srn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_23/bd_48ac_sawn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_24/bd_48ac_swn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_25/bd_48ac_sbn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_26/bd_48ac_m00s2a_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_27/bd_48ac_m00arn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_28/bd_48ac_m00rn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_29/bd_48ac_m00awn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_30/bd_48ac_m00wn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_31/bd_48ac_m00bn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/fifo_generator_0/fifo_generator_0.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/fifo_generator_0/fifo_generator_0_clocks.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_axi_timer_0_0/design_1_axi_timer_0_0.xdc]
+set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_axi_timer_0_0/design_1_axi_timer_0_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_auto_pc_0/design_1_auto_pc_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_auto_pc_1/design_1_auto_pc_1_ooc.xdc]
 set_property used_in_implementation false [get_files -all C:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/design_1_ooc.xdc]
@@ -115,6 +153,9 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
+read_xdc C:/KDevelop/guitar-tuner/Vivado/sources/zedboard_master.xdc
+set_property used_in_implementation false [get_files C:/KDevelop/guitar-tuner/Vivado/sources/zedboard_master.xdc]
+
 read_xdc dont_touch.xdc
 set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
