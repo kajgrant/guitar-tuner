@@ -687,6 +687,12 @@
   ENET0_PTP_SYNC_FRAME_TX,
   ENET0_SOF_RX,
   ENET0_SOF_TX,
+  I2C0_SDA_I,
+  I2C0_SDA_O,
+  I2C0_SDA_T,
+  I2C0_SCL_I,
+  I2C0_SCL_O,
+  I2C0_SCL_T,
   TTC0_WAVE0_OUT,
   TTC0_WAVE1_OUT,
   TTC0_WAVE2_OUT,
@@ -864,6 +870,7 @@
   IRQ_F2P,
   FCLK_CLK0,
   FCLK_CLK1,
+  FCLK_CLK2,
   FCLK_RESET0_N,
   MIO,
   DDR_CAS_n,
@@ -941,7 +948,7 @@
       parameter C_PS7_SI_REV = "PRODUCTION";
       parameter C_FCLK_CLK0_BUF = "TRUE";
       parameter C_FCLK_CLK1_BUF = "TRUE";
-      parameter C_FCLK_CLK2_BUF = "FALSE";
+      parameter C_FCLK_CLK2_BUF = "TRUE";
       parameter C_FCLK_CLK3_BUF = "FALSE";
       parameter C_PACKAGE_NAME = "clg484";
       parameter C_GP0_EN_MODIFIABLE_TXN = "0";
@@ -959,6 +966,12 @@
       output  ENET0_PTP_SYNC_FRAME_TX;
       output  ENET0_SOF_RX;
       output  ENET0_SOF_TX;
+      input  I2C0_SDA_I;
+      output  I2C0_SDA_O;
+      output  I2C0_SDA_T;
+      input  I2C0_SCL_I;
+      output  I2C0_SCL_O;
+      output  I2C0_SCL_T;
       output  TTC0_WAVE0_OUT;
       output  TTC0_WAVE1_OUT;
       output  TTC0_WAVE2_OUT;
@@ -1136,6 +1149,7 @@
       input  [2 : 0] IRQ_F2P;
       output  FCLK_CLK0;
       output  FCLK_CLK1;
+      output  FCLK_CLK2;
       output  FCLK_RESET0_N;
       inout  [53 : 0] MIO;
       inout  DDR_CAS_n;
@@ -1171,6 +1185,10 @@
       reg ENET0_PTP_SYNC_FRAME_TX;
       reg ENET0_SOF_RX;
       reg ENET0_SOF_TX;
+      reg I2C0_SDA_O;
+      reg I2C0_SDA_T;
+      reg I2C0_SCL_O;
+      reg I2C0_SCL_T;
       reg TTC0_WAVE0_OUT;
       reg TTC0_WAVE1_OUT;
       reg TTC0_WAVE2_OUT;
@@ -1262,6 +1280,7 @@
       reg [5 : 0] S_AXI_HP1_WACOUNT;
       reg FCLK_CLK0;
       reg FCLK_CLK1;
+      reg FCLK_CLK2;
       reg FCLK_RESET0_N;
       string ip_name;
       reg disable_port;
@@ -1278,6 +1297,7 @@ import "DPI-C" function void ps7_init_s_axi_hp0(input int S_AXI_HP0_AWID_size,in
 import "DPI-C" function void ps7_init_s_axi_hp1(input int S_AXI_HP1_AWID_size,input int S_AXI_HP1_AWADDR_size,input int S_AXI_HP1_AWLEN_size,input int S_AXI_HP1_AWSIZE_size,input int S_AXI_HP1_AWBURST_size,input int S_AXI_HP1_AWLOCK_size,input int S_AXI_HP1_AWCACHE_size,input int S_AXI_HP1_AWPROT_size,input int S_AXI_HP1_AWQOS_size,input int S_AXI_HP1_AWVALID_size,input int S_AXI_HP1_AWREADY_size,input int S_AXI_HP1_WID_size,input int S_AXI_HP1_WDATA_size,input int S_AXI_HP1_WSTRB_size,input int S_AXI_HP1_WLAST_size,input int S_AXI_HP1_WVALID_size,input int S_AXI_HP1_WREADY_size,input int S_AXI_HP1_BID_size,input int S_AXI_HP1_BRESP_size,input int S_AXI_HP1_BVALID_size,input int S_AXI_HP1_BREADY_size,input int S_AXI_HP1_ARID_size,input int S_AXI_HP1_ARADDR_size,input int S_AXI_HP1_ARLEN_size,input int S_AXI_HP1_ARSIZE_size,input int S_AXI_HP1_ARBURST_size,input int S_AXI_HP1_ARLOCK_size,input int S_AXI_HP1_ARCACHE_size,input int S_AXI_HP1_ARPROT_size,input int S_AXI_HP1_ARQOS_size,input int S_AXI_HP1_ARVALID_size,input int S_AXI_HP1_ARREADY_size,input int S_AXI_HP1_RID_size,input int S_AXI_HP1_RDATA_size,input int S_AXI_HP1_RRESP_size,input int S_AXI_HP1_RLAST_size,input int S_AXI_HP1_RVALID_size,input int S_AXI_HP1_RREADY_size);
 import "DPI-C" function void ps7_simulate_single_cycle_FCLK_CLK0();
 import "DPI-C" function void ps7_simulate_single_cycle_FCLK_CLK1();
+import "DPI-C" function void ps7_simulate_single_cycle_FCLK_CLK2();
 import "DPI-C" function void ps7_simulate_single_cycle_M_AXI_GP0_ACLK();
 import "DPI-C" function void ps7_set_inputs_m_axi_gp0_M_AXI_GP0_ACLK(
 input bit M_AXI_GP0_AWREADY,
@@ -1581,6 +1601,19 @@ output bit S_AXI_HP1_RVALID
   begin
    ps7_set_ip_context(ip_name);
    ps7_simulate_single_cycle_FCLK_CLK1();
+  end
+
+  initial
+  begin
+     FCLK_CLK2 = 1'b0;
+  end
+
+  always #(10.0) FCLK_CLK2 <= ~FCLK_CLK2;
+
+  always@(posedge FCLK_CLK2)
+  begin
+   ps7_set_ip_context(ip_name);
+   ps7_simulate_single_cycle_FCLK_CLK2();
   end
 
 always@(posedge IRQ_F2P[0])

@@ -90,6 +90,12 @@ public:
   sc_core::sc_out< bool > ENET0_PTP_SYNC_FRAME_TX;
   sc_core::sc_out< bool > ENET0_SOF_RX;
   sc_core::sc_out< bool > ENET0_SOF_TX;
+  sc_core::sc_in< bool > I2C0_SDA_I;
+  sc_core::sc_out< bool > I2C0_SDA_O;
+  sc_core::sc_out< bool > I2C0_SDA_T;
+  sc_core::sc_in< bool > I2C0_SCL_I;
+  sc_core::sc_out< bool > I2C0_SCL_O;
+  sc_core::sc_out< bool > I2C0_SCL_T;
   sc_core::sc_out< bool > TTC0_WAVE0_OUT;
   sc_core::sc_out< bool > TTC0_WAVE1_OUT;
   sc_core::sc_out< bool > TTC0_WAVE2_OUT;
@@ -267,6 +273,7 @@ public:
   sc_core::sc_in< sc_dt::sc_bv<3> > IRQ_F2P;
   sc_core::sc_out< bool > FCLK_CLK0;
   sc_core::sc_out< bool > FCLK_CLK1;
+  sc_core::sc_out< bool > FCLK_CLK2;
   sc_core::sc_out< bool > FCLK_RESET0_N;
   sc_core::sc_out< sc_dt::sc_bv<54> > MIO;
   sc_core::sc_out< bool > DDR_CAS_n;
@@ -366,6 +373,12 @@ public:
   sc_core::sc_out< bool > ENET0_PTP_SYNC_FRAME_TX;
   sc_core::sc_out< bool > ENET0_SOF_RX;
   sc_core::sc_out< bool > ENET0_SOF_TX;
+  sc_core::sc_in< bool > I2C0_SDA_I;
+  sc_core::sc_out< bool > I2C0_SDA_O;
+  sc_core::sc_out< bool > I2C0_SDA_T;
+  sc_core::sc_in< bool > I2C0_SCL_I;
+  sc_core::sc_out< bool > I2C0_SCL_O;
+  sc_core::sc_out< bool > I2C0_SCL_T;
   sc_core::sc_out< bool > TTC0_WAVE0_OUT;
   sc_core::sc_out< bool > TTC0_WAVE1_OUT;
   sc_core::sc_out< bool > TTC0_WAVE2_OUT;
@@ -543,6 +556,7 @@ public:
   sc_core::sc_in< sc_dt::sc_bv<3> > IRQ_F2P;
   sc_core::sc_out< bool > FCLK_CLK0;
   sc_core::sc_out< bool > FCLK_CLK1;
+  sc_core::sc_out< bool > FCLK_CLK2;
   sc_core::sc_out< bool > FCLK_RESET0_N;
   sc_core::sc_out< sc_dt::sc_bv<54> > MIO;
   sc_core::sc_out< bool > DDR_CAS_n;
@@ -642,6 +656,12 @@ public:
   sc_core::sc_out< bool > ENET0_PTP_SYNC_FRAME_TX;
   sc_core::sc_out< bool > ENET0_SOF_RX;
   sc_core::sc_out< bool > ENET0_SOF_TX;
+  sc_core::sc_in< bool > I2C0_SDA_I;
+  sc_core::sc_out< bool > I2C0_SDA_O;
+  sc_core::sc_out< bool > I2C0_SDA_T;
+  sc_core::sc_in< bool > I2C0_SCL_I;
+  sc_core::sc_out< bool > I2C0_SCL_O;
+  sc_core::sc_out< bool > I2C0_SCL_T;
   sc_core::sc_out< bool > TTC0_WAVE0_OUT;
   sc_core::sc_out< bool > TTC0_WAVE1_OUT;
   sc_core::sc_out< bool > TTC0_WAVE2_OUT;
@@ -819,6 +839,7 @@ public:
   sc_core::sc_in< sc_dt::sc_bv<3> > IRQ_F2P;
   sc_core::sc_out< bool > FCLK_CLK0;
   sc_core::sc_out< bool > FCLK_CLK1;
+  sc_core::sc_out< bool > FCLK_CLK2;
   sc_core::sc_out< bool > FCLK_RESET0_N;
   sc_core::sc_out< sc_dt::sc_bv<54> > MIO;
   sc_core::sc_out< bool > DDR_CAS_n;
@@ -922,6 +943,12 @@ public:
   sc_core::sc_out< bool > ENET0_PTP_SYNC_FRAME_TX;
   sc_core::sc_out< bool > ENET0_SOF_RX;
   sc_core::sc_out< bool > ENET0_SOF_TX;
+  sc_core::sc_in< bool > I2C0_SDA_I;
+  sc_core::sc_out< bool > I2C0_SDA_O;
+  sc_core::sc_out< bool > I2C0_SDA_T;
+  sc_core::sc_in< bool > I2C0_SCL_I;
+  sc_core::sc_out< bool > I2C0_SCL_O;
+  sc_core::sc_out< bool > I2C0_SCL_T;
   sc_core::sc_out< bool > TTC0_WAVE0_OUT;
   sc_core::sc_out< bool > TTC0_WAVE1_OUT;
   sc_core::sc_out< bool > TTC0_WAVE2_OUT;
@@ -1099,6 +1126,7 @@ public:
   sc_core::sc_in< sc_dt::sc_bv<3> > IRQ_F2P;
   sc_core::sc_out< bool > FCLK_CLK0;
   sc_core::sc_out< bool > FCLK_CLK1;
+  sc_core::sc_out< bool > FCLK_CLK2;
   sc_core::sc_out< bool > FCLK_RESET0_N;
   sc_core::sc_out< sc_dt::sc_bv<54> > MIO;
   sc_core::sc_out< bool > DDR_CAS_n;
@@ -1214,6 +1242,12 @@ public:
   sc_core::sc_out< bool > ENET0_PTP_SYNC_FRAME_TX;
   sc_core::sc_out< bool > ENET0_SOF_RX;
   sc_core::sc_out< bool > ENET0_SOF_TX;
+  sc_core::sc_in< bool > I2C0_SDA_I;
+  sc_core::sc_out< bool > I2C0_SDA_O;
+  sc_core::sc_out< bool > I2C0_SDA_T;
+  sc_core::sc_in< bool > I2C0_SCL_I;
+  sc_core::sc_out< bool > I2C0_SCL_O;
+  sc_core::sc_out< bool > I2C0_SCL_T;
   sc_core::sc_out< bool > TTC0_WAVE0_OUT;
   sc_core::sc_out< bool > TTC0_WAVE1_OUT;
   sc_core::sc_out< bool > TTC0_WAVE2_OUT;
@@ -1391,6 +1425,7 @@ public:
   sc_core::sc_in< sc_dt::sc_bv<3> > IRQ_F2P;
   sc_core::sc_out< bool > FCLK_CLK0;
   sc_core::sc_out< bool > FCLK_CLK1;
+  sc_core::sc_out< bool > FCLK_CLK2;
   sc_core::sc_out< bool > FCLK_RESET0_N;
   sc_core::sc_out< sc_dt::sc_bv<54> > MIO;
   sc_core::sc_out< bool > DDR_CAS_n;

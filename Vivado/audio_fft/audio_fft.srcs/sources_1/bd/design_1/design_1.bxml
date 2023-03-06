@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="design_1" CanBeSetAsTop="true" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1677969982"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1677969982"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1677969982"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1677969982"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1677979315"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1677979315"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1677979315"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1677979315"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\design_1_xfft_0_0\design_1_xfft_0_0.xci" Type="IP">
         <Instance HierarchyPath="accelerator/xfft_0"/>
@@ -132,6 +132,14 @@
       </File>
       <File Name="ip\design_1_axi_timer_0_0\design_1_axi_timer_0_0.xci" Type="IP">
         <Instance HierarchyPath="axi_timer_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\design_1_zed_audio_ctrl_0_0\design_1_zed_audio_ctrl_0_0.xci" Type="IP">
+        <Instance HierarchyPath="zed_audio_ctrl_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>

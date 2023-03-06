@@ -156,6 +156,9 @@ foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
 read_xdc C:/KDevelop/guitar-tuner/Vivado/sources/zedboard_master.xdc
 set_property used_in_implementation false [get_files C:/KDevelop/guitar-tuner/Vivado/sources/zedboard_master.xdc]
 
+read_xdc C:/KDevelop/guitar-tuner/Vivado/sources/adventures_with_ip.xdc
+set_property used_in_implementation false [get_files C:/KDevelop/guitar-tuner/Vivado/sources/adventures_with_ip.xdc]
+
 read_xdc dont_touch.xdc
 set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
