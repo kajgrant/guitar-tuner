@@ -1,0 +1,15 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"-608,-558",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:10.0 non-TLS
+#  -string -flagsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 2 -x 420 -y -130 -defaultsOSRD
+preplace inst hps_0 -pg 1 -lvl 1 -x -50 -y -110 -defaultsOSRD
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 3 -150 -230 N -230 620
+levelinfo -pg 1 -170 -50 420 640
+pagesize -pg 1 -db -bbox -sgen -170 -350 640 200
+"
+}
+

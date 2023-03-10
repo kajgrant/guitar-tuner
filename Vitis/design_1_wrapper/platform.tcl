@@ -9,7 +9,7 @@
 # -out option specifies the output directory of the platform project.
 
 platform create -name {design_1_wrapper}\
--hw {C:\KDevelop\guitar-tuner\Vivado\audio_fft\design_1_wrapper.xsa}\
+-hw {C:\KDevelop\guitar-tuner\Vivado\fft_hps\design_1_wrapper.xsa}\
 -fsbl-target {psu_cortexa53_0} -out {C:/KDevelop/guitar-tuner/Vitis}
 
 platform write
