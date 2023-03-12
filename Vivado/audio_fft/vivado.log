@@ -409,3 +409,5 @@ INFO: [Vivado 12-4895] Creating Hardware Platform: C:/KDevelop/guitar-tuner/Viva
 INFO: [Vivado 12-12467] The Hardware Platform can be used for Hardware
 INFO: [Vivado 12-4896] Successfully created Hardware Platform: C:/KDevelop/guitar-tuner/Vivado/audio_fft/design_1_wrapper.xsa
 write_hw_platform: Time (s): cpu = 00:00:07 ; elapsed = 00:00:06 . Memory (MB): peak = 2545.406 ; gain = 78.730
+exit
+INFO: [Common 17-206] Exiting Vivado at Sat Mar 11 22:12:21 2023...

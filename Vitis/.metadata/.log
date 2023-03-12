@@ -615,3 +615,9 @@ Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.]. Thread: Worker-336: Laun
 
 !ENTRY com.xilinx.sdk.utils 0 0 2023-03-11 22:07:53.589
 !MESSAGE XSCT command with result: [con], Result: [null, ]. Thread: Worker-336: Launching SystemDebugger_fft_hps_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2023-03-11 22:12:22.761
+!MESSAGE XSCT Command: [disconnect tcfchan#72], Thread: Thread-2414
+
+!ENTRY com.xilinx.sdk.utils 0 0 2023-03-11 22:12:22.764
+!MESSAGE XSCT command with result: [disconnect tcfchan#72], Result: [null, ]. Thread: Thread-2414
