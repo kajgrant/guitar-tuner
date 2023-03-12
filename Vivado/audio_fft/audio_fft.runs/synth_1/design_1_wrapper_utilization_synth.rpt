@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Wed Feb 22 15:57:50 2023
+| Date         : Sat Mar 11 19:08:38 2023
 | Host         : KAJ-MAIN running 64-bit major release  (build 9200)
 | Command      : report_utilization -file design_1_wrapper_utilization_synth.rpt -pb design_1_wrapper_utilization_synth.pb
 | Design       : design_1_wrapper
@@ -30,13 +30,13 @@ Table of Contents
 +----------------------------+------+-------+-----------+-------+
 |          Site Type         | Used | Fixed | Available | Util% |
 +----------------------------+------+-------+-----------+-------+
-| Slice LUTs*                | 5376 |     0 |     53200 | 10.11 |
-|   LUT as Logic             | 4791 |     0 |     53200 |  9.01 |
-|   LUT as Memory            |  585 |     0 |     17400 |  3.36 |
+| Slice LUTs*                | 5805 |     0 |     53200 | 10.91 |
+|   LUT as Logic             | 5158 |     0 |     53200 |  9.70 |
+|   LUT as Memory            |  647 |     0 |     17400 |  3.72 |
 |     LUT as Distributed RAM |   16 |     0 |           |       |
-|     LUT as Shift Register  |  569 |     0 |           |       |
-| Slice Registers            | 6925 |     0 |    106400 |  6.51 |
-|   Register as Flip Flop    | 6925 |     0 |    106400 |  6.51 |
+|     LUT as Shift Register  |  631 |     0 |           |       |
+| Slice Registers            | 7482 |     0 |    106400 |  7.03 |
+|   Register as Flip Flop    | 7482 |     0 |    106400 |  7.03 |
 |   Register as Latch        |    0 |     0 |    106400 |  0.00 |
 | F7 Muxes                   |  170 |     0 |     26600 |  0.64 |
 | F8 Muxes                   |    0 |     0 |     13300 |  0.00 |
@@ -58,8 +58,8 @@ Table of Contents
 | 0     |          Yes |           - |            - |
 | 33    |          Yes |           - |          Set |
 | 69    |          Yes |           - |        Reset |
-| 158   |          Yes |         Set |            - |
-| 6665  |          Yes |       Reset |            - |
+| 180   |          Yes |         Set |            - |
+| 7200  |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -84,8 +84,8 @@ Table of Contents
 +----------------+------+-------+-----------+-------+
 |    Site Type   | Used | Fixed | Available | Util% |
 +----------------+------+-------+-----------+-------+
-| DSPs           |    9 |     0 |       220 |  4.09 |
-|   DSP48E1 only |    9 |       |           |       |
+| DSPs           |   15 |     0 |       220 |  6.82 |
+|   DSP48E1 only |   15 |       |           |       |
 +----------------+------+-------+-----------+-------+
 
 
@@ -151,25 +151,25 @@ Table of Contents
 +----------+------+----------------------+
 | Ref Name | Used |  Functional Category |
 +----------+------+----------------------+
-| FDRE     | 6665 |         Flop & Latch |
-| LUT6     | 1630 |                  LUT |
-| LUT3     | 1548 |                  LUT |
-| LUT2     |  936 |                  LUT |
-| LUT5     |  769 |                  LUT |
-| LUT4     |  633 |                  LUT |
-| SRL16E   |  589 |   Distributed Memory |
-| CARRY4   |  262 |           CarryLogic |
-| LUT1     |  228 |                  LUT |
+| FDRE     | 7200 |         Flop & Latch |
+| LUT6     | 1736 |                  LUT |
+| LUT3     | 1720 |                  LUT |
+| LUT2     |  981 |                  LUT |
+| LUT5     |  835 |                  LUT |
+| LUT4     |  698 |                  LUT |
+| SRL16E   |  606 |   Distributed Memory |
+| CARRY4   |  276 |           CarryLogic |
+| LUT1     |  237 |                  LUT |
+| FDSE     |  180 |         Flop & Latch |
 | MUXF7    |  170 |                MuxFx |
-| FDSE     |  158 |         Flop & Latch |
 | BIBUF    |  130 |                   IO |
 | RAMB18E1 |  118 |         Block Memory |
+| SRLC32E  |   99 |   Distributed Memory |
 | FDCE     |   69 |         Flop & Latch |
-| SRLC32E  |   54 |   Distributed Memory |
 | FDPE     |   33 |         Flop & Latch |
 | RAMB36E1 |   26 |         Block Memory |
 | RAMD32   |   24 |   Distributed Memory |
-| DSP48E1  |    9 |     Block Arithmetic |
+| DSP48E1  |   15 |     Block Arithmetic |
 | RAMS32   |    8 |   Distributed Memory |
 | PS7      |    1 | Specialized Resource |
 | BUFG     |    1 |                Clock |

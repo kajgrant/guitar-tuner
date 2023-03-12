@@ -30,13 +30,16 @@
 #include <stdlib.h>
 #include "xuartps_hw.h"
 #include "fft.h"
+#include "hps.h"
 #include "cplx_data.h"
 #include "stim.h"
+#include "xbasic_types.h"
 
 #define UART_BASEADDR XPAR_PS7_UART_1_BASEADDR
+Xuint32 *baseaddr_p = (Xuint32 *)XPAR_CUSTOM_HPS_1_S00_AXI_BASEADDR;
 
 // External data
-extern int sig_two_sine_waves[FFT_MAX_NUM_PTS]; // FFT input data
+extern int test_data[FFT_MAX_NUM_PTS]; // FFT input data
 
 // Function prototypes
 void which_fft_param(fft_t *p_fft_inst);
@@ -60,6 +63,7 @@ int main()
 	fft_t *p_fft_inst;
 	cplx_data_t *stim_buf;
 	cplx_data_t *result_buf;
+	short *convert_buf;
 
 	// Setup UART and enable caches
 	init_uart();
@@ -78,7 +82,7 @@ int main()
 		return -1;
 	}
 
-	fft_set_num_pts(p_fft_inst, 8192);
+	fft_set_num_pts(p_fft_inst, 1024);
 
 	// Allocate data buffers
 	stim_buf = (cplx_data_t *)malloc(sizeof(cplx_data_t) * FFT_MAX_NUM_PTS);
@@ -95,11 +99,19 @@ int main()
 		return -1;
 	}
 
+	convert_buf = (short *)malloc(sizeof(short) * FFT_MAX_NUM_PTS);
+	if (convert_buf == NULL)
+	{
+		xil_printf("ERROR! Failed to allocate memory for the convert buffer.\n\r");
+		return -1;
+	}
+
 	// Fill stimulus buffer with some signal
-	memcpy(stim_buf, sig_two_sine_waves, sizeof(cplx_data_t) * FFT_MAX_NUM_PTS);
+	memcpy(stim_buf, test_data, sizeof(cplx_data_t) * FFT_MAX_NUM_PTS);
 
 	// Make sure the buffer is clear before we populate it (this is generally not necessary and wastes time doing memory accesses, but for proving the DMA working, we do it anyway)
 	memset(result_buf, 0, sizeof(cplx_data_t) * FFT_MAX_NUM_PTS);
+	memset(convert_buf, 0, sizeof(short) * FFT_MAX_NUM_PTS);
 
 	status = fft(p_fft_inst, (cplx_data_t *)stim_buf, (cplx_data_t *)result_buf);
 	if (status != FFT_SUCCESS)
@@ -108,8 +120,27 @@ int main()
 		return -1;
 	}
 
+	fft_convert_normalized(p_fft_inst, convert_buf);
+
+	// filter_fft(p_fft_inst);
+
 	xil_printf("FFT complete!\n\r");
-	fft_print_result_buf(p_fft_inst);
+	// fft_print_normalized(p_fft_inst);
+
+	int ii = 0;
+	char str[25]; // Large enough to hold 2 ints plus extra characters
+
+	for (ii = 0; ii < 1024; ii++)
+	{
+		cplx_data_get_normalized_string(str, convert_buf[ii]);
+		xil_printf("Xk(%d) = %s\n\r", ii, str);
+	}
+
+	*(baseaddr_p + 0) = 0x04010102;
+	xil_printf("Wrote: 0x%08x \n\r", *(baseaddr_p + 0));
+
+	// Read multiplier output from register 1
+	xil_printf("Read : 0x%08x \n\r", *(baseaddr_p + 1));
 
 	free(stim_buf);
 	free(result_buf);

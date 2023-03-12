@@ -1,0 +1,58 @@
+m255
+K4
+z2
+!s11e MIXED_VERSIONS
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/intelFPGA_lite/20.1
+Ehps
+Z0 w1678325224
+Z1 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z2 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+Z3 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z4 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z5 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 22
+Z6 dC:/KDevelop/guitar-tuner/testing_scripts/ModelSim
+Z7 8C:/KDevelop/guitar-tuner/Vivado/custom_hps/custom_hps.srcs/sources_1/new/hps.vhd
+Z8 FC:/KDevelop/guitar-tuner/Vivado/custom_hps/custom_hps.srcs/sources_1/new/hps.vhd
+l0
+L36 1
+VUamHFHIb8k_k@T4V^PO4:3
+!s100 ][jdz:2H=1>gYOKB=nz?R3
+Z9 OV;C;2020.1;71
+32
+Z10 !s110 1678325231
+!i10b 1
+Z11 !s108 1678325231.000000
+Z12 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/KDevelop/guitar-tuner/Vivado/custom_hps/custom_hps.srcs/sources_1/new/hps.vhd|
+Z13 !s107 C:/KDevelop/guitar-tuner/Vivado/custom_hps/custom_hps.srcs/sources_1/new/hps.vhd|
+!i113 1
+Z14 o-work work -2002 -explicit
+Z15 tExplicit 1 CvgOpt 0
+Abehavioral
+R1
+R2
+R3
+R4
+R5
+Z16 DEx4 work 3 hps 0 22 UamHFHIb8k_k@T4V^PO4:3
+!i122 22
+l54
+L45 39
+VA:lEgIk?eKh4fZOaCoHeA3
+!s100 TBAQaB^3Ij4kV;^UebR0@3
+R9
+32
+R10
+!i10b 1
+R11
+R12
+R13
+!i113 1
+R14
+R15

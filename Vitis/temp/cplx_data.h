@@ -41,7 +41,7 @@ typedef struct cplx_data
 //    - c:    C-style string in which we place the sample value string.
 //    - data: Sample whose value we want as a string.
 //
-void cplx_data_get_string(char* c, cplx_data_t data);
+void cplx_data_get_string(char *c, cplx_data_t data);
+void cplx_data_get_normalized_string(char *c, short data);
 
 #endif /* CPLX_DATA_H_ */
-
