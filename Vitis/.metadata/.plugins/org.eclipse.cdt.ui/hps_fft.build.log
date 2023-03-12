@@ -1,0 +1,42 @@
+18:32:19 **** Incremental Build of configuration Debug for project hps_fft ****
+make all 
+make --no-print-directory pre-build
+a9-linaro-pre-build-step
+' '
+make --no-print-directory main-build
+'Building file: ../src/cplx_data.c'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/cplx_data.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -IC:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/standalone_ps7_cortexa9_0/bspinclude/include -MMD -MP -MF"src/cplx_data.d" -MT"src/cplx_data.o" -o "src/cplx_data.o" "../src/cplx_data.c"
+'Finished building: ../src/cplx_data.c'
+' '
+'Building file: ../src/fft.c'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/fft.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -IC:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/standalone_ps7_cortexa9_0/bspinclude/include -MMD -MP -MF"src/fft.d" -MT"src/fft.o" -o "src/fft.o" "../src/fft.c"
+'Finished building: ../src/fft.c'
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -IC:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/standalone_ps7_cortexa9_0/bspinclude/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+In file included from ../src/helloworld.c:36:
+C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/standalone_ps7_cortexa9_0/bspinclude/include/xbasic_types.h:98:2: warning: #warning The xbasics_type.h file is deprecated and users should use xil_types.h and xil_assert. [-Wcpp]
+   98 | #warning  The xbasics_type.h file is deprecated and users should use xil_types.h and xil_assert.
+      |  ^~~~~~~
+C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/standalone_ps7_cortexa9_0/bspinclude/include/xbasic_types.h:99:2: warning: #warning Please refer the Standalone BSP UG647 for further details [-Wcpp]
+   99 | #warning  Please refer the Standalone BSP UG647 for further details
+      |  ^~~~~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hps_fft.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -LC:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/standalone_ps7_cortexa9_0/bsplib/lib -o "hps_fft.elf"  ./src/cplx_data.o ./src/dma_accel.o ./src/fft.o ./src/helloworld.o ./src/hps.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: hps_fft.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hps_fft.elf  |tee "hps_fft.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  71364	  68949	 530560	 670873	  a3c99	hps_fft.elf
+'Finished building: hps_fft.elf.size'
+' '
+
+18:32:20 Build Finished (took 1s.125ms)
+
