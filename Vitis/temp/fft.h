@@ -37,7 +37,7 @@
 #define FFT_ARCH_RADIX2_LITE 3
 
 // Hardware-specific parameters
-#define FFT_MAX_NUM_PTS 16384
+#define FFT_MAX_NUM_PTS 8192
 #define FFT_NUM_PTS_MASK 0x0000001F // Bits [4:0]
 #define FFT_NUM_PTS_SHIFT 0
 #define FFT_FWD_INV_MASK 0x00000100 // Bit 8
@@ -50,9 +50,6 @@
 #define FFT_GPIO_INIT_FAIL -1
 #define FFT_ILLEGAL_NUM_PTS -2
 #define FFT_DMA_FAIL -3
-
-// Custom Scaling factor
-#define SCALE_FACTOR 4
 
 // Custom Constants
 #define WINDOW_SIZE 1 // in seconds

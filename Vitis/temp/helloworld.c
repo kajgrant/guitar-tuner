@@ -36,7 +36,8 @@
 #include "xbasic_types.h"
 
 #define UART_BASEADDR XPAR_PS7_UART_1_BASEADDR
-Xuint32 *baseaddr_p = (Xuint32 *)XPAR_CUSTOM_HPS_1_S00_AXI_BASEADDR;
+#define NUM_POINTS 8192
+#define NUM_HPS_POINTS NUM_POINTS / 5
 
 // External data
 extern int test_data[FFT_MAX_NUM_PTS]; // FFT input data
@@ -64,6 +65,7 @@ int main()
 	cplx_data_t *stim_buf;
 	cplx_data_t *result_buf;
 	short *convert_buf;
+	long *final_out_buf;
 
 	// Setup UART and enable caches
 	init_uart();
@@ -82,7 +84,7 @@ int main()
 		return -1;
 	}
 
-	fft_set_num_pts(p_fft_inst, 1024);
+	fft_set_num_pts(p_fft_inst, NUM_POINTS);
 
 	// Allocate data buffers
 	stim_buf = (cplx_data_t *)malloc(sizeof(cplx_data_t) * FFT_MAX_NUM_PTS);
@@ -110,8 +112,8 @@ int main()
 	memcpy(stim_buf, test_data, sizeof(cplx_data_t) * FFT_MAX_NUM_PTS);
 
 	// Make sure the buffer is clear before we populate it (this is generally not necessary and wastes time doing memory accesses, but for proving the DMA working, we do it anyway)
-	memset(result_buf, 0, sizeof(cplx_data_t) * FFT_MAX_NUM_PTS);
-	memset(convert_buf, 0, sizeof(short) * FFT_MAX_NUM_PTS);
+	//memset(result_buf, 0, sizeof(cplx_data_t) * FFT_MAX_NUM_PTS);
+	//memset(convert_buf, 0, sizeof(short) * FFT_MAX_NUM_PTS);
 
 	status = fft(p_fft_inst, (cplx_data_t *)stim_buf, (cplx_data_t *)result_buf);
 	if (status != FFT_SUCCESS)
@@ -120,30 +122,31 @@ int main()
 		return -1;
 	}
 
+	xil_printf("FFT complete!\n\r");
+
 	fft_convert_normalized(p_fft_inst, convert_buf);
 
 	// filter_fft(p_fft_inst);
-
-	xil_printf("FFT complete!\n\r");
 	// fft_print_normalized(p_fft_inst);
 
-	int ii = 0;
-	char str[25]; // Large enough to hold 2 ints plus extra characters
-
-	for (ii = 0; ii < 1024; ii++)
+	final_out_buf = (long *)malloc(sizeof(long) * FFT_MAX_NUM_PTS);
+	if (final_out_buf == NULL)
 	{
-		cplx_data_get_normalized_string(str, convert_buf[ii]);
-		xil_printf("Xk(%d) = %s\n\r", ii, str);
+		xil_printf("ERROR! Failed to allocate memory for the final output buffer.\n\r");
+		return -1;
 	}
 
-	*(baseaddr_p + 0) = 0x04010102;
-	xil_printf("Wrote: 0x%08x \n\r", *(baseaddr_p + 0));
+	hps(convert_buf, final_out_buf, NUM_POINTS);
+	hps_print_final_buf(final_out_buf, NUM_HPS_POINTS);
 
-	// Read multiplier output from register 1
-	xil_printf("Read : 0x%08x \n\r", *(baseaddr_p + 1));
+	int fund_freq = detect_fundamental_freq(final_out_buf, NUM_HPS_POINTS);
+
+	xil_printf("FUNDAMENTAL FREQUENCY = %d\n\r", fund_freq);
 
 	free(stim_buf);
 	free(result_buf);
+	free(convert_buf);
+	free(final_out_buf);
 	fft_destroy(p_fft_inst);
 
 	return 0;

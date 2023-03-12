@@ -7,7 +7,7 @@
   <spirit:componentInstances>
     <spirit:componentInstance>
       <spirit:instanceName>design_1_custom_hps_1_0</spirit:instanceName>
-      <spirit:componentRef spirit:vendor="sfu.ca" spirit:library="user" spirit:name="custom_hps" spirit:version="3.1"/>
+      <spirit:componentRef spirit:vendor="sfu.ca" spirit:library="user" spirit:name="custom_hps" spirit:version="4.0"/>
       <spirit:configurableElementValues>
         <spirit:configurableElementValue spirit:referenceId="ADDRBLOCK_BASE_ADDRESS.S00_AXI.S00_AXI_reg">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.S00_AXI.ADDR_WIDTH">4</spirit:configurableElementValue>

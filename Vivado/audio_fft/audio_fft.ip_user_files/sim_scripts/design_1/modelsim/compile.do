@@ -239,9 +239,9 @@ vlog -work xil_defaultlib  -incr "+incdir+../../../../audio_fft.srcs/sources_1/b
 
 vcom -work xil_defaultlib  -93 \
 "../../../bd/design_1/ip/design_1_proc_sys_reset_0_1/sim/design_1_proc_sys_reset_0_1.vhd" \
-"../../../bd/design_1/ipshared/d663/hdl/custom_hps_v1_0_S00_AXI.vhd" \
-"../../../bd/design_1/ipshared/d663/src/hps.vhd" \
-"../../../bd/design_1/ipshared/d663/hdl/custom_hps_v1_0.vhd" \
+"../../../bd/design_1/ipshared/e71a/hdl/custom_hps_v1_0_S00_AXI.vhd" \
+"../../../bd/design_1/ipshared/e71a/src/hps.vhd" \
+"../../../bd/design_1/ipshared/e71a/hdl/custom_hps_v1_0.vhd" \
 "../../../bd/design_1/ip/design_1_custom_hps_1_0/sim/design_1_custom_hps_1_0.vhd" \
 
 vlog -work axi_protocol_converter_v2_1_22  -incr "+incdir+../../../../audio_fft.srcs/sources_1/bd/design_1/ipshared/ec67/hdl" "+incdir+../../../../audio_fft.srcs/sources_1/bd/design_1/ipshared/34f8/hdl" "+incdir+C:/Xilinx/Vivado/2020.2/data/xilinx_vip/include" \

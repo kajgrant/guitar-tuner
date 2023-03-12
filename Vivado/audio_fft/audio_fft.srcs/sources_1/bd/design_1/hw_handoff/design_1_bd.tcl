@@ -371,7 +371,7 @@ proc create_root_design { parentCell } {
   create_hier_cell_ctrl [current_bd_instance .] ctrl
 
   # Create instance: custom_hps_1, and set properties
-  set custom_hps_1 [ create_bd_cell -type ip -vlnv sfu.ca:user:custom_hps:3.1 custom_hps_1 ]
+  set custom_hps_1 [ create_bd_cell -type ip -vlnv sfu.ca:user:custom_hps:4.0 custom_hps_1 ]
 
   # Create instance: proc_sys_reset_0, and set properties
   set proc_sys_reset_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 proc_sys_reset_0 ]

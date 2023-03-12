@@ -1,57 +1,16 @@
 Nothing to build in platform 'design_1_wrapper'
 
-22:07:17 **** Incremental Build of configuration Debug for project fft_hps ****
+15:42:25 **** Incremental Build of configuration Debug for project fft_hps ****
 make all 
 make --no-print-directory pre-build
 a9-linaro-pre-build-step
 ' '
 make --no-print-directory main-build
-'Building file: ../src/helloworld.c'
-'Invoking: ARM v7 g++ compiler'
-arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -IC:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/standalone_ps7_cortexa9_0/bspinclude/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
-In file included from ../src/helloworld.c:36:
-C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/standalone_ps7_cortexa9_0/bspinclude/include/xbasic_types.h:98:2: warning: #warning The xbasics_type.h file is deprecated and users should use xil_types.h and xil_assert. [-Wcpp]
-   98 | #warning  The xbasics_type.h file is deprecated and users should use xil_types.h and xil_assert.
-      |  ^~~~~~~
-C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/standalone_ps7_cortexa9_0/bspinclude/include/xbasic_types.h:99:2: warning: #warning Please refer the Standalone BSP UG647 for further details [-Wcpp]
-   99 | #warning  Please refer the Standalone BSP UG647 for further details
-      |  ^~~~~~~
-'Finished building: ../src/helloworld.c'
-' '
-'Building file: ../src/hps.c'
-'Invoking: ARM v7 g++ compiler'
-arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/hps.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -IC:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/standalone_ps7_cortexa9_0/bspinclude/include -MMD -MP -MF"src/hps.d" -MT"src/hps.o" -o "src/hps.o" "../src/hps.c"
-In file included from ../src/hps.c:7:
-C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/standalone_ps7_cortexa9_0/bspinclude/include/xbasic_types.h:98:2: warning: #warning The xbasics_type.h file is deprecated and users should use xil_types.h and xil_assert. [-Wcpp]
-   98 | #warning  The xbasics_type.h file is deprecated and users should use xil_types.h and xil_assert.
-      |  ^~~~~~~
-C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/standalone_ps7_cortexa9_0/bspinclude/include/xbasic_types.h:99:2: warning: #warning Please refer the Standalone BSP UG647 for further details [-Wcpp]
-   99 | #warning  Please refer the Standalone BSP UG647 for further details
-      |  ^~~~~~~
-../src/hps.c: In function 'void hps_data_get_string(char*, long int)':
-../src/hps.c:25:18: warning: format '%d' expects argument of type 'int', but argument 3 has type 'long int' [-Wformat=]
-   25 |     sprintf(c, "%d", data);
-      |                 ~^   ~~~~
-      |                  |   |
-      |                  int long int
-      |                 %ld
-'Finished building: ../src/hps.c'
-' '
-'Building target: fft_hps.elf'
-'Invoking: ARM v7 g++ linker'
-arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -LC:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/standalone_ps7_cortexa9_0/bsplib/lib -o "fft_hps.elf"  ./src/cplx_data.o ./src/dma_accel.o ./src/fft.o ./src/helloworld.o ./src/hps.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
-'Finished building target: fft_hps.elf'
-' '
-'Invoking: ARM v7 Print Size'
-arm-none-eabi-size fft_hps.elf  |tee "fft_hps.elf.size"
-   text	   data	    bss	    dec	    hex	filename
-  72032	  36173	 530560	 638765	  9bf2d	fft_hps.elf
-'Finished building: fft_hps.elf.size'
-' '
-22:07:18 **** Incremental Build of configuration Debug for project fft_hps_system ****
+make[1]: Nothing to be done for 'main-build'.
+15:42:26 **** Incremental Build of configuration Debug for project fft_hps_system ****
 make all 
 Generating bif file for the system project
-generate_system_bif.bat 64822 C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/design_1_wrapper.xpfm standalone_ps7_cortexa9_0 C:/KDevelop/guitar-tuner/Vitis/fft_hps_system/Debug/system.bif
+generate_system_bif.bat 59031 C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/design_1_wrapper.xpfm standalone_ps7_cortexa9_0 C:/KDevelop/guitar-tuner/Vitis/fft_hps_system/Debug/system.bif
 sdcard_gen --xpfm C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/design_1_wrapper.xpfm --sys_config design_1_wrapper --bif C:/KDevelop/guitar-tuner/Vitis/fft_hps_system/Debug/system.bif --bitstream C:/KDevelop/guitar-tuner/Vitis/fft_hps/_ide/bitstream/design_1_wrapper.bit --elf C:/KDevelop/guitar-tuner/Vitis/fft_hps/Debug/fft_hps.elf,ps7_cortexa9_0
 creating BOOT.BIN using C:/KDevelop/guitar-tuner/Vitis/fft_hps/_ide/bitstream/design_1_wrapper.bit
 Running C:/Xilinx/Vitis/2020.2/bin/bootgen  -image C:/KDevelop/guitar-tuner/Vitis/fft_hps_system/Debug/sd_card_temp/boot.bif -w -o i BOOT.BIN

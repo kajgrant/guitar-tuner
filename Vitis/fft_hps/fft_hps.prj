@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="ASCII"?>
 <sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="fft_hps" location="C:/KDevelop/guitar-tuner/Vitis/fft_hps" platform="C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/design_1_wrapper.xpfm" platformUID="xilinx:zed::0.0(custom)" systemProject="fft_hps_system" sysConfig="design_1_wrapper" runtime="cpp" cpu="standalone_ps7_cortexa9_0" cpuInstance="ps7_cortexa9_0" os="standalone" language="CPP" mssSignature="0c01e966366d5f298212f45819417ccb">
-  <configuration name="Debug" id="xilinx.gnu.armv7.exe.debug.1055315814">
+  <configuration name="Debug" id="xilinx.gnu.armv7.exe.debug.1224901058">
     <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
     <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
   </configuration>
-  <configuration name="Release" id="xilinx.gnu.armv7.exe.release.137577465" dirty="true">
+  <configuration name="Release" id="xilinx.gnu.armv7.exe.release.1131537831" dirty="true">
     <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
   </configuration>
   <template appTemplateName="empty_application"/>

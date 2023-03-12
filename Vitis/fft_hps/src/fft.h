@@ -51,9 +51,6 @@
 #define FFT_ILLEGAL_NUM_PTS -2
 #define FFT_DMA_FAIL -3
 
-// Custom Scaling factor
-#define SCALE_FACTOR 4
-
 // Custom Constants
 #define WINDOW_SIZE 1 // in seconds
 #define SAMPLES_PER_SEC 1024

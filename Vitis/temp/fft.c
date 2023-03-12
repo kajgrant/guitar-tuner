@@ -211,22 +211,21 @@ void fft_convert_normalized(fft_t *p_fft_inst, short *convert_buf)
 	// Local variables
 	int i = 0;
 	cplx_data_t *fft_result;
-	short *fft_convert;
 	short norm;
 	short re_part;
 	short im_part;
 
 	fft_result = (cplx_data_t *)dma_accel_get_result_buf(p_fft_inst->periphs.p_dma_accel_inst);
-	fft_convert = (short *)dma_accel_get_convert_buf(p_fft_inst->periphs.p_dma_accel_inst);
 
 	for (i = 0; i < p_fft_inst->num_pts; i++)
 	{
 		re_part = fft_result[i].data_re;
 		im_part = fft_result[i].data_im;
-		norm = SCALE_FACTOR * sqrt((re_part * re_part) + (im_part * im_part));
-		fft_convert[i] = norm;
+		norm = sqrt((re_part * re_part) + (im_part * im_part));
 		convert_buf[i] = norm;
 	}
+
+	int test = 1;
 }
 
 void filter_fft(fft_t *p_fft_inst)
@@ -255,11 +254,6 @@ cplx_data_t *fft_get_stim_buf(fft_t *p_fft_inst)
 cplx_data_t *fft_get_result_buf(fft_t *p_fft_inst)
 {
 	return (cplx_data_t *)dma_accel_get_result_buf(p_fft_inst->periphs.p_dma_accel_inst);
-}
-
-short *fft_get_convert_buf(fft_t *p_fft_inst)
-{
-	return (short *)dma_accel_get_convert_buf(p_fft_inst->periphs.p_dma_accel_inst);
 }
 
 void fft_print_params(fft_t *p_fft_inst)
@@ -302,7 +296,7 @@ void fft_print_result_buf(fft_t *p_fft_inst)
 		xil_printf("Xk(%d) = %s\n\r", ii, str);
 	}
 }
-
+/*
 void fft_print_normalized(fft_t *p_fft_inst)
 {
 
@@ -319,3 +313,4 @@ void fft_print_normalized(fft_t *p_fft_inst)
 		xil_printf("Xk(%d) = %s\n\r", ii, str);
 	}
 }
+*/

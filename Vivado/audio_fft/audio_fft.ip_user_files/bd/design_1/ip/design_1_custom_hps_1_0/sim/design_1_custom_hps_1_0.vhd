@@ -46,7 +46,7 @@
 -- 
 -- DO NOT MODIFY THIS FILE.
 
--- IP VLNV: sfu.ca:user:custom_hps:3.1
+-- IP VLNV: sfu.ca:user:custom_hps:4.0
 -- IP Revision: 1
 
 LIBRARY ieee;

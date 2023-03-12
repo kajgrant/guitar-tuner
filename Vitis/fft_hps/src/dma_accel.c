@@ -26,7 +26,6 @@ typedef struct dma_accel
 	dma_accel_periphs_t periphs;
 	void *p_stim_buf;
 	void *p_result_buf;
-	void *p_convert_buf; // buffer for magnitude converted values
 	int buf_length;
 	int sample_size_bytes;
 } dma_accel_t;
@@ -314,18 +313,6 @@ void dma_accel_set_result_buf(dma_accel_t *p_dma_accel_inst, void *p_result_buf)
 void *dma_accel_get_result_buf(dma_accel_t *p_dma_accel_inst)
 {
 	return (p_dma_accel_inst->p_result_buf);
-}
-
-// Convert Buff
-void dma_accel_set_convert_buf(dma_accel_t *p_dma_accel_inst, void *p_convert_buf)
-{
-	p_dma_accel_inst->p_convert_buf = p_convert_buf;
-}
-
-// Convert Buff
-void *dma_accel_get_convert_buf(dma_accel_t *p_dma_accel_inst)
-{
-	return (p_dma_accel_inst->p_convert_buf);
 }
 
 void dma_accel_set_buf_length(dma_accel_t *p_dma_accel_inst, int buf_length)

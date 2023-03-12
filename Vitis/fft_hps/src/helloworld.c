@@ -112,8 +112,8 @@ int main()
 	memcpy(stim_buf, test_data, sizeof(cplx_data_t) * FFT_MAX_NUM_PTS);
 
 	// Make sure the buffer is clear before we populate it (this is generally not necessary and wastes time doing memory accesses, but for proving the DMA working, we do it anyway)
-	memset(result_buf, 0, sizeof(cplx_data_t) * FFT_MAX_NUM_PTS);
-	memset(convert_buf, 0, sizeof(short) * FFT_MAX_NUM_PTS);
+	//memset(result_buf, 0, sizeof(cplx_data_t) * FFT_MAX_NUM_PTS);
+	//memset(convert_buf, 0, sizeof(short) * FFT_MAX_NUM_PTS);
 
 	status = fft(p_fft_inst, (cplx_data_t *)stim_buf, (cplx_data_t *)result_buf);
 	if (status != FFT_SUCCESS)
@@ -145,6 +145,8 @@ int main()
 
 	free(stim_buf);
 	free(result_buf);
+	free(convert_buf);
+	free(final_out_buf);
 	fft_destroy(p_fft_inst);
 
 	return 0;

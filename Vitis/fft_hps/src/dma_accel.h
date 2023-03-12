@@ -104,7 +104,6 @@ void *dma_accel_get_stim_buf(dma_accel_t *p_dma_accel_inst);
 //
 void dma_accel_set_result_buf(dma_accel_t *p_dma_accel_inst, void *p_result_buf);
 
-void dma_accel_set_convert_buf(dma_accel_t *p_dma_accel_inst, void *p_result_buf);
 
 //
 // dma_accel_get_result_buf - Get a pointer to the result buffer.
@@ -117,7 +116,6 @@ void dma_accel_set_convert_buf(dma_accel_t *p_dma_accel_inst, void *p_result_buf
 //
 void *dma_accel_get_result_buf(dma_accel_t *p_dma_accel_inst);
 
-void *dma_accel_get_convert_buf(dma_accel_t *p_dma_accel_inst);
 
 //
 // dma_accel_set_buf_length - Set the buffer length (in samples) to use for DMA transfers.
