@@ -5,7 +5,7 @@ Time = 1;
 L = Time*Fs;             % Length of signal
 t = (0:L-1)*T;        % Time vector
 
-S = ceil(1000*sin(2*pi*50*t) + 2000*sin(2*pi*120*t) + 4000*sin(2*pi*800*t));
+S = ceil(1000*sin(2*pi*330*t) + 500*sin(2*pi*660*t) + 200*sin(2*pi*990*t));
 
 Y = fft(S);
 P2 = abs(Y/L);

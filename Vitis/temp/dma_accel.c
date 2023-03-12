@@ -11,7 +11,7 @@
 // Private global variables
 static int g_s2mm_done = 0;
 static int g_mm2s_done = 0;
-static int g_dma_err   = 0;
+static int g_dma_err = 0;
 
 // Private data
 typedef struct dma_accel_periphs
@@ -24,20 +24,21 @@ typedef struct dma_accel_periphs
 typedef struct dma_accel
 {
 	dma_accel_periphs_t periphs;
-	void*               p_stim_buf;
-	void*               p_result_buf;
-	int                 buf_length;
-	int                 sample_size_bytes;
+	void *p_stim_buf;
+	void *p_result_buf;
+	void *p_convert_buf; // buffer for magnitude converted values
+	int buf_length;
+	int sample_size_bytes;
 } dma_accel_t;
 
 // Private functions
-static void s2mm_isr(void* CallbackRef)
+static void s2mm_isr(void *CallbackRef)
 {
 
 	// Local variables
-	int      irq_status;
-	int      time_out;
-	XAxiDma* p_dma_inst = (XAxiDma*)CallbackRef;
+	int irq_status;
+	int time_out;
+	XAxiDma *p_dma_inst = (XAxiDma *)CallbackRef;
 
 	// Disable interrupts
 	XAxiDma_IntrDisable(p_dma_inst, XAXIDMA_IRQ_ALL_MASK, XAXIDMA_DMA_TO_DEVICE);
@@ -83,16 +84,15 @@ static void s2mm_isr(void* CallbackRef)
 	// Re-enable interrupts
 	XAxiDma_IntrEnable(p_dma_inst, (XAXIDMA_IRQ_IOC_MASK | XAXIDMA_IRQ_ERROR_MASK), XAXIDMA_DMA_TO_DEVICE);
 	XAxiDma_IntrEnable(p_dma_inst, (XAXIDMA_IRQ_IOC_MASK | XAXIDMA_IRQ_ERROR_MASK), XAXIDMA_DEVICE_TO_DMA);
-
 }
 
-static void mm2s_isr(void* CallbackRef)
+static void mm2s_isr(void *CallbackRef)
 {
 
 	// Local variables
-	int      irq_status;
-	int      time_out;
-	XAxiDma* p_dma_inst = (XAxiDma*)CallbackRef;
+	int irq_status;
+	int time_out;
+	XAxiDma *p_dma_inst = (XAxiDma *)CallbackRef;
 
 	// Disable interrupts
 	XAxiDma_IntrDisable(p_dma_inst, XAXIDMA_IRQ_ALL_MASK, XAXIDMA_DMA_TO_DEVICE);
@@ -139,15 +139,14 @@ static void mm2s_isr(void* CallbackRef)
 	// Re-enable interrupts
 	XAxiDma_IntrEnable(p_dma_inst, (XAXIDMA_IRQ_IOC_MASK | XAXIDMA_IRQ_ERROR_MASK), XAXIDMA_DMA_TO_DEVICE);
 	XAxiDma_IntrEnable(p_dma_inst, (XAXIDMA_IRQ_IOC_MASK | XAXIDMA_IRQ_ERROR_MASK), XAXIDMA_DEVICE_TO_DMA);
-
 }
 
-static int init_intc(XScuGic* p_intc_inst, int intc_device_id, XAxiDma* p_dma_inst, int s2mm_intr_id, int mm2s_intr_id)
+static int init_intc(XScuGic *p_intc_inst, int intc_device_id, XAxiDma *p_dma_inst, int s2mm_intr_id, int mm2s_intr_id)
 {
 
 	// Local variables
-	int             status = 0;
-	XScuGic_Config* cfg_ptr;
+	int status = 0;
+	XScuGic_Config *cfg_ptr;
 
 	// Look up hardware configuration for device
 	cfg_ptr = XScuGic_LookupConfig(intc_device_id);
@@ -195,15 +194,14 @@ static int init_intc(XScuGic* p_intc_inst, int intc_device_id, XAxiDma* p_dma_in
 	Xil_ExceptionEnable();
 
 	return DMA_ACCEL_SUCCESS;
-
 }
 
-static int init_dma(XAxiDma* p_dma_inst, int dma_device_id)
+static int init_dma(XAxiDma *p_dma_inst, int dma_device_id)
 {
 
 	// Local variables
-	int             status = 0;
-	XAxiDma_Config* cfg_ptr;
+	int status = 0;
+	XAxiDma_Config *cfg_ptr;
 
 	// Look up hardware configuration for device
 	cfg_ptr = XAxiDma_LookupConfig(dma_device_id);
@@ -230,27 +228,28 @@ static int init_dma(XAxiDma* p_dma_inst, int dma_device_id)
 
 	// Reset DMA
 	XAxiDma_Reset(p_dma_inst);
-	while (!XAxiDma_ResetIsDone(p_dma_inst)) {}
+	while (!XAxiDma_ResetIsDone(p_dma_inst))
+	{
+	}
 
 	// Enable DMA interrupts
 	XAxiDma_IntrEnable(p_dma_inst, (XAXIDMA_IRQ_IOC_MASK | XAXIDMA_IRQ_ERROR_MASK), XAXIDMA_DMA_TO_DEVICE);
 	XAxiDma_IntrEnable(p_dma_inst, (XAXIDMA_IRQ_IOC_MASK | XAXIDMA_IRQ_ERROR_MASK), XAXIDMA_DEVICE_TO_DMA);
 
 	return DMA_ACCEL_SUCCESS;
-
 }
 
 // Public functions
-dma_accel_t* dma_accel_create(int dma_device_id, int intc_device_id, int s2mm_intr_id,
-		                      int mm2s_intr_id, int sample_size_bytes)
+dma_accel_t *dma_accel_create(int dma_device_id, int intc_device_id, int s2mm_intr_id,
+							  int mm2s_intr_id, int sample_size_bytes)
 {
 
 	// Local variables
-	dma_accel_t* p_obj;
-	int          status;
+	dma_accel_t *p_obj;
+	int status;
 
 	// Allocate memory for DMA Accelerator object
-	p_obj = (dma_accel_t*) malloc(sizeof(dma_accel_t));
+	p_obj = (dma_accel_t *)malloc(sizeof(dma_accel_t));
 	if (p_obj == NULL)
 	{
 		xil_printf("ERROR! Failed to allocate memory for DMA Accelerator object.\n\r");
@@ -266,14 +265,12 @@ dma_accel_t* dma_accel_create(int dma_device_id, int intc_device_id, int s2mm_in
 		return NULL;
 	}
 
-	status = init_intc
-	(
+	status = init_intc(
 		&p_obj->periphs.intc_inst,
 		intc_device_id,
 		&p_obj->periphs.dma_inst,
 		s2mm_intr_id,
-		mm2s_intr_id
-	);
+		mm2s_intr_id);
 	if (status != DMA_ACCEL_SUCCESS)
 	{
 		xil_printf("ERROR! Failed to initialize Interrupt controller.\n\r");
@@ -286,86 +283,95 @@ dma_accel_t* dma_accel_create(int dma_device_id, int intc_device_id, int s2mm_in
 	dma_accel_set_result_buf(p_obj, NULL);
 
 	// Initialize buffer length
-	dma_accel_set_buf_length(p_obj, 8192);
+	dma_accel_set_buf_length(p_obj, 1024);
 
 	// Initialize sample size
 	dma_accel_set_sample_size_bytes(p_obj, sample_size_bytes);
 
 	return p_obj;
-
 }
 
-void dma_accel_destroy(dma_accel_t* p_dma_accel_inst)
+void dma_accel_destroy(dma_accel_t *p_dma_accel_inst)
 {
 	free(p_dma_accel_inst);
 }
 
-void dma_accel_set_stim_buf(dma_accel_t* p_dma_accel_inst, void* p_stim_buf)
+void dma_accel_set_stim_buf(dma_accel_t *p_dma_accel_inst, void *p_stim_buf)
 {
 	p_dma_accel_inst->p_stim_buf = p_stim_buf;
 }
 
-void* dma_accel_get_stim_buf(dma_accel_t* p_dma_accel_inst)
+void *dma_accel_get_stim_buf(dma_accel_t *p_dma_accel_inst)
 {
 	return (p_dma_accel_inst->p_stim_buf);
 }
 
-void dma_accel_set_result_buf(dma_accel_t* p_dma_accel_inst, void* p_result_buf)
+void dma_accel_set_result_buf(dma_accel_t *p_dma_accel_inst, void *p_result_buf)
 {
 	p_dma_accel_inst->p_result_buf = p_result_buf;
 }
 
-void* dma_accel_get_result_buf(dma_accel_t* p_dma_accel_inst)
+void *dma_accel_get_result_buf(dma_accel_t *p_dma_accel_inst)
 {
 	return (p_dma_accel_inst->p_result_buf);
 }
 
-void dma_accel_set_buf_length(dma_accel_t* p_dma_accel_inst, int buf_length)
+// Convert Buff
+void dma_accel_set_convert_buf(dma_accel_t *p_dma_accel_inst, void *p_convert_buf)
+{
+	p_dma_accel_inst->p_convert_buf = p_convert_buf;
+}
+
+// Convert Buff
+void *dma_accel_get_convert_buf(dma_accel_t *p_dma_accel_inst)
+{
+	return (p_dma_accel_inst->p_convert_buf);
+}
+
+void dma_accel_set_buf_length(dma_accel_t *p_dma_accel_inst, int buf_length)
 {
 	p_dma_accel_inst->buf_length = buf_length;
 }
 
-int dma_accel_get_buf_length(dma_accel_t* p_dma_accel_inst)
+int dma_accel_get_buf_length(dma_accel_t *p_dma_accel_inst)
 {
 	return (p_dma_accel_inst->buf_length);
 }
 
-void dma_accel_set_sample_size_bytes(dma_accel_t* p_dma_accel_inst, int sample_size_bytes)
+void dma_accel_set_sample_size_bytes(dma_accel_t *p_dma_accel_inst, int sample_size_bytes)
 {
 	p_dma_accel_inst->sample_size_bytes = sample_size_bytes;
 }
 
-int dma_accel_get_sample_size_bytes(dma_accel_t* p_dma_accel_inst)
+int dma_accel_get_sample_size_bytes(dma_accel_t *p_dma_accel_inst)
 {
 	return (p_dma_accel_inst->sample_size_bytes);
 }
 
-int dma_accel_xfer(dma_accel_t* p_dma_accel_inst)
+int dma_accel_xfer(dma_accel_t *p_dma_accel_inst)
 {
 
 	// Local variables
-	int       status    = 0;
-	const int num_bytes = p_dma_accel_inst->buf_length*p_dma_accel_inst->sample_size_bytes;
+	int status = 0;
+	const int num_bytes = p_dma_accel_inst->buf_length * p_dma_accel_inst->sample_size_bytes;
 
-	// Flush cache
-	#if (!DMA_ACCEL_IS_CACHE_COHERENT)
-		Xil_DCacheFlushRange((int)p_dma_accel_inst->p_stim_buf, num_bytes);
-		Xil_DCacheFlushRange((int)p_dma_accel_inst->p_result_buf, num_bytes);
-	#endif
+// Flush cache
+#if (!DMA_ACCEL_IS_CACHE_COHERENT)
+	Xil_DCacheFlushRange((int)p_dma_accel_inst->p_stim_buf, num_bytes);
+	Xil_DCacheFlushRange((int)p_dma_accel_inst->p_result_buf, num_bytes);
+#endif
 
 	// Initialize control flags which get set by ISR
 	g_s2mm_done = 0;
 	g_mm2s_done = 0;
-	g_dma_err   = 0;
+	g_dma_err = 0;
 
 	// Kick off MM2S transfer
-	status = XAxiDma_SimpleTransfer
-	(
+	status = XAxiDma_SimpleTransfer(
 		&p_dma_accel_inst->periphs.dma_inst,
 		(int)p_dma_accel_inst->p_stim_buf,
 		num_bytes,
-		XAXIDMA_DMA_TO_DEVICE
-	);
+		XAXIDMA_DMA_TO_DEVICE);
 	if (status != DMA_ACCEL_SUCCESS)
 	{
 		xil_printf("ERROR! Failed to kick off MM2S transfer!\n\r");
@@ -373,13 +379,11 @@ int dma_accel_xfer(dma_accel_t* p_dma_accel_inst)
 	}
 
 	// Kick off S2MM transfer
-	status = XAxiDma_SimpleTransfer
-	(
+	status = XAxiDma_SimpleTransfer(
 		&p_dma_accel_inst->periphs.dma_inst,
 		(int)p_dma_accel_inst->p_result_buf,
 		num_bytes,
-		XAXIDMA_DEVICE_TO_DMA
-	);
+		XAXIDMA_DEVICE_TO_DMA);
 	if (status != DMA_ACCEL_SUCCESS)
 	{
 		xil_printf("ERROR! Failed to kick off S2MM transfer!\n\r");
@@ -387,7 +391,9 @@ int dma_accel_xfer(dma_accel_t* p_dma_accel_inst)
 	}
 
 	// Wait for transfer to complete
-	while (!(g_s2mm_done && g_mm2s_done) && !g_dma_err){ /* The processor could be doing something else here while waiting for an IRQ. */ }
+	while (!(g_s2mm_done && g_mm2s_done) && !g_dma_err)
+	{ /* The processor could be doing something else here while waiting for an IRQ. */
+	}
 
 	// Check DMA for errors
 	if (g_dma_err)
@@ -397,6 +403,4 @@ int dma_accel_xfer(dma_accel_t* p_dma_accel_inst)
 	}
 
 	return DMA_ACCEL_SUCCESS;
-
 }
-

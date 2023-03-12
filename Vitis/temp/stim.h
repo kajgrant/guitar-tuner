@@ -1,3 +1,5 @@
+
+// Linear combination of 2 sine waves
 int test_data[FFT_MAX_NUM_PTS] =
     {0, -2278, 1036, 5729, 4161, -2251, -4645, -189,
      3870, 1826, -1858, -513, 3426, 2284, -3990, -6914,

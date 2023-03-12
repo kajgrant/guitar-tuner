@@ -1,8 +1,8 @@
 
-%Fs = 1024;            % Sampling frequency    
-[S, Fs] = audioread("e-string.wav");
+[S, Fs] = audioread("d-string.wav");
+
 S = sum(S,2);
-Time = 1;
+Time = 2;
 S = S(1:Time*Fs);
 T = 1/Fs;             % Sampling period
 L = Time*Fs;             % Length of signal
@@ -21,7 +21,7 @@ P1 = P2(1:L/2+1);
 P1(2:end-1) = 2*P1(2:end-1);
 
 nexttile
-stem(f1(1:1000),P1(1:1000)) 
+stem(f1(1:500),P1(1:500)) 
 title("Single-Sided Amplitude Spectrum of X(t)")
 xlabel("f (Hz)")
 ylabel("|P1(f)|")

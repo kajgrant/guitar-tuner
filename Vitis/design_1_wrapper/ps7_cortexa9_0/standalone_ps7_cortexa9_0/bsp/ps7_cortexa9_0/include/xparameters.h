@@ -81,6 +81,17 @@
 
 /******************************************************************/
 
+/* Definitions for driver CUSTOM_HPS */
+#define XPAR_CUSTOM_HPS_NUM_INSTANCES 1
+
+/* Definitions for peripheral CUSTOM_HPS_1 */
+#define XPAR_CUSTOM_HPS_1_DEVICE_ID 0
+#define XPAR_CUSTOM_HPS_1_S00_AXI_BASEADDR 0x83C00000
+#define XPAR_CUSTOM_HPS_1_S00_AXI_HIGHADDR 0x83C0FFFF
+
+
+/******************************************************************/
+
 
 /* Definitions for peripheral PS7_DDR_0 */
 #define XPAR_PS7_DDR_0_S_AXI_BASEADDR 0x00100000

@@ -40,10 +40,10 @@
 #define DMA_ACCEL_IS_CACHE_COHERENT 0 // Set to 1 to avoid overhead of software cache flushes if going through the ACP
 
 // Return types
-#define DMA_ACCEL_SUCCESS           0
-#define DMA_ACCEL_DMA_INIT_FAIL    -1
-#define DMA_ACCEL_INTC_INIT_FAIL   -2
-#define DMA_ACCEL_XFER_FAIL        -3
+#define DMA_ACCEL_SUCCESS 0
+#define DMA_ACCEL_DMA_INIT_FAIL -1
+#define DMA_ACCEL_INTC_INIT_FAIL -2
+#define DMA_ACCEL_XFER_FAIL -3
 
 // Object forward declaration
 typedef struct dma_accel dma_accel_t;
@@ -64,8 +64,8 @@ typedef struct dma_accel dma_accel_t;
 //    - dma_accel_t*:      Non-NULL pointer to dma_accel_t object on success.
 //    - NULL:              NULL if something failed.
 //
-dma_accel_t* dma_accel_create(int dma_device_id, int intc_device_id, int s2mm_intr_id,
-		                      int mm2s_intr_id, int sample_size_bytes);
+dma_accel_t *dma_accel_create(int dma_device_id, int intc_device_id, int s2mm_intr_id,
+							  int mm2s_intr_id, int sample_size_bytes);
 
 //
 // dma_accel_destroy - Destroy DMA Accelerator object.
@@ -73,7 +73,7 @@ dma_accel_t* dma_accel_create(int dma_device_id, int intc_device_id, int s2mm_in
 //  Arguments
 //    - p_dma_accel_inst: Pointer to dma_accel_t object to be deallocated.
 //
-void dma_accel_destroy(dma_accel_t* p_dma_accel_inst);
+void dma_accel_destroy(dma_accel_t *p_dma_accel_inst);
 
 //
 // dma_accel_set_stim_buf - Set pointer to stimulus buffer to be used.
@@ -82,7 +82,7 @@ void dma_accel_destroy(dma_accel_t* p_dma_accel_inst);
 //    - p_dma_accel_inst: Pointer to dma_accel_t object.
 //    - p_stim_buf:       Pointer to stimulus buffer to be sent out by the DMA.
 //
-void dma_accel_set_stim_buf(dma_accel_t* p_dma_accel_inst, void* p_stim_buf);
+void dma_accel_set_stim_buf(dma_accel_t *p_dma_accel_inst, void *p_stim_buf);
 
 //
 // dma_accel_get_stim_buf - Get a pointer to the stimulus buffer.
@@ -93,7 +93,7 @@ void dma_accel_set_stim_buf(dma_accel_t* p_dma_accel_inst, void* p_stim_buf);
 //  Return
 //    - void*:            Pointer to the stimulus buffer to be sent out by the DMA.
 //
-void* dma_accel_get_stim_buf(dma_accel_t* p_dma_accel_inst);
+void *dma_accel_get_stim_buf(dma_accel_t *p_dma_accel_inst);
 
 //
 // dma_accel_set_result_buf - Set pointer to result buffer to be used.
@@ -102,7 +102,9 @@ void* dma_accel_get_stim_buf(dma_accel_t* p_dma_accel_inst);
 //    - p_dma_accel_inst: Pointer to dma_accel_t object.
 //    - p_stim_buf:       Pointer to result buffer to be filled by the DMA.
 //
-void dma_accel_set_result_buf(dma_accel_t* p_dma_accel_inst, void* p_result_buf);
+void dma_accel_set_result_buf(dma_accel_t *p_dma_accel_inst, void *p_result_buf);
+
+void dma_accel_set_convert_buf(dma_accel_t *p_dma_accel_inst, void *p_result_buf);
 
 //
 // dma_accel_get_result_buf - Get a pointer to the result buffer.
@@ -113,7 +115,9 @@ void dma_accel_set_result_buf(dma_accel_t* p_dma_accel_inst, void* p_result_buf)
 //  Return
 //    - void*:            Pointer to the result buffer to be filled by the DMA.
 //
-void* dma_accel_get_result_buf(dma_accel_t* p_dma_accel_inst);
+void *dma_accel_get_result_buf(dma_accel_t *p_dma_accel_inst);
+
+void *dma_accel_get_convert_buf(dma_accel_t *p_dma_accel_inst);
 
 //
 // dma_accel_set_buf_length - Set the buffer length (in samples) to use for DMA transfers.
@@ -121,7 +125,7 @@ void* dma_accel_get_result_buf(dma_accel_t* p_dma_accel_inst);
 //    - p_dma_accel_inst: Pointer to dma_accel_t object.
 //    - buf_length:       Buffer length (in samples) to use for DMA transfers.
 //
-void dma_accel_set_buf_length(dma_accel_t* p_dma_accel_inst, int buf_length);
+void dma_accel_set_buf_length(dma_accel_t *p_dma_accel_inst, int buf_length);
 
 //
 // dma_accel_get_buf_length - Get the buffer length (in samples) to be used for DMA transfers.
@@ -132,7 +136,7 @@ void dma_accel_set_buf_length(dma_accel_t* p_dma_accel_inst, int buf_length);
 //  Return
 //    - int:              Buffer length (in samples) to be transferred by the DMA.
 //
-int dma_accel_get_buf_length(dma_accel_t* p_dma_accel_inst);
+int dma_accel_get_buf_length(dma_accel_t *p_dma_accel_inst);
 
 //
 // dma_accel_set_sample_size_bytes - Set the size (in bytes) of each sample (i.e. number
@@ -142,7 +146,7 @@ int dma_accel_get_buf_length(dma_accel_t* p_dma_accel_inst);
 //    - p_dma_accel_inst:  Pointer to dma_accel_t object.
 //    - sample_size_bytes: Number of bytes per sample.
 //
-void dma_accel_set_sample_size_bytes(dma_accel_t* p_dma_accel_inst, int sample_size_bytes);
+void dma_accel_set_sample_size_bytes(dma_accel_t *p_dma_accel_inst, int sample_size_bytes);
 
 //
 // dma_accel_get_sample_size_bytes - Get the size (in bytes) of each sample (i.e. number
@@ -153,7 +157,7 @@ void dma_accel_set_sample_size_bytes(dma_accel_t* p_dma_accel_inst, int sample_s
 //
 //  Return
 //    - int:              Number of bytes per sample.
-int dma_accel_get_sample_size_bytes(dma_accel_t* p_dma_accel_inst);
+int dma_accel_get_sample_size_bytes(dma_accel_t *p_dma_accel_inst);
 
 //
 // dma_accel_xfer - Perform a data transfer via DMA.
@@ -165,7 +169,6 @@ int dma_accel_get_sample_size_bytes(dma_accel_t* p_dma_accel_inst);
 //    - DMA_SUCCESS:         No errors occurred during any DMA transfers.
 //    - DMA_ACCEL_XFER_FAIL: Some error occurred during one of the DMA transfers.
 //
-int dma_accel_xfer(dma_accel_t* p_dma_accel_inst);
+int dma_accel_xfer(dma_accel_t *p_dma_accel_inst);
 
 #endif /* DMA_ACCEL_H_ */
-
