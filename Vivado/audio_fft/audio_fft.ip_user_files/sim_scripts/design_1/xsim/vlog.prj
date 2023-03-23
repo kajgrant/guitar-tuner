@@ -5,10 +5,10 @@ verilog xil_defaultlib --include "C:/Xilinx/Vivado/2020.2/data/xilinx_vip/includ
 "../../../bd/design_1/ip/design_1_processing_system7_0_0/sim/design_1_processing_system7_0_0.v" \
 "../../../bd/design_1/ip/design_1_xbar_2/sim/design_1_xbar_2.v" \
 "../../../bd/design_1/ip/design_1_xbar_3/sim/design_1_xbar_3.v" \
+"../../../bd/design_1/ip/design_1_xbar_4/sim/design_1_xbar_4.v" \
 "../../../bd/design_1/ip/design_1_auto_pc_0/sim/design_1_auto_pc_0.v" \
 "../../../bd/design_1/ip/design_1_auto_pc_1/sim/design_1_auto_pc_1.v" \
 "../../../bd/design_1/ip/design_1_auto_pc_2/sim/design_1_auto_pc_2.v" \
-"../../../bd/design_1/sim/design_1.v" \
 
 verilog xil_defaultlib "glbl.v"
 

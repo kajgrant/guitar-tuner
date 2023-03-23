@@ -8,5 +8,18 @@ vhdl xil_defaultlib  \
 "../../../bd/design_1/ipshared/e71a/src/hps.vhd" \
 "../../../bd/design_1/ipshared/e71a/hdl/custom_hps_v1_0.vhd" \
 "../../../bd/design_1/ip/design_1_custom_hps_1_0/sim/design_1_custom_hps_1_0.vhd" \
+"../../../bd/design_1/ipshared/1288/zed_audio_ctrl.srcs/sources_1/imports/i2s_audio/family_support.vhd" \
+"../../../bd/design_1/ipshared/1288/zed_audio_ctrl.srcs/sources_1/imports/i2s_audio/common_types.vhd" \
+"../../../bd/design_1/ipshared/1288/zed_audio_ctrl.srcs/sources_1/imports/i2s_audio/pselect_f.vhd" \
+"../../../bd/design_1/ipshared/1288/zed_audio_ctrl.srcs/sources_1/imports/i2s_audio/address_decoder.vhd" \
+"../../../bd/design_1/ipshared/1288/zed_audio_ctrl.srcs/sources_1/imports/i2s_audio/slave_attachment.vhd" \
+"../../../bd/design_1/ipshared/1288/zed_audio_ctrl.srcs/sources_1/imports/i2s_audio/iis_ser.vhd" \
+"../../../bd/design_1/ipshared/1288/zed_audio_ctrl.srcs/sources_1/imports/i2s_audio/iis_deser.vhd" \
+"../../../bd/design_1/ipshared/1288/zed_audio_ctrl.srcs/sources_1/imports/i2s_audio/user_logic.vhd" \
+"../../../bd/design_1/ipshared/1288/zed_audio_ctrl.srcs/sources_1/imports/i2s_audio/axi_lite_ipif.vhd" \
+"../../../bd/design_1/ipshared/1288/zed_audio_ctrl.srcs/sources_1/imports/i2s_audio/i2s_ctrl.vhd" \
+"../../../bd/design_1/ip/design_1_zed_audio_ctrl_0_0/sim/design_1_zed_audio_ctrl_0_0.vhd" \
+"../../../bd/design_1/ip/design_1_axi_gpio_0_1/sim/design_1_axi_gpio_0_1.vhd" \
+"../../../bd/design_1/sim/design_1.vhd" \
 
 nosort

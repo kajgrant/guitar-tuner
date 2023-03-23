@@ -154,6 +154,12 @@ processing_system7_v5_5_tlm :: processing_system7_v5_5_tlm (sc_core::sc_module_n
         ,ENET0_PTP_SYNC_FRAME_TX("ENET0_PTP_SYNC_FRAME_TX")
         ,ENET0_SOF_RX("ENET0_SOF_RX")
         ,ENET0_SOF_TX("ENET0_SOF_TX")
+        ,I2C0_SDA_I("I2C0_SDA_I")
+        ,I2C0_SDA_O("I2C0_SDA_O")
+        ,I2C0_SDA_T("I2C0_SDA_T")
+        ,I2C0_SCL_I("I2C0_SCL_I")
+        ,I2C0_SCL_O("I2C0_SCL_O")
+        ,I2C0_SCL_T("I2C0_SCL_T")
         ,TTC0_WAVE0_OUT("TTC0_WAVE0_OUT")
         ,TTC0_WAVE1_OUT("TTC0_WAVE1_OUT")
         ,TTC0_WAVE2_OUT("TTC0_WAVE2_OUT")
@@ -171,6 +177,7 @@ processing_system7_v5_5_tlm :: processing_system7_v5_5_tlm (sc_core::sc_module_n
         ,S_AXI_HP0_WRISSUECAP1_EN("S_AXI_HP0_WRISSUECAP1_EN")
         ,IRQ_F2P("IRQ_F2P")
         ,FCLK_CLK0("FCLK_CLK0")
+        ,FCLK_CLK1("FCLK_CLK1")
         ,FCLK_RESET0_N("FCLK_RESET0_N")
         ,MIO("MIO")
         ,DDR_CAS_n("DDR_CAS_n")
@@ -197,6 +204,7 @@ processing_system7_v5_5_tlm :: processing_system7_v5_5_tlm (sc_core::sc_module_n
     ,m_rp_bridge_M_AXI_GP0("m_rp_bridge_M_AXI_GP0")     
     ,m_rp_bridge_M_AXI_GP1("m_rp_bridge_M_AXI_GP1")     
         ,FCLK_CLK0_clk("FCLK_CLK0_clk", sc_time(10000.0,sc_core::SC_PS))//clock period in picoseconds = 1000000/freq(in MZ)
+        ,FCLK_CLK1_clk("FCLK_CLK1_clk", sc_time(100000.0,sc_core::SC_PS))//clock period in picoseconds = 1000000/freq(in MZ)
     ,prop(_prop)
     {
         //creating instances of xtlm slave sockets
@@ -266,6 +274,9 @@ processing_system7_v5_5_tlm :: processing_system7_v5_5_tlm (sc_core::sc_module_n
         SC_METHOD(trigger_FCLK_CLK0_pin);
         sensitive << FCLK_CLK0_clk;
         dont_initialize();
+        SC_METHOD(trigger_FCLK_CLK1_pin);
+        sensitive << FCLK_CLK1_clk;
+        dont_initialize();
         S_AXI_HP0_xtlm_brdg.registerUserExtensionHandlerCallback(&add_extensions_to_tlm);
         m_rp_bridge_M_AXI_GP0.registerUserExtensionHandlerCallback(&get_extensions_from_tlm);
         m_rp_bridge_M_AXI_GP1.registerUserExtensionHandlerCallback(&get_extensions_from_tlm);
@@ -286,6 +297,11 @@ processing_system7_v5_5_tlm :: ~processing_system7_v5_5_tlm() {
     //FCLK_CLK0 pin written based on FCLK_CLK0_clk clock value 
     void processing_system7_v5_5_tlm ::trigger_FCLK_CLK0_pin()    {
         FCLK_CLK0.write(FCLK_CLK0_clk.read());
+    }
+    //Method which is sentive to FCLK_CLK1_clk sc_clock object
+    //FCLK_CLK1 pin written based on FCLK_CLK1_clk clock value 
+    void processing_system7_v5_5_tlm ::trigger_FCLK_CLK1_pin()    {
+        FCLK_CLK1.write(FCLK_CLK1_clk.read());
     }
     void processing_system7_v5_5_tlm ::IRQ_F2P_method()    {
         int irq = ((IRQ_F2P.read().to_uint()) & 0xFFFF);

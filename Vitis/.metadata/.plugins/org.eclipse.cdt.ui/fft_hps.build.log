@@ -1,10 +1,70 @@
-15:42:25 **** Incremental Build of configuration Debug for project fft_hps ****
+16:22:16 **** Build of configuration Debug for project fft_hps ****
 make all 
 make --no-print-directory pre-build
 a9-linaro-pre-build-step
 ' '
 make --no-print-directory main-build
-make[1]: Nothing to be done for 'main-build'.
+'Building file: ../src/cplx_data.c'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/cplx_data.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -IC:/Users/kgrantma/Downloads/M4/guitar-tuner-main/Vitis/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/standalone_ps7_cortexa9_0/bspinclude/include -MMD -MP -MF"src/cplx_data.d" -MT"src/cplx_data.o" -o "src/cplx_data.o" "../src/cplx_data.c"
+'Finished building: ../src/cplx_data.c'
+' '
+'Building file: ../src/dma_accel.c'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/dma_accel.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -IC:/Users/kgrantma/Downloads/M4/guitar-tuner-main/Vitis/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/standalone_ps7_cortexa9_0/bspinclude/include -MMD -MP -MF"src/dma_accel.d" -MT"src/dma_accel.o" -o "src/dma_accel.o" "../src/dma_accel.c"
+'Finished building: ../src/dma_accel.c'
+' '
+'Building file: ../src/fft.c'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/fft.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -IC:/Users/kgrantma/Downloads/M4/guitar-tuner-main/Vitis/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/standalone_ps7_cortexa9_0/bspinclude/include -MMD -MP -MF"src/fft.d" -MT"src/fft.o" -o "src/fft.o" "../src/fft.c"
+../src/fft.c: In function 'void fft_convert_normalized(fft_t*, short int*)':
+../src/fft.c:228:6: warning: unused variable 'test' [-Wunused-variable]
+  228 |  int test = 1;
+      |      ^~~~
+'Finished building: ../src/fft.c'
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -IC:/Users/kgrantma/Downloads/M4/guitar-tuner-main/Vitis/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/standalone_ps7_cortexa9_0/bspinclude/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+In file included from ../src/helloworld.c:36:
+C:/Users/kgrantma/Downloads/M4/guitar-tuner-main/Vitis/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/standalone_ps7_cortexa9_0/bspinclude/include/xbasic_types.h:98:2: warning: #warning The xbasics_type.h file is deprecated and users should use xil_types.h and xil_assert. [-Wcpp]
+   98 | #warning  The xbasics_type.h file is deprecated and users should use xil_types.h and xil_assert.
+      |  ^~~~~~~
+C:/Users/kgrantma/Downloads/M4/guitar-tuner-main/Vitis/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/standalone_ps7_cortexa9_0/bspinclude/include/xbasic_types.h:99:2: warning: #warning Please refer the Standalone BSP UG647 for further details [-Wcpp]
+   99 | #warning  Please refer the Standalone BSP UG647 for further details
+      |  ^~~~~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building file: ../src/hps.c'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/hps.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -IC:/Users/kgrantma/Downloads/M4/guitar-tuner-main/Vitis/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/standalone_ps7_cortexa9_0/bspinclude/include -MMD -MP -MF"src/hps.d" -MT"src/hps.o" -o "src/hps.o" "../src/hps.c"
+In file included from ../src/hps.c:7:
+C:/Users/kgrantma/Downloads/M4/guitar-tuner-main/Vitis/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/standalone_ps7_cortexa9_0/bspinclude/include/xbasic_types.h:98:2: warning: #warning The xbasics_type.h file is deprecated and users should use xil_types.h and xil_assert. [-Wcpp]
+   98 | #warning  The xbasics_type.h file is deprecated and users should use xil_types.h and xil_assert.
+      |  ^~~~~~~
+C:/Users/kgrantma/Downloads/M4/guitar-tuner-main/Vitis/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/standalone_ps7_cortexa9_0/bspinclude/include/xbasic_types.h:99:2: warning: #warning Please refer the Standalone BSP UG647 for further details [-Wcpp]
+   99 | #warning  Please refer the Standalone BSP UG647 for further details
+      |  ^~~~~~~
+../src/hps.c: In function 'void hps_data_get_string(char*, long int)':
+../src/hps.c:32:18: warning: format '%d' expects argument of type 'int', but argument 3 has type 'long int' [-Wformat=]
+   32 |     sprintf(c, "%d", data);
+      |                 ~^   ~~~~
+      |                  |   |
+      |                  int long int
+      |                 %ld
+'Finished building: ../src/hps.c'
+' '
+'Building target: fft_hps.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -LC:/Users/kgrantma/Downloads/M4/guitar-tuner-main/Vitis/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/standalone_ps7_cortexa9_0/bsplib/lib -o "fft_hps.elf"  ./src/cplx_data.o ./src/dma_accel.o ./src/fft.o ./src/helloworld.o ./src/hps.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: fft_hps.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size fft_hps.elf  |tee "fft_hps.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  71672	  36173	 530560	 638405	  9bdc5	fft_hps.elf
+'Finished building: fft_hps.elf.size'
+' '
 
-15:42:25 Build Finished (took 473ms)
+16:22:21 Build Finished (took 4s.457ms)
 

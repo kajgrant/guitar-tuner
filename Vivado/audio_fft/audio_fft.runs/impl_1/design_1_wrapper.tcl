@@ -115,7 +115,6 @@ proc step_failed { step } {
 OPTRACE "impl_1" END { }
 }
 
-set_msg_config -id {Common 17-41} -limit 10000000
 
 OPTRACE "impl_1" START { ROLLUP_1 }
 OPTRACE "Phase: Init Design" START { ROLLUP_AUTO }
@@ -146,6 +145,7 @@ OPTRACE "add files" START { }
   add_files C:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/design_1.bd
   set_param project.isImplRun false
 OPTRACE "read constraints: implementation" START { }
+  read_xdc C:/KDevelop/guitar-tuner/Vivado/sources/zedboard/adventures_with_ip_integrator/constraints/adventures_with_ip.xdc
 OPTRACE "read constraints: implementation" END { }
 OPTRACE "add files" END { }
 OPTRACE "link_design" START { }

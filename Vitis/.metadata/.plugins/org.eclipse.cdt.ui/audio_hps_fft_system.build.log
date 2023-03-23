@@ -1,0 +1,10 @@
+11:53:20 **** Build of configuration Debug for project audio_hps_fft_system ****
+make all 
+Generating bif file for the system project
+generate_system_bif.bat 50874 C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/design_1_wrapper.xpfm standalone_ps7_cortexa9_0 C:/KDevelop/guitar-tuner/Vitis/audio_hps_fft_system/Debug/system.bif
+sdcard_gen --xpfm C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/design_1_wrapper.xpfm --sys_config design_1_wrapper --bif C:/KDevelop/guitar-tuner/Vitis/audio_hps_fft_system/Debug/system.bif --bitstream C:/KDevelop/guitar-tuner/Vitis/audio_hps_fft/_ide/bitstream/design_1_wrapper.bit --elf C:/KDevelop/guitar-tuner/Vitis/audio_hps_fft/Debug/audio_hps_fft.elf,ps7_cortexa9_0
+ELF does not exist: C:/KDevelop/guitar-tuner/Vitis/audio_hps_fft/Debug/audio_hps_fft.elf
+make: *** [makefile:39: package] Error 1
+
+11:53:23 Build Finished (took 2s.829ms)
+

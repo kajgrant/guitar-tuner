@@ -1,5 +1,5 @@
 
-filename = "g-WORKFLOW.wav";
+filename = "d-string.wav";
 
 [S, Fs] = audioread(filename);
 
