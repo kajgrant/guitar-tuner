@@ -633,3 +633,32 @@ timestamp=[2023-03-22 18:35:58], mode=BUILD, duration=0:00:02.029, duration_ms=2
 timestamp=[2023-03-22 18:36:08], mode=BUILD, duration=0:00:10.263, duration_ms=10263, data={name=guitar_tuner_system, configuration=Debug, clean_build=false}
 timestamp=[2023-03-22 18:43:26], mode=BUILD, duration=0:00:01.478, duration_ms=1478, data={name=guitar_tuner, configuration=Debug, clean_build=false}
 timestamp=[2023-03-22 18:43:34], mode=BUILD, duration=0:00:07.258, duration_ms=7258, data={name=guitar_tuner_system, configuration=Debug, clean_build=false}
+timestamp=[2023-03-23 11:35:30], mode=WORKBENCH_START, duration=0:00:10.170, duration_ms=10170, data={}
+timestamp=[2023-03-23 11:35:31], mode=WORKBENCH_UI_INIT, duration=0:00:00.826, duration_ms=826, data={editors_count=11, platform_editors_count=3, projects_count=6, platform_projects_count=1, active_platform_editor=false, projects=RemoteSystemsTempFiles,audio_fft_hps,audio_hps_fft,design_1_wrapper,guitar_tuner,guitar_tuner_system}
+timestamp=[2023-03-23 11:35:31], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.084, duration_ms=84, data={}
+timestamp=[2023-03-23 12:49:08], mode=BUILD, duration=0:00:02.189, duration_ms=2189, data={name=guitar_tuner, configuration=Debug, clean_build=false}
+timestamp=[2023-03-23 12:49:17], mode=BUILD, duration=0:00:08.582, duration_ms=8582, data={name=guitar_tuner_system, configuration=Debug, clean_build=false}
+timestamp=[2023-03-23 12:51:37], mode=BUILD, duration=0:00:00.822, duration_ms=822, data={name=guitar_tuner, configuration=Debug, clean_build=false}
+timestamp=[2023-03-23 12:51:43], mode=BUILD, duration=0:00:05.909, duration_ms=5909, data={name=guitar_tuner_system, configuration=Debug, clean_build=false}
+timestamp=[2023-03-23 12:53:39], mode=BUILD, duration=0:00:00.876, duration_ms=876, data={name=guitar_tuner, configuration=Debug, clean_build=false}
+timestamp=[2023-03-23 12:53:46], mode=BUILD, duration=0:00:06.556, duration_ms=6556, data={name=guitar_tuner_system, configuration=Debug, clean_build=false}
+timestamp=[2023-03-23 12:57:50], mode=BUILD, duration=0:00:00.828, duration_ms=828, data={name=guitar_tuner, configuration=Debug, clean_build=false}
+timestamp=[2023-03-23 12:57:56], mode=BUILD, duration=0:00:05.693, duration_ms=5693, data={name=guitar_tuner_system, configuration=Debug, clean_build=false}
+timestamp=[2023-03-23 12:58:11], mode=BUILD, duration=0:00:00.826, duration_ms=826, data={name=guitar_tuner, configuration=Debug, clean_build=false}
+timestamp=[2023-03-23 12:58:18], mode=BUILD, duration=0:00:06.642, duration_ms=6642, data={name=guitar_tuner_system, configuration=Debug, clean_build=false}
+timestamp=[2023-03-23 13:17:30], mode=BUILD, duration=0:00:00.836, duration_ms=836, data={name=guitar_tuner, configuration=Debug, clean_build=false}
+timestamp=[2023-03-23 13:17:36], mode=BUILD, duration=0:00:05.802, duration_ms=5802, data={name=guitar_tuner_system, configuration=Debug, clean_build=false}
+timestamp=[2023-03-23 13:20:03], mode=BUILD, duration=0:00:00.751, duration_ms=751, data={name=guitar_tuner, configuration=Debug, clean_build=false}
+timestamp=[2023-03-23 13:20:09], mode=BUILD, duration=0:00:05.782, duration_ms=5782, data={name=guitar_tuner_system, configuration=Debug, clean_build=false}
+timestamp=[2023-03-23 13:23:17], mode=BUILD, duration=0:00:00.748, duration_ms=748, data={name=guitar_tuner, configuration=Debug, clean_build=false}
+timestamp=[2023-03-23 13:23:23], mode=BUILD, duration=0:00:05.711, duration_ms=5711, data={name=guitar_tuner_system, configuration=Debug, clean_build=false}
+timestamp=[2023-03-23 13:26:35], mode=BUILD, duration=0:00:00.827, duration_ms=827, data={name=guitar_tuner, configuration=Debug, clean_build=false}
+timestamp=[2023-03-23 13:26:42], mode=BUILD, duration=0:00:06.805, duration_ms=6805, data={name=guitar_tuner_system, configuration=Debug, clean_build=false}
+timestamp=[2023-03-23 13:28:27], mode=BUILD, duration=0:00:01.326, duration_ms=1326, data={name=guitar_tuner, configuration=Debug, clean_build=false}
+timestamp=[2023-03-23 13:28:34], mode=BUILD, duration=0:00:06.290, duration_ms=6290, data={name=guitar_tuner_system, configuration=Debug, clean_build=false}
+timestamp=[2023-03-23 13:30:17], mode=BUILD, duration=0:00:01.036, duration_ms=1036, data={name=guitar_tuner, configuration=Debug, clean_build=false}
+timestamp=[2023-03-23 13:30:24], mode=BUILD, duration=0:00:06.538, duration_ms=6538, data={name=guitar_tuner_system, configuration=Debug, clean_build=false}
+timestamp=[2023-03-23 13:34:04], mode=BUILD, duration=0:00:00.955, duration_ms=955, data={name=guitar_tuner, configuration=Debug, clean_build=false}
+timestamp=[2023-03-23 13:34:11], mode=BUILD, duration=0:00:06.739, duration_ms=6739, data={name=guitar_tuner_system, configuration=Debug, clean_build=false}
+timestamp=[2023-03-23 13:40:33], mode=BUILD, duration=0:00:01.323, duration_ms=1323, data={name=guitar_tuner, configuration=Debug, clean_build=false}
+timestamp=[2023-03-23 13:40:40], mode=BUILD, duration=0:00:06.925, duration_ms=6925, data={name=guitar_tuner_system, configuration=Debug, clean_build=false}

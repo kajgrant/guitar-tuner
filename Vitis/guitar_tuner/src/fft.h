@@ -55,7 +55,7 @@
 #define WINDOW_SIZE 1 // in seconds
 #define SAMPLES_PER_SEC 1024
 #define CUTOFF_FREQ 500
-#define SCALE_FACTOR 5
+#define SCALE_FACTOR 1
 
 // Enumerated data types
 typedef enum

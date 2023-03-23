@@ -28,6 +28,7 @@
 // Includes
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
 #include "xuartps_hw.h"
 #include "fft.h"
 #include "hps.h"
@@ -39,6 +40,7 @@
 #define UART_BASEADDR XPAR_PS7_UART_1_BASEADDR
 #define NUM_POINTS FFT_MAX_NUM_PTS
 #define NUM_HPS_POINTS NUM_POINTS / 5
+#define TEST_SCALE_FACTOR 5.5
 
 // External data
 //extern int test_data[FFT_MAX_NUM_PTS]; // FFT input data
@@ -47,13 +49,21 @@
 void fill_input(cplx_data_t *stim_buf){
 
 	u32 in_left, in_right;
+	int16_t left_16, right_16;
 
 	for (int i = 0; i < NUM_POINTS; i++){
 		in_left = Xil_In32(I2S_DATA_RX_L_REG);
 		in_right = Xil_In32(I2S_DATA_RX_R_REG);
 
-		stim_buf[i].data_re = (in_left + in_right) / SCALE_FACTOR;
+		in_left = in_left >> 8;
+		in_right = in_right >> 8;
+
+		left_16 = in_left;
+		right_16 = in_right;
+
+		stim_buf[i].data_re = (left_16 + right_16); /// SCALE_FACTOR;
 		stim_buf[i].data_im = 0;
+		cplx_data_t test = stim_buf[i];
 		usleep(21);
 	}
 
@@ -174,13 +184,11 @@ int main()
 
 		hps(convert_buf, final_out_buf, NUM_POINTS);
 
-		int fund_freq = detect_fundamental_freq(final_out_buf, NUM_HPS_POINTS);
-		if (fund_freq > 100){
-
-			//hps_print_final_buf(final_out_buf, NUM_HPS_POINTS);
-			//xil_printf("test!\n\r");
+		int fund_freq = detect_fundamental_freq(final_out_buf, NUM_HPS_POINTS) * TEST_SCALE_FACTOR;
+		if (fund_freq > 0){
+			xil_printf("FUNDAMENTAL FREQUENCY = %d\n\r", fund_freq);
 		}
-		xil_printf("FUNDAMENTAL FREQUENCY = %d\n\r", fund_freq);
+
 	}
 
 	free(stim_buf);

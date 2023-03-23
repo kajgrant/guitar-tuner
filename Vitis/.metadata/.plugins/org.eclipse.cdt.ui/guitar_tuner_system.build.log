@@ -1,10 +1,10 @@
-18:43:27 **** Incremental Build of configuration Debug for project guitar_tuner_system ****
+13:40:33 **** Incremental Build of configuration Debug for project guitar_tuner_system ****
 make all 
 Generating bif file for the system project
-generate_system_bif.bat 55761 C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/design_1_wrapper.xpfm standalone_ps7_cortexa9_0 C:/KDevelop/guitar-tuner/Vitis/guitar_tuner_system/Debug/system.bif
+generate_system_bif.bat 56911 C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/design_1_wrapper.xpfm standalone_ps7_cortexa9_0 C:/KDevelop/guitar-tuner/Vitis/guitar_tuner_system/Debug/system.bif
 sdcard_gen --xpfm C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/design_1_wrapper.xpfm --sys_config design_1_wrapper --bif C:/KDevelop/guitar-tuner/Vitis/guitar_tuner_system/Debug/system.bif --bitstream C:/KDevelop/guitar-tuner/Vitis/guitar_tuner/_ide/bitstream/design_1_wrapper.bit --elf C:/KDevelop/guitar-tuner/Vitis/guitar_tuner/Debug/guitar_tuner.elf,ps7_cortexa9_0
 creating BOOT.BIN using C:/KDevelop/guitar-tuner/Vitis/guitar_tuner/_ide/bitstream/design_1_wrapper.bit
 Running C:/Xilinx/Vitis/2020.2/bin/bootgen  -image C:/KDevelop/guitar-tuner/Vitis/guitar_tuner_system/Debug/sd_card_temp/boot.bif -w -o i BOOT.BIN
 
-18:43:34 Build Finished (took 7s.250ms)
+13:40:40 Build Finished (took 6s.918ms)
 
