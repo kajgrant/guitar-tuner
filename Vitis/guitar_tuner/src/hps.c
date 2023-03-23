@@ -10,9 +10,9 @@
 void hps(short *convert_buf, long *final_out_buf, int num_points)
 {
     Xuint32 *baseaddr_p = (Xuint32 *)XPAR_CUSTOM_HPS_1_S00_AXI_BASEADDR;
-    long onetwo;
-    long thirdfifth;
-    long convertedVal;
+    unsigned long onetwo;
+    unsigned long thirdfifth;
+    unsigned long convertedVal;
 
     for (int i = 0; i < num_points / 5; i++)
     {
@@ -22,7 +22,9 @@ void hps(short *convert_buf, long *final_out_buf, int num_points)
         *(baseaddr_p + 0) = onetwo;
         *(baseaddr_p + 1) = thirdfifth;
 
-        convertedVal = *(baseaddr_p + 2);
+        //convertedVal = *(baseaddr_p + 2);
+        convertedVal = *(baseaddr_p + 3);
+
         final_out_buf[i] = convertedVal;
     }
 }

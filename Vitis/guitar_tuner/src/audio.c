@@ -134,12 +134,15 @@ void AudioWriteToReg(unsigned char u8RegAddr, unsigned char u8Data, XIicPs *Iic)
  * ---------------------------------------------------------------------------- */
 void AudioConfigureJacks(XIicPs *Iic)
 {
+#ifdef LINEIN
 	AudioWriteToReg(R4_RECORD_MIXER_LEFT_CONTROL_0, 0x01, Iic);	// enable mixer 1
-	//AudioWriteToReg(R5_RECORD_MIXER_LEFT_CONTROL_1, 0x07, Iic);	// unmute Left channel of line in into mxr 1 and set gain to 6 db
+	AudioWriteToReg(R5_RECORD_MIXER_LEFT_CONTROL_1, 0x07, Iic);	// unmute Left channel of line in into mxr 1 and set gain to 6 db
 	AudioWriteToReg(R6_RECORD_MIXER_RIGHT_CONTROL_0, 0x01, Iic); // enable mixer 2
-	//AudioWriteToReg(R7_RECORD_MIXER_RIGHT_CONTROL_1, 0x07, Iic); // unmute Right channel of line in into mxr 2 and set gain to 6 db
+	AudioWriteToReg(R7_RECORD_MIXER_RIGHT_CONTROL_1, 0x07, Iic); // unmute Right channel of line in into mxr 2 and set gain to 6 db
 	AudioWriteToReg(R19_ADC_CONTROL, 0x13, Iic);					// enable ADCs
+#endif
 
+#ifdef MIC
 	//Mic
 	AudioWriteToReg(R8_LEFT_DIFFERENTIAL_INPUT_VOLUME_CONTROL, 0xFF, Iic); //Set Input Volume
 	AudioWriteToReg(R9_RIGHT_DIFFERENTIAL_INPUT_VOLUME_CONTROL, 0xFF, Iic); //Set Input Volume
@@ -147,6 +150,7 @@ void AudioConfigureJacks(XIicPs *Iic)
 	AudioWriteToReg(R11_ALC_CONTROL_0, 0x13, Iic); // ALC controls PGA - Here its set to stereo.
 	AudioWriteToReg(R5_RECORD_MIXER_LEFT_CONTROL_1, 0x10, Iic); //20dB LDBOOST, Line In Disabled.
 	AudioWriteToReg(R7_RECORD_MIXER_RIGHT_CONTROL_1, 0x10, Iic);//20dB LD Boost, Line In Disabled.
+#endif
 
 	AudioWriteToReg(R22_PLAYBACK_MIXER_LEFT_CONTROL_0, 0x21, Iic);				// unmute Left DAC into Mxr 3; enable mxr 3
 	AudioWriteToReg(R24_PLAYBACK_MIXER_RIGHT_CONTROL_0, 0x41, Iic);				// unmute Right DAC into Mxr4; enable mxr 4
@@ -187,9 +191,12 @@ void LineinLineoutConfig(XIicPs *Iic)
 	AudioWriteToReg(R66_CLOCK_ENABLE_1, 0x03, Iic);
 
 	AudioWriteToReg(R4_RECORD_MIXER_LEFT_CONTROL_0, 0x01, Iic);
-	//AudioWriteToReg(R5_RECORD_MIXER_LEFT_CONTROL_1, 0x05, Iic); // 0 dB gain
 	AudioWriteToReg(R6_RECORD_MIXER_RIGHT_CONTROL_0, 0x01, Iic);
-	//AudioWriteToReg(R7_RECORD_MIXER_RIGHT_CONTROL_1, 0x05, Iic); // 0 dB gain
+
+#ifdef LINEIN
+	AudioWriteToReg(R5_RECORD_MIXER_LEFT_CONTROL_1, 0x05, Iic); // 0 dB gain
+	AudioWriteToReg(R7_RECORD_MIXER_RIGHT_CONTROL_1, 0x05, Iic); // 0 dB gain
+#endif
 
 	AudioWriteToReg(R22_PLAYBACK_MIXER_LEFT_CONTROL_0, 0x21, Iic);
 	AudioWriteToReg(R24_PLAYBACK_MIXER_RIGHT_CONTROL_0, 0x41, Iic);

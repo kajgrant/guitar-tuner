@@ -1,6 +1,6 @@
 Nothing to build in platform 'design_1_wrapper'
 
-17:34:51 **** Incremental Build of configuration Debug for project guitar_tuner ****
+18:43:25 **** Incremental Build of configuration Debug for project guitar_tuner ****
 make all 
 make --no-print-directory pre-build
 a9-linaro-pre-build-step
@@ -18,6 +18,25 @@ C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/sw/desig
       |  ^~~~~~~
 'Finished building: ../src/helloworld.c'
 ' '
+'Building file: ../src/hps.c'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/hps.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -IC:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/standalone_ps7_cortexa9_0/bspinclude/include -MMD -MP -MF"src/hps.d" -MT"src/hps.o" -o "src/hps.o" "../src/hps.c"
+In file included from ../src/hps.c:7:
+C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/standalone_ps7_cortexa9_0/bspinclude/include/xbasic_types.h:98:2: warning: #warning The xbasics_type.h file is deprecated and users should use xil_types.h and xil_assert. [-Wcpp]
+   98 | #warning  The xbasics_type.h file is deprecated and users should use xil_types.h and xil_assert.
+      |  ^~~~~~~
+C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/standalone_ps7_cortexa9_0/bspinclude/include/xbasic_types.h:99:2: warning: #warning Please refer the Standalone BSP UG647 for further details [-Wcpp]
+   99 | #warning  Please refer the Standalone BSP UG647 for further details
+      |  ^~~~~~~
+../src/hps.c: In function 'void hps_data_get_string(char*, long int)':
+../src/hps.c:34:18: warning: format '%d' expects argument of type 'int', but argument 3 has type 'long int' [-Wformat=]
+   34 |     sprintf(c, "%d", data);
+      |                 ~^   ~~~~
+      |                  |   |
+      |                  int long int
+      |                 %ld
+'Finished building: ../src/hps.c'
+' '
 'Building target: guitar_tuner.elf'
 'Invoking: ARM v7 g++ linker'
 arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -LC:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/standalone_ps7_cortexa9_0/bsplib/lib -o "guitar_tuner.elf"  ./src/audio.o ./src/cplx_data.o ./src/dma_accel.o ./src/fft.o ./src/helloworld.o ./src/hps.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
@@ -26,13 +45,13 @@ arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=non
 'Invoking: ARM v7 Print Size'
 arm-none-eabi-size guitar_tuner.elf  |tee "guitar_tuner.elf.size"
    text	   data	    bss	    dec	    hex	filename
-  79660	  36205	 284800	 400665	  61d19	guitar_tuner.elf
+  79596	  36205	 284800	 400601	  61cd9	guitar_tuner.elf
 'Finished building: guitar_tuner.elf.size'
 ' '
-17:34:52 **** Incremental Build of configuration Debug for project guitar_tuner_system ****
+18:43:27 **** Incremental Build of configuration Debug for project guitar_tuner_system ****
 make all 
 Generating bif file for the system project
-generate_system_bif.bat 50905 C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/design_1_wrapper.xpfm standalone_ps7_cortexa9_0 C:/KDevelop/guitar-tuner/Vitis/guitar_tuner_system/Debug/system.bif
+generate_system_bif.bat 55761 C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/design_1_wrapper.xpfm standalone_ps7_cortexa9_0 C:/KDevelop/guitar-tuner/Vitis/guitar_tuner_system/Debug/system.bif
 sdcard_gen --xpfm C:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/design_1_wrapper.xpfm --sys_config design_1_wrapper --bif C:/KDevelop/guitar-tuner/Vitis/guitar_tuner_system/Debug/system.bif --bitstream C:/KDevelop/guitar-tuner/Vitis/guitar_tuner/_ide/bitstream/design_1_wrapper.bit --elf C:/KDevelop/guitar-tuner/Vitis/guitar_tuner/Debug/guitar_tuner.elf,ps7_cortexa9_0
 creating BOOT.BIN using C:/KDevelop/guitar-tuner/Vitis/guitar_tuner/_ide/bitstream/design_1_wrapper.bit
 Running C:/Xilinx/Vitis/2020.2/bin/bootgen  -image C:/KDevelop/guitar-tuner/Vitis/guitar_tuner_system/Debug/sd_card_temp/boot.bif -w -o i BOOT.BIN

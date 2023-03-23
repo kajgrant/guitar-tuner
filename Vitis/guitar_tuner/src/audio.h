@@ -24,6 +24,8 @@
 /* I2C Serial Clock frequency in Hertz */
 #define IIC_SCLK_RATE 400000
 
+#define LINEIN true
+
 /* ADAU internal registers */
 enum audio_regs
 {
