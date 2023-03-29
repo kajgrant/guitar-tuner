@@ -5,6 +5,8 @@ Time = 1;
 L = Time*Fs;             % Length of signal
 t = (0:L-1)*T;        % Time vector
 
+w = hann(8192);
+
 S = ceil(1000*sin(2*pi*330*t) + 500*sin(2*pi*660*t) + 200*sin(2*pi*990*t));
 
 Y = fft(S);
@@ -16,17 +18,17 @@ f = Fs*(0:(L-1))/L;
 %P1(2:end-1) = 2*P1(2:end-1);
 
 plotStuff(t, P2, S, f);
-printStufftoFile(L, S, Y);
+printStufftoFile(8192, w);
 
-function printStufftoFile(L, S, Y)
+function printStufftoFile(L, S)
 
     fileID = fopen('test.txt','wt');
     fprintf(fileID, '{');
     for i = 1:L
         if mod(i, 8) == 0
-            fprintf(fileID, '%d,\n', S(i));
+            fprintf(fileID, '%f8,\n', S(i));
         else
-            fprintf(fileID, '%d,', S(i));
+            fprintf(fileID, '%f8,', S(i));
         end
     end
     fprintf(fileID, '}\r\n\n');

@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Tue Mar 28 02:29:41 2023
+# Process ID: 16372
+# Current directory: C:/Users/kajgr/sfuvault/452_Project/M5_final/M5/Vivado/audio_fft
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent16220 C:\Users\kajgr\sfuvault\452_Project\M5_final\M5\Vivado\audio_fft\audio_fft.xpr
+# Log file: C:/Users/kajgr/sfuvault/452_Project/M5_final/M5/Vivado/audio_fft/vivado.log
+# Journal file: C:/Users/kajgr/sfuvault/452_Project/M5_final/M5/Vivado/audio_fft\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/kajgr/sfuvault/452_Project/M5_final/M5/Vivado/audio_fft/audio_fft.xpr
+update_compile_order -fileset sources_1

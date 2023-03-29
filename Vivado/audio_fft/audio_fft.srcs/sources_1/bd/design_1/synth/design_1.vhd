@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
---Date        : Wed Mar 22 12:54:05 2023
+--Date        : Tue Mar 28 23:08:37 2023
 --Host        : KAJ-MAIN running 64-bit major release  (build 9200)
 --Command     : generate_target design_1.bd
 --Design      : design_1
@@ -4521,10 +4521,15 @@ entity design_1 is
     IIC_0_sda_t : out STD_LOGIC;
     LRCLK : out STD_LOGIC;
     SDATA_I : in STD_LOGIC;
-    SDATA_O : out STD_LOGIC
+    SDATA_O : out STD_LOGIC;
+    VGA_B : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    VGA_G : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    VGA_HS : out STD_LOGIC;
+    VGA_R : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    VGA_VS : out STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of design_1 : entity is "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=32,numReposBlks=17,numNonXlnxBlks=1,numHierBlks=15,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}";
+  attribute CORE_GENERATION_INFO of design_1 : entity is "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=34,numReposBlks=19,numNonXlnxBlks=2,numHierBlks=15,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of design_1 : entity is "design_1.hwdef";
 end design_1;
@@ -4677,6 +4682,51 @@ architecture STRUCTURE of design_1 is
     S_AXI_HP0_WID : in STD_LOGIC_VECTOR ( 5 downto 0 );
     S_AXI_HP0_WDATA : in STD_LOGIC_VECTOR ( 63 downto 0 );
     S_AXI_HP0_WSTRB : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    S_AXI_HP1_ARREADY : out STD_LOGIC;
+    S_AXI_HP1_AWREADY : out STD_LOGIC;
+    S_AXI_HP1_BVALID : out STD_LOGIC;
+    S_AXI_HP1_RLAST : out STD_LOGIC;
+    S_AXI_HP1_RVALID : out STD_LOGIC;
+    S_AXI_HP1_WREADY : out STD_LOGIC;
+    S_AXI_HP1_BRESP : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    S_AXI_HP1_RRESP : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    S_AXI_HP1_BID : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    S_AXI_HP1_RID : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    S_AXI_HP1_RDATA : out STD_LOGIC_VECTOR ( 63 downto 0 );
+    S_AXI_HP1_RCOUNT : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    S_AXI_HP1_WCOUNT : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    S_AXI_HP1_RACOUNT : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    S_AXI_HP1_WACOUNT : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    S_AXI_HP1_ACLK : in STD_LOGIC;
+    S_AXI_HP1_ARVALID : in STD_LOGIC;
+    S_AXI_HP1_AWVALID : in STD_LOGIC;
+    S_AXI_HP1_BREADY : in STD_LOGIC;
+    S_AXI_HP1_RDISSUECAP1_EN : in STD_LOGIC;
+    S_AXI_HP1_RREADY : in STD_LOGIC;
+    S_AXI_HP1_WLAST : in STD_LOGIC;
+    S_AXI_HP1_WRISSUECAP1_EN : in STD_LOGIC;
+    S_AXI_HP1_WVALID : in STD_LOGIC;
+    S_AXI_HP1_ARBURST : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    S_AXI_HP1_ARLOCK : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    S_AXI_HP1_ARSIZE : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    S_AXI_HP1_AWBURST : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    S_AXI_HP1_AWLOCK : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    S_AXI_HP1_AWSIZE : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    S_AXI_HP1_ARPROT : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    S_AXI_HP1_AWPROT : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    S_AXI_HP1_ARADDR : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    S_AXI_HP1_AWADDR : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    S_AXI_HP1_ARCACHE : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    S_AXI_HP1_ARLEN : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    S_AXI_HP1_ARQOS : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    S_AXI_HP1_AWCACHE : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    S_AXI_HP1_AWLEN : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    S_AXI_HP1_AWQOS : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    S_AXI_HP1_ARID : in STD_LOGIC_VECTOR ( 5 downto 0 );
+    S_AXI_HP1_AWID : in STD_LOGIC_VECTOR ( 5 downto 0 );
+    S_AXI_HP1_WID : in STD_LOGIC_VECTOR ( 5 downto 0 );
+    S_AXI_HP1_WDATA : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    S_AXI_HP1_WSTRB : in STD_LOGIC_VECTOR ( 7 downto 0 );
     IRQ_F2P : in STD_LOGIC_VECTOR ( 1 downto 0 );
     FCLK_CLK0 : out STD_LOGIC;
     FCLK_CLK1 : out STD_LOGIC;
@@ -4796,6 +4846,71 @@ architecture STRUCTURE of design_1 is
     gpio_io_t : out STD_LOGIC_VECTOR ( 1 downto 0 )
   );
   end component design_1_axi_gpio_0_1;
+  component design_1_vga_controller_0_0 is
+  port (
+    VGA_R : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    VGA_G : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    VGA_B : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    VGA_HS : out STD_LOGIC;
+    VGA_VS : out STD_LOGIC;
+    clk : in STD_LOGIC;
+    pixel_clk : in STD_LOGIC;
+    rstn : in STD_LOGIC;
+    pixel_rstn : in STD_LOGIC;
+    fifo_rst : in STD_LOGIC;
+    rfifo_count : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    switch_buffer : in STD_LOGIC;
+    switch_buffer_ack : out STD_LOGIC;
+    M_AXI_AWID : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    M_AXI_AWADDR : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    M_AXI_AWLEN : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    M_AXI_AWSIZE : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    M_AXI_AWBURST : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    M_AXI_AWLOCK : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    M_AXI_AWCACHE : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    M_AXI_AWPROT : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    M_AXI_AWQOS : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    M_AXI_AWUSER : out STD_LOGIC_VECTOR ( 4 downto 0 );
+    M_AXI_AWVALID : out STD_LOGIC;
+    M_AXI_AWREADY : in STD_LOGIC;
+    M_AXI_WID : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    M_AXI_WDATA : out STD_LOGIC_VECTOR ( 63 downto 0 );
+    M_AXI_WSTRB : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    M_AXI_WLAST : out STD_LOGIC;
+    M_AXI_WVALID : out STD_LOGIC;
+    M_AXI_WREADY : in STD_LOGIC;
+    M_AXI_BID : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    M_AXI_BRESP : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    M_AXI_BVALID : in STD_LOGIC;
+    M_AXI_BREADY : out STD_LOGIC;
+    M_AXI_ARID : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    M_AXI_ARADDR : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    M_AXI_ARLEN : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    M_AXI_ARSIZE : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    M_AXI_ARBURST : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    M_AXI_ARLOCK : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    M_AXI_ARCACHE : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    M_AXI_ARPROT : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    M_AXI_ARQOS : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    M_AXI_ARUSER : out STD_LOGIC_VECTOR ( 4 downto 0 );
+    M_AXI_ARVALID : out STD_LOGIC;
+    M_AXI_ARREADY : in STD_LOGIC;
+    M_AXI_RID : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    M_AXI_RDATA : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    M_AXI_RRESP : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    M_AXI_RLAST : in STD_LOGIC;
+    M_AXI_RVALID : in STD_LOGIC;
+    M_AXI_RREADY : out STD_LOGIC
+  );
+  end component design_1_vga_controller_0_0;
+  component design_1_clk_wiz_0_0 is
+  port (
+    resetn : in STD_LOGIC;
+    clk_in1 : in STD_LOGIC;
+    clk_out1 : out STD_LOGIC;
+    locked : out STD_LOGIC
+  );
+  end component design_1_clk_wiz_0_0;
   signal SDATA_I_0_1 : STD_LOGIC;
   signal axi_dma_0_m_axis_mm2s_TDATA : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal axi_dma_0_m_axis_mm2s_TLAST : STD_LOGIC;
@@ -4896,9 +5011,11 @@ architecture STRUCTURE of design_1 is
   signal axi_interconnect_0_m00_axi_WREADY : STD_LOGIC;
   signal axi_interconnect_0_m00_axi_WSTRB : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal axi_interconnect_0_m00_axi_WVALID : STD_LOGIC;
+  signal clk_wiz_0_clk_out1 : STD_LOGIC;
   signal edge_detect_0_edge_detected : STD_LOGIC;
   signal proc_sys_reset_0_interconnect_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
   signal proc_sys_reset_0_peripheral_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal proc_sys_reset_0_peripheral_reset : STD_LOGIC_VECTOR ( 0 to 0 );
   signal processing_system7_0_FCLK_CLK1 : STD_LOGIC;
   signal processing_system7_0_FCLK_RESET0_N : STD_LOGIC;
   signal processing_system7_0_IIC_0_SCL_I : STD_LOGIC;
@@ -4945,6 +5062,7 @@ architecture STRUCTURE of design_1 is
   signal processing_system7_0_M_AXI_GP1_WREADY : STD_LOGIC;
   signal processing_system7_0_M_AXI_GP1_WSTRB : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal processing_system7_0_M_AXI_GP1_WVALID : STD_LOGIC;
+  signal processing_system7_0_S_AXI_HP1_RCOUNT : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal processing_system7_0_ddr_ADDR : STD_LOGIC_VECTOR ( 14 downto 0 );
   signal processing_system7_0_ddr_BA : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal processing_system7_0_ddr_CAS_N : STD_LOGIC;
@@ -5005,6 +5123,49 @@ architecture STRUCTURE of design_1 is
   signal s00_axi_1_WREADY : STD_LOGIC;
   signal s00_axi_1_WSTRB : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal s00_axi_1_WVALID : STD_LOGIC;
+  signal vga_controller_0_M_AXI_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal vga_controller_0_M_AXI_ARBURST : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal vga_controller_0_M_AXI_ARCACHE : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal vga_controller_0_M_AXI_ARID : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal vga_controller_0_M_AXI_ARLEN : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal vga_controller_0_M_AXI_ARLOCK : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal vga_controller_0_M_AXI_ARPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal vga_controller_0_M_AXI_ARQOS : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal vga_controller_0_M_AXI_ARREADY : STD_LOGIC;
+  signal vga_controller_0_M_AXI_ARSIZE : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal vga_controller_0_M_AXI_ARVALID : STD_LOGIC;
+  signal vga_controller_0_M_AXI_AWADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal vga_controller_0_M_AXI_AWBURST : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal vga_controller_0_M_AXI_AWCACHE : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal vga_controller_0_M_AXI_AWID : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal vga_controller_0_M_AXI_AWLEN : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal vga_controller_0_M_AXI_AWLOCK : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal vga_controller_0_M_AXI_AWPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal vga_controller_0_M_AXI_AWQOS : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal vga_controller_0_M_AXI_AWREADY : STD_LOGIC;
+  signal vga_controller_0_M_AXI_AWSIZE : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal vga_controller_0_M_AXI_AWVALID : STD_LOGIC;
+  signal vga_controller_0_M_AXI_BID : STD_LOGIC_VECTOR ( 5 downto 0 );
+  signal vga_controller_0_M_AXI_BREADY : STD_LOGIC;
+  signal vga_controller_0_M_AXI_BRESP : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal vga_controller_0_M_AXI_BVALID : STD_LOGIC;
+  signal vga_controller_0_M_AXI_RDATA : STD_LOGIC_VECTOR ( 63 downto 0 );
+  signal vga_controller_0_M_AXI_RID : STD_LOGIC_VECTOR ( 5 downto 0 );
+  signal vga_controller_0_M_AXI_RLAST : STD_LOGIC;
+  signal vga_controller_0_M_AXI_RREADY : STD_LOGIC;
+  signal vga_controller_0_M_AXI_RRESP : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal vga_controller_0_M_AXI_RVALID : STD_LOGIC;
+  signal vga_controller_0_M_AXI_WDATA : STD_LOGIC_VECTOR ( 63 downto 0 );
+  signal vga_controller_0_M_AXI_WID : STD_LOGIC_VECTOR ( 5 downto 0 );
+  signal vga_controller_0_M_AXI_WLAST : STD_LOGIC;
+  signal vga_controller_0_M_AXI_WREADY : STD_LOGIC;
+  signal vga_controller_0_M_AXI_WSTRB : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal vga_controller_0_M_AXI_WVALID : STD_LOGIC;
+  signal vga_controller_0_VGA_B : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal vga_controller_0_VGA_G : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal vga_controller_0_VGA_HS : STD_LOGIC;
+  signal vga_controller_0_VGA_R : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal vga_controller_0_VGA_VS : STD_LOGIC;
   signal xfft_0_m_axis_data_TDATA : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal xfft_0_m_axis_data_TLAST : STD_LOGIC;
   signal xfft_0_m_axis_data_TREADY : STD_LOGIC;
@@ -5013,9 +5174,9 @@ architecture STRUCTURE of design_1 is
   signal zed_audio_ctrl_0_BCLK : STD_LOGIC;
   signal zed_audio_ctrl_0_LRCLK : STD_LOGIC;
   signal zed_audio_ctrl_0_SDATA_O : STD_LOGIC;
+  signal NLW_clk_wiz_0_locked_UNCONNECTED : STD_LOGIC;
   signal NLW_proc_sys_reset_0_mb_reset_UNCONNECTED : STD_LOGIC;
   signal NLW_proc_sys_reset_0_bus_struct_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal NLW_proc_sys_reset_0_peripheral_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_processing_system7_0_ENET0_PTP_DELAY_REQ_RX_UNCONNECTED : STD_LOGIC;
   signal NLW_processing_system7_0_ENET0_PTP_DELAY_REQ_TX_UNCONNECTED : STD_LOGIC;
   signal NLW_processing_system7_0_ENET0_PTP_PDELAY_REQ_RX_UNCONNECTED : STD_LOGIC;
@@ -5034,7 +5195,13 @@ architecture STRUCTURE of design_1 is
   signal NLW_processing_system7_0_S_AXI_HP0_RCOUNT_UNCONNECTED : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal NLW_processing_system7_0_S_AXI_HP0_WACOUNT_UNCONNECTED : STD_LOGIC_VECTOR ( 5 downto 0 );
   signal NLW_processing_system7_0_S_AXI_HP0_WCOUNT_UNCONNECTED : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal NLW_processing_system7_0_S_AXI_HP1_RACOUNT_UNCONNECTED : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal NLW_processing_system7_0_S_AXI_HP1_WACOUNT_UNCONNECTED : STD_LOGIC_VECTOR ( 5 downto 0 );
+  signal NLW_processing_system7_0_S_AXI_HP1_WCOUNT_UNCONNECTED : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal NLW_processing_system7_0_USB0_PORT_INDCTL_UNCONNECTED : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal NLW_vga_controller_0_switch_buffer_ack_UNCONNECTED : STD_LOGIC;
+  signal NLW_vga_controller_0_M_AXI_ARUSER_UNCONNECTED : STD_LOGIC_VECTOR ( 4 downto 0 );
+  signal NLW_vga_controller_0_M_AXI_AWUSER_UNCONNECTED : STD_LOGIC_VECTOR ( 4 downto 0 );
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of DDR_cas_n : signal is "xilinx.com:interface:ddrx:1.0 DDR CAS_N";
   attribute X_INTERFACE_INFO of DDR_ck_n : signal is "xilinx.com:interface:ddrx:1.0 DDR CK_N";
@@ -5083,6 +5250,11 @@ begin
   LRCLK <= zed_audio_ctrl_0_LRCLK;
   SDATA_I_0_1 <= SDATA_I;
   SDATA_O <= zed_audio_ctrl_0_SDATA_O;
+  VGA_B(3 downto 0) <= vga_controller_0_VGA_B(3 downto 0);
+  VGA_G(3 downto 0) <= vga_controller_0_VGA_G(3 downto 0);
+  VGA_HS <= vga_controller_0_VGA_HS;
+  VGA_R(3 downto 0) <= vga_controller_0_VGA_R(3 downto 0);
+  VGA_VS <= vga_controller_0_VGA_VS;
   axi_gpio_0_GPIO_TRI_I(1 downto 0) <= GPIO_tri_i(1 downto 0);
   processing_system7_0_IIC_0_SCL_I <= IIC_0_scl_i;
   processing_system7_0_IIC_0_SDA_I <= IIC_0_sda_i;
@@ -5229,6 +5401,13 @@ axi_interconnect_0: entity work.design_1_axi_interconnect_0_1
       S00_AXI_wstrb(3 downto 0) => processing_system7_0_M_AXI_GP1_WSTRB(3 downto 0),
       S00_AXI_wvalid => processing_system7_0_M_AXI_GP1_WVALID
     );
+clk_wiz_0: component design_1_clk_wiz_0_0
+     port map (
+      clk_in1 => processing_system7_0_fclk_clk0,
+      clk_out1 => clk_wiz_0_clk_out1,
+      locked => NLW_clk_wiz_0_locked_UNCONNECTED,
+      resetn => processing_system7_0_FCLK_RESET0_N
+    );
 ctrl: entity work.ctrl_imp_1POYFNJ
      port map (
       M_AXIS_ACCEL_tdata(31 downto 0) => axi_dma_0_m_axis_mm2s_TDATA(31 downto 0),
@@ -5355,8 +5534,8 @@ proc_sys_reset_0: component design_1_proc_sys_reset_0_1
       mb_debug_sys_rst => '0',
       mb_reset => NLW_proc_sys_reset_0_mb_reset_UNCONNECTED,
       peripheral_aresetn(0) => proc_sys_reset_0_peripheral_aresetn(0),
-      peripheral_reset(0) => NLW_proc_sys_reset_0_peripheral_reset_UNCONNECTED(0),
-      slowest_sync_clk => processing_system7_0_fclk_clk0
+      peripheral_reset(0) => proc_sys_reset_0_peripheral_reset(0),
+      slowest_sync_clk => clk_wiz_0_clk_out1
     );
 processing_system7_0: component design_1_processing_system7_0_0
      port map (
@@ -5527,12 +5706,115 @@ processing_system7_0: component design_1_processing_system7_0_0
       S_AXI_HP0_WRISSUECAP1_EN => '0',
       S_AXI_HP0_WSTRB(7 downto 0) => axi_interconnect_0_m00_axi_WSTRB(7 downto 0),
       S_AXI_HP0_WVALID => axi_interconnect_0_m00_axi_WVALID,
+      S_AXI_HP1_ACLK => processing_system7_0_fclk_clk0,
+      S_AXI_HP1_ARADDR(31 downto 0) => vga_controller_0_M_AXI_ARADDR(31 downto 0),
+      S_AXI_HP1_ARBURST(1 downto 0) => vga_controller_0_M_AXI_ARBURST(1 downto 0),
+      S_AXI_HP1_ARCACHE(3 downto 0) => vga_controller_0_M_AXI_ARCACHE(3 downto 0),
+      S_AXI_HP1_ARID(5 downto 3) => B"000",
+      S_AXI_HP1_ARID(2 downto 0) => vga_controller_0_M_AXI_ARID(2 downto 0),
+      S_AXI_HP1_ARLEN(3 downto 0) => vga_controller_0_M_AXI_ARLEN(3 downto 0),
+      S_AXI_HP1_ARLOCK(1 downto 0) => vga_controller_0_M_AXI_ARLOCK(1 downto 0),
+      S_AXI_HP1_ARPROT(2 downto 0) => vga_controller_0_M_AXI_ARPROT(2 downto 0),
+      S_AXI_HP1_ARQOS(3 downto 0) => vga_controller_0_M_AXI_ARQOS(3 downto 0),
+      S_AXI_HP1_ARREADY => vga_controller_0_M_AXI_ARREADY,
+      S_AXI_HP1_ARSIZE(2 downto 0) => vga_controller_0_M_AXI_ARSIZE(2 downto 0),
+      S_AXI_HP1_ARVALID => vga_controller_0_M_AXI_ARVALID,
+      S_AXI_HP1_AWADDR(31 downto 0) => vga_controller_0_M_AXI_AWADDR(31 downto 0),
+      S_AXI_HP1_AWBURST(1 downto 0) => vga_controller_0_M_AXI_AWBURST(1 downto 0),
+      S_AXI_HP1_AWCACHE(3 downto 0) => vga_controller_0_M_AXI_AWCACHE(3 downto 0),
+      S_AXI_HP1_AWID(5 downto 3) => B"000",
+      S_AXI_HP1_AWID(2 downto 0) => vga_controller_0_M_AXI_AWID(2 downto 0),
+      S_AXI_HP1_AWLEN(3 downto 0) => vga_controller_0_M_AXI_AWLEN(3 downto 0),
+      S_AXI_HP1_AWLOCK(1 downto 0) => vga_controller_0_M_AXI_AWLOCK(1 downto 0),
+      S_AXI_HP1_AWPROT(2 downto 0) => vga_controller_0_M_AXI_AWPROT(2 downto 0),
+      S_AXI_HP1_AWQOS(3 downto 0) => vga_controller_0_M_AXI_AWQOS(3 downto 0),
+      S_AXI_HP1_AWREADY => vga_controller_0_M_AXI_AWREADY,
+      S_AXI_HP1_AWSIZE(2 downto 0) => vga_controller_0_M_AXI_AWSIZE(2 downto 0),
+      S_AXI_HP1_AWVALID => vga_controller_0_M_AXI_AWVALID,
+      S_AXI_HP1_BID(5 downto 0) => vga_controller_0_M_AXI_BID(5 downto 0),
+      S_AXI_HP1_BREADY => vga_controller_0_M_AXI_BREADY,
+      S_AXI_HP1_BRESP(1 downto 0) => vga_controller_0_M_AXI_BRESP(1 downto 0),
+      S_AXI_HP1_BVALID => vga_controller_0_M_AXI_BVALID,
+      S_AXI_HP1_RACOUNT(2 downto 0) => NLW_processing_system7_0_S_AXI_HP1_RACOUNT_UNCONNECTED(2 downto 0),
+      S_AXI_HP1_RCOUNT(7 downto 0) => processing_system7_0_S_AXI_HP1_RCOUNT(7 downto 0),
+      S_AXI_HP1_RDATA(63 downto 0) => vga_controller_0_M_AXI_RDATA(63 downto 0),
+      S_AXI_HP1_RDISSUECAP1_EN => '0',
+      S_AXI_HP1_RID(5 downto 0) => vga_controller_0_M_AXI_RID(5 downto 0),
+      S_AXI_HP1_RLAST => vga_controller_0_M_AXI_RLAST,
+      S_AXI_HP1_RREADY => vga_controller_0_M_AXI_RREADY,
+      S_AXI_HP1_RRESP(1 downto 0) => vga_controller_0_M_AXI_RRESP(1 downto 0),
+      S_AXI_HP1_RVALID => vga_controller_0_M_AXI_RVALID,
+      S_AXI_HP1_WACOUNT(5 downto 0) => NLW_processing_system7_0_S_AXI_HP1_WACOUNT_UNCONNECTED(5 downto 0),
+      S_AXI_HP1_WCOUNT(7 downto 0) => NLW_processing_system7_0_S_AXI_HP1_WCOUNT_UNCONNECTED(7 downto 0),
+      S_AXI_HP1_WDATA(63 downto 0) => vga_controller_0_M_AXI_WDATA(63 downto 0),
+      S_AXI_HP1_WID(5 downto 0) => vga_controller_0_M_AXI_WID(5 downto 0),
+      S_AXI_HP1_WLAST => vga_controller_0_M_AXI_WLAST,
+      S_AXI_HP1_WREADY => vga_controller_0_M_AXI_WREADY,
+      S_AXI_HP1_WRISSUECAP1_EN => '0',
+      S_AXI_HP1_WSTRB(7 downto 0) => vga_controller_0_M_AXI_WSTRB(7 downto 0),
+      S_AXI_HP1_WVALID => vga_controller_0_M_AXI_WVALID,
       TTC0_WAVE0_OUT => NLW_processing_system7_0_TTC0_WAVE0_OUT_UNCONNECTED,
       TTC0_WAVE1_OUT => NLW_processing_system7_0_TTC0_WAVE1_OUT_UNCONNECTED,
       TTC0_WAVE2_OUT => NLW_processing_system7_0_TTC0_WAVE2_OUT_UNCONNECTED,
       USB0_PORT_INDCTL(1 downto 0) => NLW_processing_system7_0_USB0_PORT_INDCTL_UNCONNECTED(1 downto 0),
       USB0_VBUS_PWRFAULT => '0',
       USB0_VBUS_PWRSELECT => NLW_processing_system7_0_USB0_VBUS_PWRSELECT_UNCONNECTED
+    );
+vga_controller_0: component design_1_vga_controller_0_0
+     port map (
+      M_AXI_ARADDR(31 downto 0) => vga_controller_0_M_AXI_ARADDR(31 downto 0),
+      M_AXI_ARBURST(1 downto 0) => vga_controller_0_M_AXI_ARBURST(1 downto 0),
+      M_AXI_ARCACHE(3 downto 0) => vga_controller_0_M_AXI_ARCACHE(3 downto 0),
+      M_AXI_ARID(2 downto 0) => vga_controller_0_M_AXI_ARID(2 downto 0),
+      M_AXI_ARLEN(3 downto 0) => vga_controller_0_M_AXI_ARLEN(3 downto 0),
+      M_AXI_ARLOCK(1 downto 0) => vga_controller_0_M_AXI_ARLOCK(1 downto 0),
+      M_AXI_ARPROT(2 downto 0) => vga_controller_0_M_AXI_ARPROT(2 downto 0),
+      M_AXI_ARQOS(3 downto 0) => vga_controller_0_M_AXI_ARQOS(3 downto 0),
+      M_AXI_ARREADY => vga_controller_0_M_AXI_ARREADY,
+      M_AXI_ARSIZE(2 downto 0) => vga_controller_0_M_AXI_ARSIZE(2 downto 0),
+      M_AXI_ARUSER(4 downto 0) => NLW_vga_controller_0_M_AXI_ARUSER_UNCONNECTED(4 downto 0),
+      M_AXI_ARVALID => vga_controller_0_M_AXI_ARVALID,
+      M_AXI_AWADDR(31 downto 0) => vga_controller_0_M_AXI_AWADDR(31 downto 0),
+      M_AXI_AWBURST(1 downto 0) => vga_controller_0_M_AXI_AWBURST(1 downto 0),
+      M_AXI_AWCACHE(3 downto 0) => vga_controller_0_M_AXI_AWCACHE(3 downto 0),
+      M_AXI_AWID(2 downto 0) => vga_controller_0_M_AXI_AWID(2 downto 0),
+      M_AXI_AWLEN(3 downto 0) => vga_controller_0_M_AXI_AWLEN(3 downto 0),
+      M_AXI_AWLOCK(1 downto 0) => vga_controller_0_M_AXI_AWLOCK(1 downto 0),
+      M_AXI_AWPROT(2 downto 0) => vga_controller_0_M_AXI_AWPROT(2 downto 0),
+      M_AXI_AWQOS(3 downto 0) => vga_controller_0_M_AXI_AWQOS(3 downto 0),
+      M_AXI_AWREADY => vga_controller_0_M_AXI_AWREADY,
+      M_AXI_AWSIZE(2 downto 0) => vga_controller_0_M_AXI_AWSIZE(2 downto 0),
+      M_AXI_AWUSER(4 downto 0) => NLW_vga_controller_0_M_AXI_AWUSER_UNCONNECTED(4 downto 0),
+      M_AXI_AWVALID => vga_controller_0_M_AXI_AWVALID,
+      M_AXI_BID(2 downto 0) => vga_controller_0_M_AXI_BID(2 downto 0),
+      M_AXI_BREADY => vga_controller_0_M_AXI_BREADY,
+      M_AXI_BRESP(1 downto 0) => vga_controller_0_M_AXI_BRESP(1 downto 0),
+      M_AXI_BVALID => vga_controller_0_M_AXI_BVALID,
+      M_AXI_RDATA(63 downto 0) => vga_controller_0_M_AXI_RDATA(63 downto 0),
+      M_AXI_RID(2 downto 0) => vga_controller_0_M_AXI_RID(2 downto 0),
+      M_AXI_RLAST => vga_controller_0_M_AXI_RLAST,
+      M_AXI_RREADY => vga_controller_0_M_AXI_RREADY,
+      M_AXI_RRESP(1 downto 0) => vga_controller_0_M_AXI_RRESP(1 downto 0),
+      M_AXI_RVALID => vga_controller_0_M_AXI_RVALID,
+      M_AXI_WDATA(63 downto 0) => vga_controller_0_M_AXI_WDATA(63 downto 0),
+      M_AXI_WID(5 downto 0) => vga_controller_0_M_AXI_WID(5 downto 0),
+      M_AXI_WLAST => vga_controller_0_M_AXI_WLAST,
+      M_AXI_WREADY => vga_controller_0_M_AXI_WREADY,
+      M_AXI_WSTRB(7 downto 0) => vga_controller_0_M_AXI_WSTRB(7 downto 0),
+      M_AXI_WVALID => vga_controller_0_M_AXI_WVALID,
+      VGA_B(3 downto 0) => vga_controller_0_VGA_B(3 downto 0),
+      VGA_G(3 downto 0) => vga_controller_0_VGA_G(3 downto 0),
+      VGA_HS => vga_controller_0_VGA_HS,
+      VGA_R(3 downto 0) => vga_controller_0_VGA_R(3 downto 0),
+      VGA_VS => vga_controller_0_VGA_VS,
+      clk => processing_system7_0_fclk_clk0,
+      fifo_rst => proc_sys_reset_0_peripheral_reset(0),
+      pixel_clk => clk_wiz_0_clk_out1,
+      pixel_rstn => proc_sys_reset_0_peripheral_aresetn(0),
+      rfifo_count(7 downto 0) => processing_system7_0_S_AXI_HP1_RCOUNT(7 downto 0),
+      rstn => proc_sys_reset_0_peripheral_aresetn(0),
+      switch_buffer => '0',
+      switch_buffer_ack => NLW_vga_controller_0_switch_buffer_ack_UNCONNECTED
     );
 zed_audio_ctrl_0: component design_1_zed_audio_ctrl_0_0
      port map (

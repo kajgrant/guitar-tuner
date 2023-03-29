@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Mon Mar 27 17:50:52 2023
+# Process ID: 22392
+# Current directory: C:/Users/kgrantma/Downloads/M5/Vivado/audio_fft
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent25724 C:\Users\kgrantma\Downloads\M5\Vivado\audio_fft\audio_fft.xpr
+# Log file: C:/Users/kgrantma/Downloads/M5/Vivado/audio_fft/vivado.log
+# Journal file: C:/Users/kgrantma/Downloads/M5/Vivado/audio_fft\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/kgrantma/Downloads/M5/Vivado/audio_fft/audio_fft.xpr
+update_compile_order -fileset sources_1

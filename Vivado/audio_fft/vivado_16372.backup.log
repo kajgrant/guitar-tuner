@@ -1,0 +1,26 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Tue Mar 28 02:29:41 2023
+# Process ID: 16372
+# Current directory: C:/Users/kajgr/sfuvault/452_Project/M5_final/M5/Vivado/audio_fft
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent16220 C:\Users\kajgr\sfuvault\452_Project\M5_final\M5\Vivado\audio_fft\audio_fft.xpr
+# Log file: C:/Users/kajgr/sfuvault/452_Project/M5_final/M5/Vivado/audio_fft/vivado.log
+# Journal file: C:/Users/kajgr/sfuvault/452_Project/M5_final/M5/Vivado/audio_fft\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/kajgr/sfuvault/452_Project/M5_final/M5/Vivado/audio_fft/audio_fft.xpr
+INFO: [Project 1-313] Project file moved from 'C:/KDevelop/guitar-tuner/Vivado/audio_fft' since last save.
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/kajgr/sfuvault/452_Project/M5_final/M5/Vivado/ip_repo'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2020.2/data/ip'.
+open_project: Time (s): cpu = 00:00:15 ; elapsed = 00:00:11 . Memory (MB): peak = 1109.996 ; gain = 0.000
+INFO: [Vivado 12-8231] Launching Vitis
+INFO: [Vivado 12-417] Running vitis
+INFO: [Vivado 12-8232] Vitis launch initiated. Please check console for any further messages.
+update_compile_order -fileset sources_1
+exit
+INFO: [Common 17-206] Exiting Vivado at Tue Mar 28 03:12:13 2023...

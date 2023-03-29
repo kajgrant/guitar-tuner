@@ -1,6 +1,10 @@
 set_property SRC_FILE_INFO {cfile:c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_axi_dma_0_0/design_1_axi_dma_0_0.xdc rfile:../../../audio_fft.srcs/sources_1/bd/design_1/ip/design_1_axi_dma_0_0/design_1_axi_dma_0_0.xdc id:1 order:EARLY scoped_inst:design_1_i/ctrl/axi_dma_0/U0} [current_design]
 set_property SRC_FILE_INFO {cfile:c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0.xdc rfile:../../../audio_fft.srcs/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0.xdc id:2 order:EARLY scoped_inst:design_1_i/processing_system7_0/inst} [current_design]
-set_property SRC_FILE_INFO {cfile:C:/KDevelop/guitar-tuner/Vivado/sources/zedboard/adventures_with_ip_integrator/constraints/adventures_with_ip.xdc rfile:../../../../sources/zedboard/adventures_with_ip_integrator/constraints/adventures_with_ip.xdc id:3} [current_design]
+set_property SRC_FILE_INFO {cfile:c:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0_1/design_1_clk_wiz_0_0.xdc rfile:../../../audio_fft.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0_1/design_1_clk_wiz_0_0.xdc id:3 order:EARLY scoped_inst:design_1_i/clk_wiz_0/inst} [current_design]
+set_property SRC_FILE_INFO {cfile:C:/KDevelop/guitar-tuner/Vivado/sources/zedboard/adventures_with_ip_integrator/constraints/adventures_with_ip.xdc rfile:../../../../sources/zedboard/adventures_with_ip_integrator/constraints/adventures_with_ip.xdc id:4} [current_design]
+set_property SRC_FILE_INFO {cfile:C:/KDevelop/guitar-tuner/Vivado/sources/zedboard_master.xdc rfile:../../../../sources/zedboard_master.xdc id:5} [current_design]
+set_property SRC_FILE_INFO {cfile:C:/Xilinx/Vivado/2020.2/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl rfile:../../../../../../../Xilinx/Vivado/2020.2/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl id:6 order:LATE scoped_inst:design_1_i/vga_controller_0/U0/fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst unmanaged:yes} [current_design]
+set_property SRC_FILE_INFO {cfile:C:/Xilinx/Vivado/2020.2/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl rfile:../../../../../../../Xilinx/Vivado/2020.2/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl id:7 order:LATE scoped_inst:design_1_i/vga_controller_0/U0/fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst unmanaged:yes} [current_design]
 current_instance design_1_i/ctrl/axi_dma_0/U0
 set_property src_info {type:SCOPED_XDC file:1 line:52 export:INPUT save:INPUT read:READ} [current_design]
 create_waiver -internal -scope -type CDC -id {CDC-1} -user "axi_dma" -tags "9601" -desc "The CDC-1 warning is waived as it is safe in the context of AXI DMA. The Address and Data value does not change until AXI transaction is complete." -to [get_pins -hier -quiet -filter {NAME =~*I_AXI_DMA_REG_MODULE/GEN_AXI_LITE_IF.AXI_LITE_IF_I/GEN_ASYNC_WRITE.REG_WADDR_TO_IPCLK/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_IN_cdc_to[*].CROSS2_PLEVEL_IN2SCNDRY_IN_cdc_to/D}]
@@ -11,7 +15,7 @@ create_waiver -internal -scope -type CDC -id {CDC-1} -user "axi_dma" -tags "9601
 current_instance
 current_instance design_1_i/processing_system7_0/inst
 set_property src_info {type:SCOPED_XDC file:2 line:21 export:INPUT save:INPUT read:READ} [current_design]
-set_input_jitter clk_fpga_0 0.3
+set_input_jitter clk_fpga_0 0.24
 set_property src_info {type:SCOPED_XDC file:2 line:24 export:INPUT save:INPUT read:READ} [current_design]
 set_input_jitter clk_fpga_1 3
 set_property src_info {type:SCOPED_XDC file:2 line:34 export:INPUT save:INPUT read:READ} [current_design]
@@ -275,21 +279,68 @@ set_property PACKAGE_PIN "C9" [get_ports "PS_SRSTB"]
 set_property src_info {type:SCOPED_XDC file:2 line:655 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN "F7" [get_ports "PS_CLK"]
 current_instance
-set_property src_info {type:XDC file:3 line:20 export:INPUT save:INPUT read:READ} [current_design]
+current_instance design_1_i/clk_wiz_0/inst
+set_property src_info {type:SCOPED_XDC file:3 line:57 export:INPUT save:INPUT read:READ} [current_design]
+set_input_jitter [get_clocks -of_objects [get_ports clk_in1]] 0.08
+current_instance
+set_property src_info {type:XDC file:4 line:20 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN AA6 [get_ports BCLK]
-set_property src_info {type:XDC file:3 line:23 export:INPUT save:INPUT read:READ} [current_design]
+set_property src_info {type:XDC file:4 line:23 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN Y6 [get_ports LRCLK]
-set_property src_info {type:XDC file:3 line:26 export:INPUT save:INPUT read:READ} [current_design]
+set_property src_info {type:XDC file:4 line:26 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN AA7 [get_ports SDATA_I]
-set_property src_info {type:XDC file:3 line:29 export:INPUT save:INPUT read:READ} [current_design]
+set_property src_info {type:XDC file:4 line:29 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN Y8 [get_ports SDATA_O]
-set_property src_info {type:XDC file:3 line:33 export:INPUT save:INPUT read:READ} [current_design]
+set_property src_info {type:XDC file:4 line:33 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN AB2 [get_ports FCLK_CLK1]
-set_property src_info {type:XDC file:3 line:36 export:INPUT save:INPUT read:READ} [current_design]
+set_property src_info {type:XDC file:4 line:36 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN AB4 [get_ports IIC_0_scl_io]
-set_property src_info {type:XDC file:3 line:39 export:INPUT save:INPUT read:READ} [current_design]
+set_property src_info {type:XDC file:4 line:39 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN AB5 [get_ports IIC_0_sda_io]
-set_property src_info {type:XDC file:3 line:42 export:INPUT save:INPUT read:READ} [current_design]
+set_property src_info {type:XDC file:4 line:42 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN AB1 [get_ports {GPIO_tri_io[0]}]
-set_property src_info {type:XDC file:3 line:45 export:INPUT save:INPUT read:READ} [current_design]
+set_property src_info {type:XDC file:4 line:45 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN Y5 [get_ports {GPIO_tri_io[1]}]
+set_property src_info {type:XDC file:5 line:187 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN Y21  [get_ports {VGA_B[0]}];  # "VGA-B1"
+set_property src_info {type:XDC file:5 line:188 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN Y20  [get_ports {VGA_B[1]}];  # "VGA-B2"
+set_property src_info {type:XDC file:5 line:189 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN AB20 [get_ports {VGA_B[2]}];  # "VGA-B3"
+set_property src_info {type:XDC file:5 line:190 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN AB19 [get_ports {VGA_B[3]}];  # "VGA-B4"
+set_property src_info {type:XDC file:5 line:191 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN AB22 [get_ports {VGA_G[0]}];  # "VGA-G1"
+set_property src_info {type:XDC file:5 line:192 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN AA22 [get_ports {VGA_G[1]}];  # "VGA-G2"
+set_property src_info {type:XDC file:5 line:193 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN AB21 [get_ports {VGA_G[2]}];  # "VGA-G3"
+set_property src_info {type:XDC file:5 line:194 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN AA21 [get_ports {VGA_G[3]}];  # "VGA-G4"
+set_property src_info {type:XDC file:5 line:195 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN AA19 [get_ports {VGA_HS}];  # "VGA-HS"
+set_property src_info {type:XDC file:5 line:196 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN V20  [get_ports {VGA_R[0]}];  # "VGA-R1"
+set_property src_info {type:XDC file:5 line:197 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN U20  [get_ports {VGA_R[1]}];  # "VGA-R2"
+set_property src_info {type:XDC file:5 line:198 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN V19  [get_ports {VGA_R[2]}];  # "VGA-R3"
+set_property src_info {type:XDC file:5 line:199 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN V18  [get_ports {VGA_R[3]}];  # "VGA-R4"
+set_property src_info {type:XDC file:5 line:200 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN Y19  [get_ports {VGA_VS}];  # "VGA-VS"
+set_property src_info {type:XDC file:5 line:362 export:INPUT save:INPUT read:READ} [current_design]
+set_property IOSTANDARD LVCMOS33 [get_ports -of_objects [get_iobanks 33]];
+set_property src_info {type:XDC file:5 line:367 export:INPUT save:INPUT read:READ} [current_design]
+set_property IOSTANDARD LVCMOS18 [get_ports -of_objects [get_iobanks 34]];
+set_property src_info {type:XDC file:5 line:372 export:INPUT save:INPUT read:READ} [current_design]
+set_property IOSTANDARD LVCMOS18 [get_ports -of_objects [get_iobanks 35]];
+set_property src_info {type:XDC file:5 line:375 export:INPUT save:INPUT read:READ} [current_design]
+set_property IOSTANDARD LVCMOS33 [get_ports -of_objects [get_iobanks 13]];
+current_instance design_1_i/vga_controller_0/U0/fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst
+set_property src_info {type:SCOPED_XDC file:6 line:23 export:INPUT save:NONE read:READ} [current_design]
+create_waiver -internal -scoped -type CDC -id {CDC-6} -user "xpm_cdc" -tags "1009444" -desc "The CDC-6 warning is waived as it is safe in the context of XPM_CDC_GRAY." -from [get_pins -quiet {src_gray_ff_reg*/C}] -to [get_pins -quiet {dest_graysync_ff_reg*/D}]
+current_instance
+current_instance design_1_i/vga_controller_0/U0/fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst
+set_property src_info {type:SCOPED_XDC file:7 line:23 export:INPUT save:NONE read:READ} [current_design]
+create_waiver -internal -scoped -type CDC -id {CDC-6} -user "xpm_cdc" -tags "1009444" -desc "The CDC-6 warning is waived as it is safe in the context of XPM_CDC_GRAY." -from [get_pins -quiet {src_gray_ff_reg*/C}] -to [get_pins -quiet {dest_graysync_ff_reg*/D}]

@@ -1,0 +1,109 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Mon Mar 27 15:18:56 2023
+# Process ID: 16008
+# Current directory: C:/Users/kgrantma/Downloads/Final/Vivado/audio_fft
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent18000 C:\Users\kgrantma\Downloads\Final\Vivado\audio_fft\audio_fft.xpr
+# Log file: C:/Users/kgrantma/Downloads/Final/Vivado/audio_fft/vivado.log
+# Journal file: C:/Users/kgrantma/Downloads/Final/Vivado/audio_fft\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/kgrantma/Downloads/Final/Vivado/audio_fft/audio_fft.xpr
+update_compile_order -fileset sources_1
+add_files -fileset constrs_1 -norecurse C:/Users/kgrantma/Downloads/Final/Vivado/sources/zedboard_master.xdc
+open_bd_design {C:/Users/kgrantma/Downloads/Final/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/design_1.bd}
+regenerate_bd_layout
+update_ip_catalog -rebuild
+startgroup
+create_bd_cell -type ip -vlnv user.org:user:vga_controller:1.0 vga_controller_0
+endgroup
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:smartconnect:1.0 smartconnect_0
+endgroup
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:6.0 clk_wiz_0
+endgroup
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:axi_timer:2.0 axi_timer_0
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins vga_controller_0/VGA_HS] [get_bd_pins vga_controller_0/VGA_G] [get_bd_pins vga_controller_0/VGA_B] [get_bd_pins vga_controller_0/VGA_R] [get_bd_pins vga_controller_0/VGA_VS]
+endgroup
+startgroup
+set_property -dict [list CONFIG.PCW_USE_S_AXI_HP1 {1}] [get_bd_cells processing_system7_0]
+endgroup
+connect_bd_intf_net [get_bd_intf_pins vga_controller_0/M_AXI] [get_bd_intf_pins processing_system7_0/S_AXI_HP1]
+startgroup
+set_property -dict [list CONFIG.PCW_FPGA2_PERIPHERAL_FREQMHZ {120} CONFIG.PCW_EN_CLK2_PORT {1}] [get_bd_cells processing_system7_0]
+endgroup
+startgroup
+set_property -dict [list CONFIG.PCW_FPGA0_PERIPHERAL_FREQMHZ {120.000000} CONFIG.PCW_EN_CLK2_PORT {0}] [get_bd_cells processing_system7_0]
+endgroup
+connect_bd_net [get_bd_pins vga_controller_0/clk] [get_bd_pins processing_system7_0/FCLK_CLK0]
+connect_bd_net [get_bd_pins processing_system7_0/S_AXI_HP1_ACLK] [get_bd_pins processing_system7_0/FCLK_CLK0]
+connect_bd_net [get_bd_pins clk_wiz_0/clk_in1] [get_bd_pins processing_system7_0/FCLK_CLK0]
+connect_bd_net [get_bd_pins clk_wiz_0/clk_out1] [get_bd_pins vga_controller_0/pixel_clk]
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 proc_sys_reset_1
+endgroup
+connect_bd_net [get_bd_pins proc_sys_reset_1/slowest_sync_clk] [get_bd_pins clk_wiz_0/clk_out1]
+set_property location {2 524 1180} [get_bd_cells axi_timer_0]
+set_property location {2 550 1037} [get_bd_cells smartconnect_0]
+set_property location {2.5 815 1053} [get_bd_cells axi_timer_0]
+connect_bd_intf_net [get_bd_intf_pins smartconnect_0/M00_AXI] [get_bd_intf_pins axi_timer_0/S_AXI]
+startgroup
+set_property -dict [list CONFIG.NUM_MI {4}] [get_bd_cells axi_interconnect_0]
+endgroup
+connect_bd_intf_net -boundary_type upper [get_bd_intf_pins axi_interconnect_0/M03_AXI] [get_bd_intf_pins smartconnect_0/S00_AXI]
+connect_bd_net [get_bd_pins axi_interconnect_0/M03_ACLK] [get_bd_pins processing_system7_0/FCLK_CLK0]
+connect_bd_net [get_bd_pins axi_interconnect_0/M03_ARESETN] [get_bd_pins proc_sys_reset_0/peripheral_aresetn]
+disconnect_bd_net /proc_sys_reset_0_peripheral_aresetn [get_bd_pins axi_interconnect_0/M03_ARESETN]
+connect_bd_net [get_bd_pins axi_interconnect_0/M03_ARESETN] [get_bd_pins proc_sys_reset_1/peripheral_aresetn]
+delete_bd_objs [get_bd_nets M03_ARESETN_1] [get_bd_cells proc_sys_reset_1]
+disconnect_bd_net /processing_system7_0_fclk_clk0 [get_bd_pins proc_sys_reset_0/slowest_sync_clk]
+connect_bd_net [get_bd_pins clk_wiz_0/clk_out1] [get_bd_pins proc_sys_reset_0/slowest_sync_clk]
+connect_bd_net [get_bd_pins axi_interconnect_0/M03_ARESETN] [get_bd_pins proc_sys_reset_0/peripheral_aresetn]
+connect_bd_net [get_bd_pins clk_wiz_0/reset] [get_bd_pins processing_system7_0/FCLK_RESET0_N]
+connect_bd_net [get_bd_pins smartconnect_0/aclk] [get_bd_pins processing_system7_0/FCLK_CLK0]
+connect_bd_net [get_bd_pins smartconnect_0/aresetn] [get_bd_pins proc_sys_reset_0/interconnect_aresetn]
+connect_bd_net [get_bd_pins axi_timer_0/s_axi_aresetn] [get_bd_pins proc_sys_reset_0/peripheral_aresetn]
+connect_bd_net [get_bd_pins axi_timer_0/s_axi_aclk] [get_bd_pins processing_system7_0/FCLK_CLK0]
+startgroup
+set_property -dict [list CONFIG.NUM_PORTS {3}] [get_bd_cells ctrl/xlconcat_0]
+endgroup
+connect_bd_net [get_bd_pins axi_timer_0/interrupt] [get_bd_pins ctrl/xlconcat_0/In2]
+connect_bd_net [get_bd_pins vga_controller_0/pixel_rstn] [get_bd_pins proc_sys_reset_0/peripheral_aresetn]
+connect_bd_net [get_bd_pins vga_controller_0/rstn] [get_bd_pins proc_sys_reset_0/peripheral_aresetn]
+connect_bd_net [get_bd_pins proc_sys_reset_0/peripheral_reset] [get_bd_pins vga_controller_0/fifo_rst]
+connect_bd_net [get_bd_pins processing_system7_0/S_AXI_HP1_RCOUNT] [get_bd_pins vga_controller_0/rfifo_count]
+regenerate_bd_layout
+regenerate_bd_layout
+startgroup
+set_property -dict [list CONFIG.horizontal_length {1280} CONFIG.vertical_length {1024} CONFIG.h_front_porch {48} CONFIG.h_sync_pulse {112} CONFIG.h_back_porch {248} CONFIG.v_front_porch {1} CONFIG.v_sync_pulse {3} CONFIG.v_back_porch {38} CONFIG.h_sync_polarity {"1"} CONFIG.v_sync_polarity {"1"}] [get_bd_cells vga_controller_0]
+endgroup
+startgroup
+set_property -dict [list CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {108.000} CONFIG.RESET_TYPE {ACTIVE_LOW} CONFIG.MMCM_CLKFBOUT_MULT_F {10.125} CONFIG.MMCM_CLKOUT0_DIVIDE_F {9.375} CONFIG.RESET_PORT {resetn} CONFIG.CLKOUT1_JITTER {127.691} CONFIG.CLKOUT1_PHASE_ERROR {97.646}] [get_bd_cells clk_wiz_0]
+endgroup
+connect_bd_net [get_bd_pins clk_wiz_0/resetn] [get_bd_pins processing_system7_0/FCLK_RESET0_N]
+assign_bd_address -target_address_space /processing_system7_0/Data [get_bd_addr_segs axi_timer_0/S_AXI/Reg] -force
+assign_bd_address -target_address_space /vga_controller_0/M_AXI [get_bd_addr_segs processing_system7_0/S_AXI_HP1/HP1_DDR_LOWOCM] -force
+startgroup
+set_property -dict [list CONFIG.image_buffer1_baseaddr {0x00900000}] [get_bd_cells vga_controller_0]
+endgroup
+regenerate_bd_layout
+save_bd_design
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+set_property name VGA_R [get_bd_ports VGA_R_0]
+set_property name VGA_G [get_bd_ports VGA_G_0]
+set_property name VGA_B [get_bd_ports VGA_B_0]
+set_property name VGA_HS [get_bd_ports VGA_HS_0]
+set_property name VGA_VS [get_bd_ports VGA_VS_0]
+save_bd_design
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+write_hw_platform -fixed -include_bit -force -file C:/Users/kgrantma/Downloads/Final/Vivado/audio_fft/design_1_wrapper.xsa

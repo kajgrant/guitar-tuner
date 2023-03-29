@@ -19,8 +19,16 @@ platform active {design_1_wrapper}
 domain active {zynq_fsbl}
 domain active {standalone_ps7_cortexa9_0}
 platform generate -quick
-platform clean
+platform active {design_1_wrapper}
+domain create -name {standalone_ps7_cortexa9_1} -display-name {standalone_ps7_cortexa9_1} -os {standalone} -proc {ps7_cortexa9_1} -runtime {cpp} -arch {32-bit} -support-app {empty_application}
+platform generate -domains 
+platform write
+domain active {zynq_fsbl}
+domain active {standalone_ps7_cortexa9_0}
+domain active {standalone_ps7_cortexa9_1}
+platform generate -quick
 platform generate
 platform clean
+platform generate
 platform clean
 platform generate

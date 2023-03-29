@@ -1,5 +1,5 @@
 
-filename = "d-string.wav";
+filename = "e-string.wav";
 
 [S, Fs] = audioread(filename);
 

@@ -146,6 +146,7 @@ OPTRACE "add files" START { }
   set_param project.isImplRun false
 OPTRACE "read constraints: implementation" START { }
   read_xdc C:/KDevelop/guitar-tuner/Vivado/sources/zedboard/adventures_with_ip_integrator/constraints/adventures_with_ip.xdc
+  read_xdc C:/KDevelop/guitar-tuner/Vivado/sources/zedboard_master.xdc
 OPTRACE "read constraints: implementation" END { }
 OPTRACE "add files" END { }
 OPTRACE "link_design" START { }

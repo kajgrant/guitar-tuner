@@ -39,6 +39,6 @@ $(LIBS):
 	$(CC) $(CC_FLAGS) $(CFLAGS) $(BSP_FLAGS) -c $< -o $@ $(INCLUDEPATH)
 
 clean:
-	rm -rf $(OBJS) $(LIBS) $(EXEC)
+	rm -rf $(OBJS) $(LIBS) $(EXEC) *.o
 
 -include $(DEPFILES)
