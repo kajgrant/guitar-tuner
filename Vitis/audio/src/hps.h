@@ -21,8 +21,13 @@
 #ifndef HPS_H_
 #define HPS_H_
 
-void hps(short *convert_buf, long *final_out_buf, int num_points);
+#define IN1 1
+#define IN2 2
+#define IN3 3
+#define IN4 5
+#define HIGHEST_BIN 5
 
+void hps(short *convert_buf, long *final_out_buf, int num_points);
 void hps_data_get_string(char *c, long data);
 void hps_print_final_buf(long *final_out_buf, int num_points);
 int detect_fundamental_freq(long *final_out_buf, int num_pts);

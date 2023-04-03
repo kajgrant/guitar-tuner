@@ -222,7 +222,7 @@ void fft_convert_normalized(fft_t *p_fft_inst, short *convert_buf)
 		re_part = fft_result[i].data_re;
 		im_part = fft_result[i].data_im;
 		norm = sqrt((re_part * re_part) + (im_part * im_part));
-		convert_buf[i] = norm / SCALE_FACTOR;
+		convert_buf[i] = norm;
 	}
 
 	int test = 1;

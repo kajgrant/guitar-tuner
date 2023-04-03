@@ -1,27 +1,18 @@
 
 //////////////////////////////////////////////////////////////////////////////////
 //
-// Company:        Xilinx
-// Engineer:       bwiec
-// Create Date:    29 June 2015, 03:34:03 PM
-// App Name:       DMA Accelerator Demonstration
+// Company:        n/a
+// Engineer:       Kaj Grant-Mathiasen
+// Create Date:    1 April, 2023
+// App Name:       Guitar Tuner
 // File Name:      helloworld.c
-// Target Devices: Zynq
-// Tool Versions:  2015.1
-// Description:    Implementation of FFT using a hardware accelerator with DMA.
+// Target Devices: Zedboard
+// Tool Versions:  2020.2
+// Description:    Implementation of FFT guitar tuner using an FFT, DMA, HPS.
 // Dependencies:
-//   - xuartps_hw.h - Driver version v3.0
-//   - fft.h        - Driver version v1.0
-//   - cplx_data.h  - Driver version v1.0
-//   - stim.h       - Driver version v1.0
 // Revision History:
-//   - v1.0
-//     * Initial release
-//     * Tested on ZC702 and Zedboard
 // Additional Comments:
-//   - UART baud rate is 115200
-//   - GPIO is used with some additional glue logic to control the FFT core's
-//     config interface for setting various parameters.
+//
 //
 //////////////////////////////////////////////////////////////////////////////////
 
@@ -30,25 +21,32 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include "xuartps_hw.h"
-#include "fft.h"
-#include "hps.h"
-#include "cplx_data.h"
-//#include "stim.h"
 #include "xbasic_types.h"
+
+#include "fft.h"
+#include "cplx_data.h"
 #include "audio.h"
-#include "hanning.h"
+#include "hps.h"
 
 #define UART_BASEADDR XPAR_PS7_UART_1_BASEADDR
 #define NUM_POINTS FFT_MAX_NUM_PTS
-#define NUM_HPS_POINTS NUM_POINTS / 4
-#define FREQ_SCALE_FACTOR 1.15001276036
+#define NUM_HPS_POINTS NUM_POINTS / HIGHEST_BIN
+#define FREQ_SCALE_FACTOR 0.960
 #define SHARED_ADDRESS 0x0F000000
+#define SAMPLE_SYNC 21
+#define SAMPLE_SCALE 6
+#define SAMPLE_RATE SAMPLE_SYNC * SAMPLE_SCALE
+#define AMPLITUDE_SCALE 2
+#define FREQ_FLOOR 10
 
-// External data
-//extern int test_data[FFT_MAX_NUM_PTS]; // FFT input data
+int * shared_pointer = (int *)SHARED_ADDRESS; //Global shared pointer with Video core
 
-int * shared_pointer = (int *)SHARED_ADDRESS;
 
+/* ---------------------------------------------------------------------------- *
+ * 									fill_input()								*
+ * ---------------------------------------------------------------------------- *
+ * Fills the input buffer with samples from the audio codec
+ * ---------------------------------------------------------------------------- */
 void fill_input(cplx_data_t *stim_buf){
 
 	u32 in_left, in_right;
@@ -64,13 +62,18 @@ void fill_input(cplx_data_t *stim_buf){
 		left_16 = in_left;
 		right_16 = in_right;
 
-		stim_buf[i].data_re = (left_16 + right_16);
+		stim_buf[i].data_re = (left_16 + right_16) * AMPLITUDE_SCALE;
 		stim_buf[i].data_im = 0;
-		usleep(21 * 4);
+		usleep(SAMPLE_RATE);
 	}
 
 }
 
+/* ---------------------------------------------------------------------------- *
+ * 									init_uart()								    *
+ * ---------------------------------------------------------------------------- *
+ * Initializes the uart
+ * ---------------------------------------------------------------------------- */
 void init_uart()
 {
 	u32 CntrlRegister;
@@ -90,29 +93,10 @@ int main()
 	fft_t *p_fft_inst;
 	cplx_data_t *stim_buf;
 	cplx_data_t *result_buf;
+	XIicPs *Iic;
 	short *convert_buf;
 	long *final_out_buf;
 	int *input_data;
-
-	XIicPs *Iic;
-
-	//Configure the IIC data structure
-	Iic = (XIicPs *)malloc(sizeof(XIicPs));
-	IicConfig(XPAR_XIICPS_0_DEVICE_ID, Iic);
-
-	//Configure the Audio Codec's PLL
-	AudioPllConfig(Iic);
-
-	//Configure the Line in and Line out ports.
-	//Call LineInLineOutConfig() for a configuration that
-	//enables the HP jack too.
-	AudioConfigureJacks(Iic);
-
-	// Setup UART and enable caches
-	init_uart();
-	xil_printf("\fHello World!\n\r");
-
-	//audio_stream();
 
 	// Create FFT object
 	p_fft_inst = fft_create(
@@ -165,11 +149,30 @@ int main()
 		return -1;
 	}
 
+	Iic = (XIicPs *)malloc(sizeof(XIicPs));
+	if (Iic == NULL)
+	{
+		xil_printf("ERROR! Failed to allocate memory for the Iic.\n\r");
+		return -1;
+	}
 
+	//Configure the Iic
+	IicConfig(XPAR_XIICPS_0_DEVICE_ID, Iic);
+
+	//Configure the Audio Codec's PLL
+	AudioPllConfig(Iic);
+
+	//Configure the Line in and Line out ports.
+	AudioConfigureJacks(Iic);
+
+	//audio_stream();
+
+	//Main tuning loop
 	while (1){
 
-		fill_input(stim_buf);
+		fill_input(stim_buf); //Fill the input buffer with some data
 
+		//Perform the FFT
 		status = fft(p_fft_inst, (cplx_data_t *)stim_buf, (cplx_data_t *)result_buf);
 		if (status != FFT_SUCCESS)
 		{
@@ -177,24 +180,29 @@ int main()
 			return -1;
 		}
 
+		//Convert the fft output from real + complex to magnitude
 		fft_convert_normalized(p_fft_inst, convert_buf);
 
-		hps(convert_buf, final_out_buf, NUM_POINTS);
+		//Apply the HPS algorithm to the output of the FFT
+		hps(convert_buf, final_out_buf, NUM_HPS_POINTS);
 
+		//Detect the fundamental frequency
 		int fund_freq = detect_fundamental_freq(final_out_buf, NUM_HPS_POINTS);
-		if (fund_freq > 10){
-			int fl_fund_freq = fund_freq * FREQ_SCALE_FACTOR;
-			*shared_pointer = fl_fund_freq;
-			printf("FUNDAMENTAL FREQUENCY = %d\r\n", fl_fund_freq);
-			xil_printf("READING_AUDIO: %d\r\n", *shared_pointer);
-		}
+		float fl_fund_freq = fund_freq * FREQ_SCALE_FACTOR;
 
+		//Output the fundamental frequency if an appropriate one has been detected
+		if (fl_fund_freq > FREQ_FLOOR){
+			*shared_pointer = fl_fund_freq;
+			printf("FUNDAMENTAL FREQUENCY = %f Hz\r\n", fl_fund_freq);
+		}
 	}
 
 	free(stim_buf);
 	free(result_buf);
 	free(convert_buf);
+	free(input_data);
 	free(final_out_buf);
+	free(Iic);
 	fft_destroy(p_fft_inst);
 
 	return 0;

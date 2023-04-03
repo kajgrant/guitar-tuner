@@ -23,9 +23,9 @@
 #define SHARP_MODE	51
 
 //int NUM_BYTES_BUFFER = 5242880;
-int NUM_BYTES_LINE = 1024000;
-int NUM_BYTES_MODE = 1146880;
-int NUM_BYTES_NOTE = 4096000;
+int NUM_BYTES_BAR = 258048;
+int NUM_BYTES_MODE = 352256;
+int NUM_BYTES_NOTE = 1853440;
 int NUM_BYTES_CIRCLE = 160000;
 int NUM_BYTES_BUFFER = 5242880;
 
@@ -47,86 +47,161 @@ XGpioPs_Config *gpioPSPushButtonsConfig;
 XScuGic_Config *interruptControllerConfig;
 
 int * start_buffer_pointer = (int *)0x00900000;
-int * middle_buffer_pointer = (int *)0x009FA000;
-int * sharp_buffer_pointer = (int *)0x009FA000;
-int * bottom_buffer_pointer = (int *)0x00D1C800;
+int * middle_buffer_pointer = (int *) 0x0097D000; //0x009FA000;
+int * bottom_buffer_pointer = (int *)0x00D06000;
 
 int * shared_pointer = (int *)SHARED_ADDRESS;
 
-int * a_pointer = (int *)0x018D2008; // A
-int * b_pointer = (int *)0x020BB00C; // B
-int * c_pointer = (int *)0x028A4010; // C
-int * d_pointer = (int *)0x0308D014; // D
-int * e_pointer = (int *)0x03876018; // E
-int * f_pointer = (int *)0x0405F01C; // F
-int * g_pointer = (int *)0x04848020; // G
+//int * a_pointer = (int *)0x128D2008; // A
+//int * b_pointer = (int *)0x130BB00C; // B
+//int * c_pointer = (int *)0x138A4010; // C
+//int * d_pointer = (int *)0x1408D014; // D
+//int * e_pointer = (int *)0x14876018; // E
+//int * f_pointer = (int *)0x1505F01C; // F
+//int * g_pointer = (int *)0x15848020; // G
+//
+//int * flat_pointer = (int *)0x16031024;
+//int * sharp_pointer = (int *)0x1681A028;
+//
+//int * _pointer = (int *)0x1700302C;
+//int * circle_pointer = (int *)0x177EC030;
+//int * flat_sym_ptr = (int *) 0x187BE038;
+//int * sharp_sym_ptr = (int *) 0x18FA703C;
+extern int a[];
+extern int b[];
+extern int c[];
+extern int d[];
+extern int e1[];
+extern int e2[];
+extern int f[];
+extern int g[];
 
-int * flat_pointer = (int *)0x05031024;
-int * sharp_pointer = (int *)0x0581A028;
+extern int default_note[];
 
-int * line_pointer = (int *)0x0600302C;
-int * circle_pointer = (int *)0x067EC030;
-int * temp_ptr = (int *)0x06FD5034;
-int * flat_sym_ptr = (int *) 0x077BE038;
-int * sharp_sym_ptr = (int *) 0x07FA703C;
+extern int sharp_mode_img[];
+extern int flat_mode_img[];
 
+extern int sharp_sym[];
+extern int flat_sym[];
+
+extern int tuned_bar[];
+
+extern int unmute[];
+extern int mute[];
+
+extern int l1[];
+extern int l2[];
+extern int l3[];
+extern int r1[];
+extern int r2[];
+extern int r3[];
+
+int * temp_ptr = (int *)0x17FD5034;
+
+
+//1D
 int sharp = 0;
 
 // VGA
 void write_pixel(int x, int y, int colour) {
-	int *vga_addr= temp_ptr;
+	int *vga_addr= start_buffer_pointer;
 	int offset = (y*1280) + x;
 	vga_addr[offset]=colour;
 }
 
-void write_pixel_2(int x, int y, int colour) {
-	int *vga_addr= sharp_buffer_pointer;
-	int offset = (y*1280) + x;
-	vga_addr[offset]=colour;
-}
 
 void clear_screen() {
   int x, y;
-  for (x = 0; x < 1280; x++) {
-    for (y = 0; y < 1024; y++) {
+  for (y = 0; y < 1024; y++) {
+	for (x = 0; x < 1280; x++) {
 	  write_pixel(x,y,0);
 	}
   }
 }
 
-void draw_circle(int init_pos) {
+
+void write_bar(int x, int y, int colour) {
+	int *vga_addr= start_buffer_pointer;
+	int offset = (y*1280) + x;
+	vga_addr[offset]=colour;
+}
+
+void draw_bar(int pos) {
 	int k = 0;
 	int x = 0;
 	int y = 0;
-	for (x = init_pos; x < init_pos + 200; x++) {
-		for (y = 0; y < 200; y++) {
-			write_pixel(x,y,circle_pointer[k]);
+	for (y = 0; y < 100; y++) {
+		for (x = 320; x < 960; x++) {
+			if (pos == -3) {
+				write_bar(x,y,l3[k]);
+			} else if (pos == -2) {
+				write_bar(x,y,l2[k]);
+			} else if (pos == -1) {
+				write_bar(x,y,l1[k]);
+			} else if (pos == 1) {
+				write_bar(x,y,r1[k]);
+			} else if (pos == 2) {
+				write_bar(x,y,r2[k]);
+			} else if (pos == 3) {
+				write_bar(x,y,r3[k]);
+			} else {
+				write_bar(x,y,tuned_bar[k]);
+			}
 			k++;
 		}
 	}
 }
 
-void move_circle() {
-	int x = 0;
-	for (x = 0; x < 1000; x=x+5) {
-		memcpy(temp_ptr, line_pointer, NUM_BYTES_LINE);
-		draw_circle(x);
-		memcpy(start_buffer_pointer, temp_ptr, NUM_BYTES_LINE);
-		usleep(1000);
-	}
+void write_sharp(int x, int y, int colour) {
+	int *vga_addr= middle_buffer_pointer;
+	int offset = (y*1280) + x;
+	vga_addr[offset]=colour;
 }
-
 
 void draw_sharp(int sharp) {
 	int k = 0;
 	int x = 0;
 	int y = 0;
-	for (x = 960; x < 960 + 200; x++) {
-		for (y = 0; y < 200; y++) {
+	for (y = 0; y < 200; y++) {
+		for (x = 960; x < 1160; x++) {
 			if(sharp == 1) {
-				write_pixel_2(x,y,sharp_sym_ptr[k]);
+				write_sharp(x,y,sharp_sym[k]);
 			} else {
-				write_pixel_2(x,y,flat_sym_ptr[k]);
+				write_sharp(x,y,flat_sym[k]);
+			}
+			k++;
+		}
+	}
+}
+
+void clear_sharp() {
+	int k = 0;
+	int x = 0;
+	int y = 0;
+	for (y = 0; y < 200; y++) {
+		for (x = 960; x < 1160; x++) {
+			write_sharp(x,y,0);
+			k++;
+		}
+	}
+}
+
+void write_sharp_mode(int x, int y, int colour) {
+	int *vga_addr= bottom_buffer_pointer;
+	int offset = (y*1280) + x;
+	vga_addr[offset]=colour;
+}
+
+void draw_sharp_mode(int sharp) {
+	int k = 0;
+	int x = 0;
+	int y = 0;
+	for (y = 0; y < 200; y++) {
+		for (x = 320; x < 760; x++) {
+			if(sharp == 1) {
+				write_sharp_mode(x,y,sharp_mode_img[k]);
+			} else {
+				write_sharp_mode(x,y,flat_mode_img[k]);
 			}
 			k++;
 		}
@@ -135,66 +210,139 @@ void draw_sharp(int sharp) {
 
 
 
+void write_note(int x, int y, int colour) {
+	int *vga_addr= middle_buffer_pointer;
+	int offset = (y*1280) + x;
+	vga_addr[offset]=colour;
+}
+
+
+void draw_note() {
+	int k = 0;
+	int x = 0;
+	int y = 0;
+	for (y = 0; y < 724; y++) {
+		for (x = 320; x < 960; x++) {
+			write_note(x,y,temp_ptr[k]);
+			k++;
+		}
+	}
+}
+
+
+void write_mute(int x, int y, int colour) {
+	int *vga_addr= bottom_buffer_pointer;
+	int offset = (y*1280) + x;
+	vga_addr[offset]=colour;
+}
+
+void draw_mute(int mute_int) {
+	int k = 0;
+	int x = 0;
+	int y = 0;
+	for (y = 0; y < 200; y++) {
+		for (x = 760; x < 960; x++) {
+			if (mute_int == 0) {
+				write_mute(x, y, unmute[k]);
+			} else {
+				write_mute(x, y, mute[k]);
+			}
+			k++;
+		}
+	}
+}
 
 void outputNote(u8 note, int sharp) {
-	if (note == 'a' || note == 'p'){
-    	memcpy(middle_buffer_pointer, a_pointer, NUM_BYTES_NOTE);
-    	if(note == 'p') {
-    		if (sharp == 0) {
-    			memcpy(middle_buffer_pointer, g_pointer, NUM_BYTES_NOTE);
-    		}
-    		draw_sharp(sharp);
-    	}
-	} else if (note == 'b') {
-		memcpy(middle_buffer_pointer, b_pointer, NUM_BYTES_NOTE);
-	} else if (note == 'c' || note == 'l') {
-		memcpy(middle_buffer_pointer, c_pointer, NUM_BYTES_NOTE);
-		if(note == 'l') {
-			if (sharp == 0) {
-				memcpy(middle_buffer_pointer, d_pointer, NUM_BYTES_NOTE);
-			}
-			draw_sharp(sharp);
+	if (note == 'a'){
+		memcpy(temp_ptr, a, NUM_BYTES_NOTE);
+		draw_note();
+
+	} else if(note == 'p') {
+		if (sharp == 0) {
+			memcpy(temp_ptr, b, NUM_BYTES_NOTE);
+			draw_note();
+		} else {
+			memcpy(temp_ptr, a, NUM_BYTES_NOTE);
+			draw_note();
 		}
-	} else if (note == 'd' || note == 'm') {
-		memcpy(middle_buffer_pointer, d_pointer, NUM_BYTES_NOTE);
-		if(note == 'm') {
-			if (sharp == 0) {
-				memcpy(middle_buffer_pointer, e_pointer, NUM_BYTES_NOTE);
-			}
-			draw_sharp(sharp);
+	} else if (note == 'b') {
+		memcpy(temp_ptr, b, NUM_BYTES_NOTE);
+		draw_note();
+	} else if (note == 'c') {
+		memcpy(temp_ptr, c, NUM_BYTES_NOTE);
+		draw_note();
+
+	} else if(note == 'l') {
+		if (sharp == 0) {
+			memcpy(temp_ptr, d, NUM_BYTES_NOTE);
+			draw_note();
+		} else {
+			memcpy(temp_ptr, c, NUM_BYTES_NOTE);
+			draw_note();
+		}
+	} else if (note == 'd') {
+		memcpy(temp_ptr, d, NUM_BYTES_NOTE);
+		draw_note();
+
+	} else if(note == 'm') {
+		if (sharp == 0) {
+			memcpy(temp_ptr, e1, NUM_BYTES_NOTE);
+			draw_note();
+		} else {
+			memcpy(temp_ptr, d, NUM_BYTES_NOTE);
+			draw_note();
 		}
 	} else if (note == 'e') {
-		memcpy(middle_buffer_pointer, e_pointer, NUM_BYTES_NOTE);
-	} else if (note == 'f' || note == 'n') {
-		memcpy(middle_buffer_pointer, f_pointer, NUM_BYTES_NOTE);
-		if(note == 'n') {
-			if (sharp == 0) {
-				memcpy(middle_buffer_pointer, g_pointer, NUM_BYTES_NOTE);
-			}
-			draw_sharp(sharp);
+		memcpy(temp_ptr, e1, NUM_BYTES_NOTE);
+		draw_note();
+	} else if (note == 'E') {
+		memcpy(temp_ptr, e2, NUM_BYTES_NOTE);
+		draw_note();
+	} else if (note == 'f') {
+		memcpy(temp_ptr, f, NUM_BYTES_NOTE);
+		draw_note();
+
+	} else if(note == 'n') {
+		if (sharp == 0) {
+			memcpy(temp_ptr, g, NUM_BYTES_NOTE);
+			draw_note();
+		} else {
+			memcpy(temp_ptr, f, NUM_BYTES_NOTE);
+			draw_note();
 		}
-	} else if (note == 'g' || note == 'o') {
-		memcpy(middle_buffer_pointer, g_pointer, NUM_BYTES_NOTE);
-		if(note == 'o') {
-			if (sharp == 0) {
-				memcpy(middle_buffer_pointer, a_pointer, NUM_BYTES_NOTE);
-			}
-			draw_sharp(sharp);
+	} else if (note == 'g' ) {
+		memcpy(temp_ptr, g, NUM_BYTES_NOTE);
+		draw_note();
+	} else if(note == 'o') {
+		if (sharp == 0) {
+			memcpy(temp_ptr, a, NUM_BYTES_NOTE);
+			draw_note();
+		} else {
+			memcpy(temp_ptr, g, NUM_BYTES_NOTE);
+			draw_note();
 		}
 	} else {
 		return;
 	}
 
-	if (sharp == 0) {
-		memcpy(bottom_buffer_pointer, flat_pointer, NUM_BYTES_MODE);
+	if (note == 'l' || note == 'm' || note == 'n' || note == 'o' || note == 'p') {
+		draw_sharp(sharp);
 	} else {
-		memcpy(bottom_buffer_pointer, sharp_pointer, NUM_BYTES_MODE);
+		clear_sharp();
 	}
 
-	memcpy(start_buffer_pointer, line_pointer, NUM_BYTES_LINE);
+//	if (sharp == 0) {
+//		memcpy(bottom_buffer_pointer, flat_mode_img, NUM_BYTES_MODE);
+//	} else {
+//		memcpy(bottom_buffer_pointer, sharp_mode_img, NUM_BYTES_MODE);
+//	}
+
+//	memcpy(start_buffer_pointer, , NUM_BYTES_);
 	//move_circle();
 
 }
+
+
 
 // Interrupt
 void gpioButtonInterruptHandler(void *callBack)
@@ -280,41 +428,50 @@ void init_UART()
 u8 read_UART()
 {
 	int inp = 0;
-	char str_inp[10];
 	u8 note = 000;
-	xil_printf("Enter note to display/play: \n");
+	int bar_pos = 0;
+	//xil_printf("Enter note to display/play: \n");
   	// wait for input
 	while(1){
 
 		if(XGpioPs_ReadPin(&sharp_Gpio, SHARP_MODE)){
 			sharp = 1;
-			memcpy(bottom_buffer_pointer, sharp_pointer, NUM_BYTES_MODE);
-			xil_printf("READING: %d\r\n", *shared_pointer);
+			draw_sharp_mode(sharp);
 			xil_printf("Sharp Mode Activated\n");
-			xil_printf("Enter note to display/play: \n");
 			sleep(1);
 		}
 
 		if(XGpioPs_ReadPin(&flat_Gpio, FLAT_MODE)){
 			sharp = 0;
-			memcpy(bottom_buffer_pointer, flat_pointer, NUM_BYTES_MODE);
+			draw_sharp_mode(sharp);
 			xil_printf("Flat Mode Activated\n");
-			xil_printf("Enter note to display/play: \n");
 			sleep(1);
 		}
-		if (XUartPs_IsReceiveData(UART_BASEADDR)){
-			//inp = XUartPs_ReadReg(UART_BASEADDR, XUARTPS_FIFO_OFFSET);
-			scanf("%s", str_inp);
 
-			inp = atoi(str_inp);
-			xil_printf("Note entered to play: %d \n", inp);
 
+		inp = *shared_pointer;
+		//inp = atoi(str_inp);
+
+		//xil_printf("Freq read: %d \n", inp);
+
+		if(inp >= 60 && inp < 500) {
+			//xil_printf("Freq read: %d \n", inp);
 			note = map(inp);
-			xil_printf("Note entered to play: %c \n", note);
+			//xil_printf("Freq mapped to note: %c \n", note);
 			outputNote(note, sharp);
+			bar_pos = pos_map(inp);
+			draw_bar(bar_pos);
 
-			xil_printf("Enter note to display/play: \n");
+
+
+			//for (x = 0; x < 1000; x=x+5) {
+
+			*shared_pointer = 0;
 		}
+
+
+//			xil_printf("Enter note to display/play: \n");
+//
 	}
 
 }
@@ -352,12 +509,16 @@ void init_GPIO()
 	setupInterruptButtons(interruptController, SHARP_MODE, gpioButtonInterruptHandler, &flat_Gpio, XGPIOPS_IRQ_TYPE_EDGE_RISING, XPAR_XGPIOPS_0_INTR);
 
 	Xil_DCacheDisable();
+	init_map();
 
 	clear_screen();
 	clear_screen();
-	memcpy(start_buffer_pointer, line_pointer, NUM_BYTES_LINE);
-	memcpy(middle_buffer_pointer, a_pointer, NUM_BYTES_NOTE);
-	memcpy(bottom_buffer_pointer, flat_pointer, NUM_BYTES_MODE);
+
+	memcpy(temp_ptr, default_note, NUM_BYTES_NOTE);
+	draw_note();
+	draw_sharp_mode(0);
+	draw_bar(0);
+	draw_mute(0);
 
 
 	read_UART();
