@@ -1,0 +1,4 @@
+	.global e
+    .section .rodata
+e:
+    .incbin "blob.bin"

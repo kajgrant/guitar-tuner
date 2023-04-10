@@ -1,0 +1,65 @@
+#include "map.h"
+
+char map(int freq) {
+	char note;
+
+	int C_start[6];
+	int Csharp_start[6];
+	int D_start[6];
+	int Dsharp_start[6];
+	int E_start[6];
+	int F_start[6];
+	int Fsharp_start[6];
+	int G_start[6];
+	int Gsharp_start[6];
+	int A_start[6];
+	int Asharp_start[6];
+	int B_start[6];
+
+	for (int i = 1; i < 5; i++ ) {
+		int C_start[i] = (B[i-1]+C[i])/2;
+		int Csharp_start = (C[i]+Csharp[i])/2;
+		int D4_start = (Csharp[i]+D[i])/2;
+		int Dsharp_4_start = (D[i]+Dsharp[i])/2;
+		int E4_start = (Dsharp[i]+E[i])/2;
+		int F4_start = (E[i]+F[i])/2;
+		int Fsharp_4_start = (F[i]+Fsharp[i])/2;
+		int G4_start = (Fsharp[i]+G[i])/2;
+		int Gsharp_4_start = (G[i]+Gsharp[i])/2;
+		int A4_start = (Gsharp[i]+A[i])/2;
+		int Asharp_4_start = (A[i]+Asharp[i])/2;
+		int B4_start = (Asharp[i]+B[i])/2;
+		int B4_end = (B[i]+C[i+1])/2;
+	}
+
+
+	if (freq >= C4_start && freq < Csharp_4_start) {
+		note = 'c';
+	} else if (freq >= Csharp_4_start && freq < D4_start) {
+		note = 'l';
+	} else if (freq >= D4_start && freq < Dsharp_4_start) {
+		note = 'd';
+	} else if (freq >= Dsharp_4_start && freq < E4_start) {
+		note = 'm';
+	} else if (freq >= E4_start && freq < F4_start) {
+		note = 'e';
+	} else if (freq >= F4_start && freq < Fsharp_4_start) {
+		note = 'f';
+	} else if (freq >= Fsharp_4_start && freq < G4_start) {
+		note = 'n';
+	} else if (freq >= G4_start && freq < Gsharp_4_start) {
+		note = 'g';
+	} else if (freq >= Gsharp_4_start && freq < A4_start) {
+		note = 'o';
+	} else if (freq >= A4_start && freq < Asharp_4_start) {
+		note = 'a';
+	} else if (freq >= Asharp_4_start && freq < B4_start) {
+		note = 'p';
+	} else if (freq >= B4_start && freq < B4_end) {
+		note = 'b';
+	} else {
+		// do nothing
+	}
+
+	return note;
+}

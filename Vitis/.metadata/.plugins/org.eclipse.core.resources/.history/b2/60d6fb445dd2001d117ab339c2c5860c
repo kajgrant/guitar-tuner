@@ -1,0 +1,432 @@
+#include "map.h"
+
+int C[6] = 		{16, 33, 65, 131, 262, 523};
+int Csharp[6] = {17, 35, 69, 139, 277, 554};
+int D[6] = 		{18, 37, 73, 147, 294, 587};
+int Dsharp[6] = {19, 39, 78, 156, 311, 622};
+int E[6] = 		{20, 41, 82, 165, 330, 660};
+int F[6] = 		{22, 44, 87, 175, 349, 698};
+int Fsharp[6] = {23, 46, 93, 185, 370, 740};
+int G[6] = 		{24, 49, 98, 196, 392, 784};
+int Gsharp[6] = {25, 52, 104, 208, 415, 831};
+int A[6] = 		{27, 55, 110, 220, 440, 880};
+int Asharp[6] = {29, 58, 117, 233, 466, 932};
+int B[6] = 		{30, 61, 123, 247, 494, 988};
+
+
+int C_start[6] = {0};
+int Csharp_start[6] = {0};
+int D_start[6] = {0};
+int Dsharp_start[6] = {0};
+int E_start[6] = {0};
+int F_start[6] = {0};
+int Fsharp_start[6] = {0};
+int G_start[6] = {0};
+int Gsharp_start[6] = {0};
+int A_start[6] = {0};
+int Asharp_start[6] = {0};
+int B_start[6] = {0};
+int B_end[6] = {0};
+void init_map() {
+	for (int i = 1; i < 5; i++ ) {
+		C_start[i] = (B[i-1]+C[i])/2;
+		Csharp_start[i] = (C[i]+Csharp[i])/2;
+		D_start[i] = (Csharp[i]+D[i])/2;
+		Dsharp_start[i] = (D[i]+Dsharp[i])/2;
+		E_start[i] = (Dsharp[i]+E[i])/2;
+		F_start[i] = (E[i]+F[i])/2;
+		Fsharp_start[i] = (F[i]+Fsharp[i])/2;
+		G_start[i] = (Fsharp[i]+G[i])/2;
+		Gsharp_start[i] = (G[i]+Gsharp[i])/2;
+		A_start[i] = (Gsharp[i]+A[i])/2;
+		Asharp_start[i] = (A[i]+Asharp[i])/2;
+		B_start[i] = (Asharp[i]+B[i])/2;
+		B_end[i] = (B[i]+C[i+1])/2;
+	}
+}
+
+
+char map(int freq) {
+	char note;
+
+	for (int i = 1; i < 5; i++ ) {
+		if (freq >= C_start[i] && freq < Csharp_start[i]) {
+			note = 'c';
+		} else if (freq >= Csharp_start[i] && freq < D_start[i]) {
+			note = 'l';
+		} else if (freq >= D_start[i] && freq < Dsharp_start[i]) {
+			note = 'd';
+		} else if (freq >= Dsharp_start[i] && freq < E_start[i]) {
+			note = 'm';
+		} else if (freq >= E_start[i] && freq < F_start[i]) {
+			if(freq > 165) {
+				note = 'E';
+			} else {
+				note = 'e';
+			}
+		} else if (freq >= F_start[i] && freq < Fsharp_start[i]) {
+			note = 'f';
+		} else if (freq >= Fsharp_start[i] && freq < G_start[i]) {
+			note = 'n';
+		} else if (freq >= G_start[i] && freq < Gsharp_start[i]) {
+			note = 'g';
+		} else if (freq >= Gsharp_start[i] && freq < A_start[i]) {
+			note = 'o';
+		} else if (freq >= A_start[i] && freq < Asharp_start[i]) {
+			note = 'a';
+		} else if (freq >= Asharp_start[i] && freq < B_start[i]) {
+			note = 'p';
+		} else if (freq >= B_start[i] && freq < B_end[i]) {
+			note = 'b';
+		} else {
+			// do nothing
+		}
+	}
+
+	return note;
+}
+
+
+int pos_map(int freq){
+	int location = 0;
+
+	if (freq == 80) {						// E2
+		location = -2;
+	} else if (freq == 81) {
+		location = -1;
+	} else if (freq == 82) {
+		location = 0;
+	} else if (freq == 83) {
+		location = 1;
+	} else if (freq == 84) {				// F2
+		location = -3;
+	} else if (freq == 85) {
+		location = -2;
+	} else if (freq == 86) {
+		location = -1;
+	} else if (freq == 87) {
+		location = 0;
+	} else if (freq == 88) {
+		location = 1;
+	} else if (freq == 89) {
+		location = 2;
+	} else if (freq == 90) {				// F#2
+		location = -3;
+	} else if (freq == 91) {
+		location = -2;
+	} else if (freq == 92) {
+		location = -1;
+	} else if (freq == 93) {
+		location = 0;
+	} else if (freq == 94) {
+		location = 2;
+	} else if (freq == 95) {				// G2
+		location = -3;
+	} else if (freq == 96) {
+		location = -2;
+	} else if (freq == 97) {
+		location = -1;
+	} else if (freq == 98) {
+		location = 0;
+	} else if (freq == 99) {
+		location = 1;
+	} else if (freq == 100) {
+		location = 2;
+	} else if (freq == 101) {				// G#2
+		location = -3;
+	} else if (freq == 102) {
+		location = -2;
+	} else if (freq == 103) {
+		location = -1;
+	} else if (freq == 104) {
+		location = 0;
+	} else if (freq == 105) {
+		location = 1;
+	} else if (freq == 106) {				// A
+		location = -2;
+	} else if (freq == 107) {
+		location = -3;
+	} else if (freq == 108) {
+		location = -2;
+	} else if (freq == 109) {
+		location = -1;
+	} else if (freq == 110) {
+		location = 0;
+	} else if (freq == 111) {
+		location = 1;
+	} else if (freq == 112) {
+		location = 2;
+	} else if (freq == 113) {				// A#2
+		location = -3;
+	} else if (freq == 114) {
+		location = -2;
+	} else if (freq == 115) {
+		location = -1;
+	} else if (freq == 116) {
+		location = 0;
+	} else if (freq == 117) {
+		location = 1;
+	} else if (freq == 118) {
+		location = 2;
+	} else if (freq == 119) {
+		location = 3;
+	} else if (freq == 120) {				// B
+		location = -3;
+	} else if (freq == 121) {
+		location = -2;
+	} else if (freq == 122) {
+		location = -1;
+	} else if (freq == 123) {
+		location = 0;
+	} else if (freq == 124) {
+		location = 1;
+	} else if (freq == 125) {
+		location = 2;
+	} else if (freq == 126) {
+		location = 3;
+	} else if (freq == 127) {				// C3
+		location = -3;
+	} else if (freq == 128) {
+		location = -2;
+	} else if (freq == 129) {
+		location = -1;
+	} else if (freq == 130) {
+		location = 0;
+	} else if (freq == 131) {
+		location = 1;
+	} else if (freq == 132) {
+		location = 2;
+	} else if (freq == 133 || freq == 134) {
+		location = 3;
+	} else if (freq == 135) {				// C#3
+		location = -3;
+	} else if (freq == 136) {
+		location = -2;
+	} else if (freq == 137) {
+		location = -1;
+	} else if (freq == 138) {
+		location = 0;
+	} else if (freq == 139) {
+		location = 1;
+	} else if (freq == 140) {
+		location = 2;
+	} else if (freq == 141) {
+		location = 3;
+	} else if (freq == 142) {
+		location = 2;
+	} else if (freq == 143) {				// D
+		location = -3;
+	} else if (freq == 144) {
+		location = -2;
+	} else if (freq == 145) {
+		location = -1;
+	} else if (freq == 146) {
+		location = 0;
+	} else if (freq == 147) {
+		location = 1;
+	} else if (freq == 148) {
+		location = 2;
+	} else if (freq == 149 || freq == 150) {
+		location = 3;
+	} else if (freq == 151 || freq == 152) {
+		location = -3;
+	} else if (freq == 153 ) {
+		location = -2;
+	} else if (freq == 154) {
+		location = -1;
+	} else if (freq == 155) {
+		location = 0;
+	} else if (freq == 156 ) {
+		location = 1;
+	} else if (freq == 157 ) {
+		location = 2;
+	} else if (freq == 158 || freq == 159) {
+		location = 3;
+	} else if (freq == 160 || freq == 161) {
+		location = -3;
+	} else if (freq == 162 ) {
+		location = -2;
+	} else if (freq == 163) {
+		location = -1;
+	} else if (freq == 164) {
+		location = 0;
+	} else if (freq == 165 ) {
+		location = 1;
+	} else if (freq == 166 || freq == 167) {
+		location = 2;
+	} else if (freq == 168 || freq == 169) {
+		location = 3;
+	} else if (freq == 170 || freq == 171) {
+		location = -3;
+	} else if (freq == 172 ) {
+		location = -2;
+	} else if (freq == 173) {
+		location = -1;
+	} else if (freq == 174) {
+		location = 0;
+	} else if (freq == 175 ) {
+		location = 1;
+	} else if (freq == 176 || freq == 177) {
+		location = 2;
+	} else if (freq == 178 || freq == 179) {
+		location = 3;
+	} else if (freq == 180 || freq == 181) {
+		location = -3;
+	} else if (freq == 182 || freq == 183 ) {
+		location = -2;
+	} else if (freq == 184) {
+		location = -1;
+	} else if (freq == 185) {
+		location = 0;
+	} else if (freq == 186 ) {
+		location = 1;
+	} else if (freq == 187 ) {
+		location = 2;
+	} else if (freq == 188 || freq == 189) {
+		location = 3;
+	} else if (freq == 190 || freq == 191) {
+		location = -3;
+	} else if (freq == 192 || freq == 193 ) {
+		location = -2;
+	} else if (freq == 194 || freq == 195) {
+		location = -1;
+	} else if (freq == 196) {
+		location = 0;
+	} else if (freq == 197) {
+		location = 1;
+	} else if (freq == 198 || freq == 199 ) {
+		location = 2;
+	} else if (freq == 200 || freq == 201) {
+		location = 3;
+	} else if (freq == 202 || freq == 203 ) {
+		location = -3;
+	} else if (freq == 204 || freq == 205 ) {
+		location = -2;
+	} else if (freq == 206 ) {
+		location = -1;
+	} else if (freq == 207) {
+		location = 0;
+	} else if (freq == 208) {
+		location = 1;
+	} else if (freq == 209 || freq == 210 ) {
+		location = 2;
+	} else if (freq == 211 || freq == 212 || freq == 213) {
+		location = 3;
+	} else if (freq == 214 || freq == 215 || freq == 216) {
+		location = -3;
+	} else if (freq == 217 || freq == 218 ) {
+		location = -2;
+	} else if (freq == 219 ) {
+		location = -1;
+	} else if (freq == 220) {
+		location = 0;
+	} else if (freq == 221) {
+		location = 1;
+	} else if (freq == 222 || freq == 223 ) {
+		location = 2;
+	} else if (freq == 224 || freq == 225 ) {
+		location = 3;
+	} else if (freq == 226 || freq == 227 || freq == 228) {
+		location = -3;
+	} else if (freq == 229 || freq == 230 ) {
+		location = -2;
+	} else if (freq == 231 || freq == 232 ) {
+		location = -1;
+	} else if (freq == 233) {
+		location = 0;
+	} else if (freq == 234 || freq == 235) {
+		location = 1;
+	} else if (freq == 236 || freq == 237 ) {
+		location = 2;
+	} else if (freq == 238 || freq == 239 ) {
+		location = 3;
+	} else if (freq == 240 || freq == 241 || freq == 242) {
+		location = -3;
+	} else if (freq == 243 || freq == 244 ) {
+		location = -2;
+	} else if (freq == 245 || freq == 246) {
+		location = -1;
+	} else if (freq == 247) {
+		location = 0;
+	} else if (freq == 247 || freq == 248) {
+		location = 1;
+	} else if (freq == 249 || freq == 250 ) {
+		location = 2;
+	} else if (freq == 251 || freq == 252 || freq == 253 ) {
+		location = 3;
+	} else if (freq == 254 || freq == 256 || freq == 257) {
+		location = -3;
+	} else if (freq == 257 || freq == 258 ) {
+		location = -2;
+	} else if (freq == 259 || freq == 260) {
+		location = -1;
+	} else if (freq == 261) {
+		location = 0;
+	} else if (freq == 262 || freq == 263) {
+		location = 1;
+	} else if (freq == 264 || freq == 265 ) {
+		location = 2;
+	} else if (freq == 266 || freq == 267 || freq == 268) {
+		location = 3;
+	} else if (freq == 269 || freq == 270 || freq == 271) {
+		location = -3;
+	} else if (freq == 272 || freq == 273 ) {
+		location = -2;
+	} else if (freq == 275 || freq == 276) {
+		location = -1;
+	} else if (freq == 277) {
+		location = 0;
+	} else if (freq == 278 || freq == 279) {
+		location = 1;
+	} else if (freq == 280 || freq == 281 ) {
+		location = 2;
+	} else if (freq == 282 || freq == 283 ||  freq == 284) {
+		location = 3;
+	} else if (freq == 285 || freq == 286 || freq == 287) {
+		location = -3;
+	} else if (freq == 288 || freq == 289 || freq == 290) {
+		location = -2;
+	} else if (freq == 291 || freq == 292) {
+		location = -1;
+	} else if (freq == 293) {
+		location = 0;
+	} else if (freq == 294 || freq == 295) {
+		location = 1;
+	} else if (freq == 296 || freq == 297 || freq == 298 ) {
+		location = 2;
+	} else if (freq == 299 || freq == 300 ||  freq == 301) {
+		location = 3;
+	} else if (freq == 302 || freq == 303 || freq == 304 || freq == 305) {
+		location = -3;
+	} else if (freq == 306 || freq == 307 || freq == 308) {
+		location = -2;
+	} else if (freq == 309 || freq == 310) {
+		location = -1;
+	} else if (freq == 311) {
+		location = 0;
+	} else if (freq == 312 || freq == 313) {
+		location = 1;
+	} else if (freq == 314 || freq == 315 || freq == 316 ) {
+		location = 2;
+	} else if (freq == 317 || freq == 318 ||  freq == 319) {
+		location = 3;
+	}  else if (freq == 320 || freq == 321 || freq == 322 || freq == 323) {
+		location = -3;
+	} else if (freq == 324 || freq == 325 || freq == 326 || freq == 327) {
+		location = -2;
+	} else if (freq == 328 || freq == 329) {
+		location = -1;
+	} else if (freq == 330) {
+		location = 0;
+	} else if (freq == 312 || freq == 313) {
+		location = 1;
+	} else if (freq == 314 || freq == 315 || freq == 316 ) {
+		location = 2;
+	} else if (freq == 317 || freq == 318 ||  freq == 319) {
+		location = 3;
+	} else {
+		location = 0;
+	}
+
+	return location;
+}

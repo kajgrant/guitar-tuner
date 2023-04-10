@@ -1,0 +1,4 @@
+	.global e
+    .section .rodata
+e:
+    .incbin "C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/e.data"

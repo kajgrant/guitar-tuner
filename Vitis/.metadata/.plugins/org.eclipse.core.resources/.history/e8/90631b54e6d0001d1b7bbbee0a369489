@@ -1,0 +1,41 @@
+#ifndef _MAP_H_
+#define _MAP_H_
+
+#include <stdio.h>
+#include <cstdlib>
+
+#define B3 247
+
+#define C4 262
+#define Csharp_4 277
+#define D4 294
+#define Dsharp_4 311
+#define E4 330
+#define F4 349
+#define Fsharp_4 370
+#define G4 392
+#define Gsharp_4 415
+#define A4 440
+#define Asharp_4 466
+#define B4 494
+
+#define C5 523
+
+int C[6] = 		{16, 33, 65, 131, 262, 523};
+int Csharp[6] = {17, 35, 69, 139, 277, 554};
+int D[6] = 		{18, 37, 73, 147, 294, 587};
+int Dsharp[6] = {19, 39, 78, 156, 311, 622};
+int E[6] = 		{20, 41, 82, 165, 330, 660};
+int F[6] = 		{22, 44, 87, 175, 349, 698};
+int Fsharp[6] = {23, 46, 93, 185, 370, 740};
+int G[6] = 		{25, 49, 98, 196, 392, 784};
+int Gsharp[6] = {26, 52, 104, 208, 415, 831};
+int A[6] = 		{27, 55, 110, 220, 440, 880};
+int Asharp[6] = {29, 58, 116, 233, 466, 932};
+int B[6] = 		{30, 61, 123, 247, 494, 988};
+
+
+
+char map(int freq);
+
+#endif /* MAP_H */

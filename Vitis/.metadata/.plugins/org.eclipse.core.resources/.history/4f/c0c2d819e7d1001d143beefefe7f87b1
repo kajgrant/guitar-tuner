@@ -1,0 +1,41 @@
+	.global c
+	.global d
+	.global e
+	.global f
+	.global g
+	.global a
+	.global b
+	.global sharp_mode_img
+	.global flat_mode_img
+	.global sharp_sym
+	.global flat_sym
+	.global line
+	.global circle
+    .section .rodata
+
+c:
+    .incbin "C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/c.data"
+d:
+    .incbin "C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/d.data"
+e:
+    .incbin "C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/e.data"
+f:
+    .incbin "C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/f.data"
+g:
+    .incbin "C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/g.data"
+a:
+    .incbin "C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/a.data"
+b:
+    .incbin "C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/b.data"
+sharp_mode_img:
+    .incbin "C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/sharp.data"
+flat_mode_img:
+    .incbin "C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/flat.data"
+sharp_sym:
+    .incbin "C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/sharp_sym.data"
+flat_sym:
+    .incbin "C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/flat_sym.data"
+line:
+    .incbin "C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/line.data"
+circle:
+    .incbin "C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/circle.data"
