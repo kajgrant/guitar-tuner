@@ -754,3 +754,5 @@ run
 #    Time: 600 ps  Iteration: 0  Instance: /hps
 # ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
 #    Time: 650 ps  Iteration: 0  Instance: /hps
+# End time: 00:39:02 on Apr 12,2023, Elapsed time: 0:44:31
+# Errors: 0, Warnings: 62
