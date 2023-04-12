@@ -1,5 +1,5 @@
 
-[S, Fs] = audioread("d-string.wav");
+[S, Fs] = audioread("sampleNotes/d-string.wav");
 
 S = sum(S,2);
 Time = 2;
@@ -15,13 +15,13 @@ P2 = abs(Y/L);
 f2 = Fs*(0:(L-1))/L;
 f1 = Fs*(0:(L/2))/L;
 
-tiledlayout(2,1)
+tiledlayout(3,1)
 
 P1 = P2(1:L/2+1);
 P1(2:end-1) = 2*P1(2:end-1);
 
 nexttile
-stem(f1(1:500),P1(1:500)) 
+stem(f1(1:2000),P1(1:2000)) 
 title("Single-Sided Amplitude Spectrum of X(t)")
 xlabel("f (Hz)")
 ylabel("|P1(f)|")
@@ -29,6 +29,22 @@ ylabel("|P1(f)|")
 
 hps_sum = zeros(Fs,1);
 max_val = 0;
+
+for k = 1:L/5
+    hps_sum(k) = P2(k) * P2(2*k) * P2(3*k);
+
+    if hps_sum(k) > max_val
+        max_val = hps_sum(k);
+        fund_freq = k;
+    end
+end
+
+nexttile
+stem(f2(1:1000), hps_sum(1:1000));
+title("Amplitude Spectrum with HPS applied, 3rd order")
+xlabel("f (Hz)")
+ylabel("|P1(f)|")
+
 
 for k = 1:L/5
     hps_sum(k) = P2(k) * P2(2*k) * P2(3*k) * P2(5*k);
@@ -41,3 +57,6 @@ end
 
 nexttile
 stem(f2(1:1000), hps_sum(1:1000));
+title("Amplitude Spectrum with HPS applied, 5th order")
+xlabel("f (Hz)")
+ylabel("|P1(f)|")

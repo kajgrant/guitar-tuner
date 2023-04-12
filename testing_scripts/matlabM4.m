@@ -1,5 +1,5 @@
 
-filename = "e-string.wav";
+filename = "sampleNotes/e-string.wav";
 
 [S, Fs] = audioread(filename);
 

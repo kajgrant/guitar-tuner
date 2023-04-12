@@ -2,7 +2,7 @@
 NewFs = 8192;            % Sampling frequency    
 NewFileName = "g-WORKFLOW.wav";
 
-[S, Fs] = audioread("g-string.wav");
+[S, Fs] = audioread("sampleNotes/g-string.wav");
 %change the sampling rate
 y = stretchAudio(S,5.875);
 audiowrite(NewFileName,y,NewFs);

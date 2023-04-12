@@ -2,14 +2,14 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Wed Apr 12 00:13:06 2023
-# Process ID: 18912
+# Start of session at: Sun Apr  9 17:50:33 2023
+# Process ID: 22824
 # Current directory: C:/KDevelop/guitar-tuner/Vivado/audio_fft
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent12652 C:\KDevelop\guitar-tuner\Vivado\audio_fft\audio_fft.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent22320 C:\KDevelop\guitar-tuner\Vivado\audio_fft\audio_fft.xpr
 # Log file: C:/KDevelop/guitar-tuner/Vivado/audio_fft/vivado.log
 # Journal file: C:/KDevelop/guitar-tuner/Vivado/audio_fft\vivado.jou
 #-----------------------------------------------------------
 start_gui
 open_project C:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.xpr
-open_bd_design {C:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/design_1.bd}
 update_compile_order -fileset sources_1
+open_bd_design {C:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources_1/bd/design_1/design_1.bd}
