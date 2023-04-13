@@ -150,3 +150,107 @@ dismissDialog("Open Block Design"); // bz
 // [Engine Memory]: 1,315 MB (+41920kb) [00:01:22]
 // [GUI Memory]: 149 MB (+813kb) [00:01:26]
 // HMemoryUtils.trashcanNow. Engine heap size: 1,346 MB. GUI used memory: 98 MB. Current time: 4/12/23, 2:08:25 PM PDT
+// HMemoryUtils.trashcanNow. Engine heap size: 1,346 MB. GUI used memory: 98 MB. Current time: 4/12/23, 2:38:25 PM PDT
+// HMemoryUtils.trashcanNow. Engine heap size: 1,346 MB. GUI used memory: 86 MB. Current time: 4/12/23, 3:08:26 PM PDT
+// HMemoryUtils.trashcanNow. Engine heap size: 1,346 MB. GUI used memory: 85 MB. Current time: 4/12/23, 3:38:26 PM PDT
+// HMemoryUtils.trashcanNow. Engine heap size: 1,346 MB. GUI used memory: 85 MB. Current time: 4/12/23, 4:08:26 PM PDT
+// HMemoryUtils.trashcanNow. Engine heap size: 1,346 MB. GUI used memory: 85 MB. Current time: 4/12/23, 4:38:26 PM PDT
+// Elapsed time: 10109 seconds
+selectCodeEditor(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, 1392, 102); // dS
+// Run Command: PAResourceCommand.PACommandNames_CUSTOMIZE_RSB_BLOC
+// N (cr):  Re-customize IP : addNotify
+// HMemoryUtils.trashcanNow. Engine heap size: 1,373 MB. GUI used memory: 87 MB. Current time: 4/12/23, 5:04:47 PM PDT
+// r (cr): Re-customize IP: addNotify
+// ce (r): Configuration Presets: addNotify
+// [Engine Memory]: 1,411 MB (+32090kb) [02:57:54]
+// Elapsed time: 484 seconds
+dismissDialog("Re-customize IP"); // N
+// Elapsed time: 12 seconds
+selectButton("Peripheral I/O Pins", "Peripheral I/O Pins"); // k
+selectTreeTable(PAResourceItoN.MIOTablePagePanel_MIO_TABLE, (String) null, 12, (String) null, 0, true); // bn - Node
+selectTreeTable(PAResourceItoN.MIOTablePagePanel_MIO_TABLE, (String) null, 12, (String) null, 0, true, false, false, false, false, true); // bn - Double Click - Node
+selectTreeTable(PAResourceItoN.MIOTablePagePanel_MIO_TABLE, (String) null, 12, (String) null, 0, true); // bn - Node
+selectTreeTable(PAResourceItoN.MIOTablePagePanel_MIO_TABLE, (String) null, 12, (String) null, 0, true); // bn - Node
+selectButton("PS-PL Configuration", "PS-PL Configuration"); // k
+selectButton("Zynq Block Design", "Zynq Block Design"); // k
+selectButton(RDIResource.BaseDialog_CANCEL, "Cancel"); // a
+// [GUI Memory]: 173 MB (+16851kb) [02:58:15]
+dismissDialog("Re-customize IP"); // r
+// Elapsed time: 389 seconds
+selectView(PAResourceOtoP.PAViews_SYSTEM, "System", 819, 408, 1221, 578, false, false, false, true, false); // hv - Popup Trigger
+// [GUI Memory]: 183 MB (+2011kb) [03:08:12]
+// HMemoryUtils.trashcanNow. Engine heap size: 1,445 MB. GUI used memory: 124 MB. Current time: 4/12/23, 5:34:47 PM PDT
+// HMemoryUtils.trashcanNow. Engine heap size: 1,449 MB. GUI used memory: 123 MB. Current time: 4/12/23, 5:35:32 PM PDT
+// Tcl Command: 'rdi::info_commands {pro*}'
+// Tcl Command: 'rdi::info_commands {proje*}'
+// Tcl Command: 'rdi::info_commands {project*}'
+// Elapsed time: 1512 seconds
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, (String) null); // l
+// Tcl Command: 'rdi::info_commands {clea*}'
+// Tcl Command: 'rdi::info_commands {clean*}'
+// Elapsed time: 51 seconds
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, "clean", true); // l
+// Tcl Command: 'clean'
+// Tcl Command: 'clean'
+// Tcl Message: clean 
+// Tcl Message: invalid command name "clean" 
+// Elapsed time: 49 seconds
+selectTab((HResource) null, (HResource) null, "Design Runs", 4); // aK
+selectTreeTable(PAResourceEtoH.ExpRunTreePanel_EXP_RUN_TREE_TABLE, "synth_1 ; constrs_1 ; synth_design Complete! ;  ;  ;  ;  ;  ;  ;  ; 6408 ; 8472 ; 90.0 ; 0 ; 15 ; Tue Mar 28 23:08:48 PDT 2023 ; 00:03:11 ; Vivado Synthesis Defaults (Vivado Synthesis 2015) ; Vivado Synthesis Default Reports ; xc7z020clg484-1 ; Vivado Synthesis Defaults", 0, "synth_1", 0, true); // az - Node
+// PAPropertyPanels.initPanels (synth_1) elapsed time: 0.2s
+selectTreeTable(PAResourceEtoH.ExpRunTreePanel_EXP_RUN_TREE_TABLE, "synth_1 ; constrs_1 ; synth_design Complete! ;  ;  ;  ;  ;  ;  ;  ; 6408 ; 8472 ; 90.0 ; 0 ; 15 ; Tue Mar 28 23:08:48 PDT 2023 ; 00:03:11 ; Vivado Synthesis Defaults (Vivado Synthesis 2015) ; Vivado Synthesis Default Reports ; xc7z020clg484-1 ; Vivado Synthesis Defaults", 0, "synth_1", 0, true, false, false, false, true, false); // az - Popup Trigger - Node
+selectMenuItem(PAResourceCommand.PACommandNames_RESET_RUNS, "Reset Runs"); // ak
+// r (cr): Reset Runs: addNotify
+selectButton(RDIResource.BaseDialog_OK, "Reset"); // a
+// r (cr): Reset Runs: addNotify
+// bz (r):  Resetting Runs : addNotify
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+dismissDialog("Resetting Runs"); // bz
+selectTab((HResource) null, (HResource) null, "Messages", 1); // aK
+selectTab((HResource) null, (HResource) null, "Reports", 3); // aK
+selectTab((HResource) null, (HResource) null, "Log", 2); // aK
+selectTab((HResource) null, (HResource) null, "Tcl Console", 0); // aK
+// Elapsed time: 17 seconds
+selectTab((HResource) null, (HResource) null, "Design Runs", 4); // aK
+selectTreeTable(PAResourceEtoH.ExpRunTreePanel_EXP_RUN_TREE_TABLE, "synth_1 ; constrs_1 ; Not started ;  ;  ;  ;  ;  ;  ;  ;  ;  ;  ;  ;  ;  ;  ; Vivado Synthesis Defaults (Vivado Synthesis 2015) ; Vivado Synthesis Default Reports ; xc7z020clg484-1 ; Vivado Synthesis Defaults", 0, "constrs_1", 1, true, false, false, false, true, false); // az - Popup Trigger - Node
+selectTreeTable(PAResourceEtoH.ExpRunTreePanel_EXP_RUN_TREE_TABLE, "impl_1 ; constrs_1 ; Not started ;  ;  ;  ;  ;  ;  ;  ;  ;  ;  ;  ;  ;  ;  ; Vivado Implementation Defaults (Vivado Implementation 2015) ; Vivado Implementation Default Reports ; xc7z020clg484-1 ; Vivado Implementation Defaults", 1, "constrs_1", 1, false); // az
+selectTreeTable(PAResourceEtoH.ExpRunTreePanel_EXP_RUN_TREE_TABLE, "impl_1 ; constrs_1 ; Not started ;  ;  ;  ;  ;  ;  ;  ;  ;  ;  ;  ;  ;  ;  ; Vivado Implementation Defaults (Vivado Implementation 2015) ; Vivado Implementation Default Reports ; xc7z020clg484-1 ; Vivado Implementation Defaults", 1, "constrs_1", 1, false, false, false, false, true, false); // az - Popup Trigger
+selectTreeTable(PAResourceEtoH.ExpRunTreePanel_EXP_RUN_TREE_TABLE, "synth_1 ; constrs_1 ; Not started ;  ;  ;  ;  ;  ;  ;  ;  ;  ;  ;  ;  ;  ;  ; Vivado Synthesis Defaults (Vivado Synthesis 2015) ; Vivado Synthesis Default Reports ; xc7z020clg484-1 ; Vivado Synthesis Defaults", 0, "constrs_1", 1, true, false, false, false, true, false); // az - Popup Trigger - Node
+// Elapsed time: 25 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, IP Integrator, Generate Block Design]", 8, false, false, false, false, true, false); // u - Popup Trigger
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager, Settings]", 1, false); // u
+// Run Command: RDIResourceCommand.RDICommands_SETTINGS
+// d (cr): Settings: addNotify
+selectTree(PAResourceQtoS.SettingsDialog_PROJECT_TREE, "[projectRoot, Synthesis]", 3, false); // B
+selectButton(RDIResource.BaseDialog_CANCEL, "Cancel"); // a
+dismissDialog("Settings"); // d
+// HMemoryUtils.trashcanNow. Engine heap size: 1,467 MB. GUI used memory: 117 MB. Current time: 4/12/23, 5:39:57 PM PDT
+selectTab((HResource) null, (HResource) null, "Messages", 1); // aK
+selectTab((HResource) null, (HResource) null, "Tcl Console", 0); // aK
+// Tcl Command: 'rdi::info_commands {reset*}'
+// Tcl Command: 'rdi::info_commands {reset_*}'
+// Tcl Command: 'rdi::info_commands {reset_pro*}'
+// Tcl Command: 'rdi::info_commands {reset_proje*}'
+// Tcl Command: 'rdi::info_commands {reset_project*}'
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, "reset_project", true); // l
+// Tcl Command: 'reset_project'
+// Tcl Command: 'reset_project'
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: reset_project 
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed time: 24 seconds
+selectMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // ac
+selectMenu(RDIResourceCommand.RDICommands_CUSTOM_COMMANDS, "Custom Commands"); // ah
+selectMenuItem((HResource) null, "Launch Vitis IDE"); // ak
+dismissMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // ac
+// bz (cr):  Launch Vitis IDE : addNotify
+// 'X' command handler elapsed time: 3 seconds
+dismissDialog("Launch Vitis IDE"); // bz

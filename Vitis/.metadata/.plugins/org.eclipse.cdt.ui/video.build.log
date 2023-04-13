@@ -1,46 +1,7 @@
-11:05:18 **** Build of configuration Debug for project video ****
-make all 
-make --no-print-directory pre-build
-a9-linaro-pre-build-step
+17:41:35 **** Clean-only build of configuration Debug for project video ****
+make clean 
+rm -rf  ./src/helloworld.o ./src/images.o ./src/map.o  ./src/images.d  ./src/helloworld.d ./src/map.d  video.elf.size  video.elf
 ' '
-make --no-print-directory main-build
-'Building file: ../src/helloworld.c'
-'Invoking: ARM v7 g++ compiler'
-arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -IC:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/standalone_ps7_cortexa9_1/bspinclude/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
-../src/helloworld.c: In function 'void init_GPIO()':
-../src/helloworld.c:486:6: warning: variable 'status' set but not used [-Wunused-but-set-variable]
-  486 |  int status;
-      |      ^~~~~~
-'Finished building: ../src/helloworld.c'
-' '
-'Building file: ../src/images.S'
-'Invoking: ARM v7 g++ compiler'
-arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/images.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -IC:/KDevelop/guitar-tuner/Vitis/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/standalone_ps7_cortexa9_1/bspinclude/include -MMD -MP -MF"src/images.d" -MT"src/images.o" -o "src/images.o" "../src/images.S"
-../src/images.S: Assembler messages:
-../src/images.S:26: Error: file not found: C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/c.data
-../src/images.S:28: Error: file not found: C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/d.data
-../src/images.S:30: Error: file not found: C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/e1.data
-../src/images.S:32: Error: file not found: C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/e2.data
-../src/images.S:34: Error: file not found: C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/f.data
-../src/images.S:36: Error: file not found: C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/g.data
-../src/images.S:38: Error: file not found: C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/a.data
-../src/images.S:40: Error: file not found: C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/b.data
-../src/images.S:42: Error: file not found: C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/default.data
-../src/images.S:44: Error: file not found: C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/sharp_mode.data
-../src/images.S:46: Error: file not found: C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/flat_mode.data
-../src/images.S:48: Error: file not found: C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/sharp.data
-../src/images.S:50: Error: file not found: C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/flat.data
-../src/images.S:52: Error: file not found: C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/tuned_bar.data
-../src/images.S:54: Error: file not found: C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/unmute.data
-../src/images.S:56: Error: file not found: C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/mute.data
-../src/images.S:58: Error: file not found: C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/l1.data
-../src/images.S:60: Error: file not found: C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/l2.data
-../src/images.S:62: Error: file not found: C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/l3.data
-../src/images.S:64: Error: file not found: C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/r1.data
-../src/images.S:66: Error: file not found: C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/r2.data
-../src/images.S:68: Error: file not found: C:/Users/divyams/Downloads/guitar-tuner-main/Vitis/video/src/assets/r3.data
-make[1]: *** [src/subdir.mk:40: src/images.o] Error 1
-make: *** [makefile:46: all] Error 2
 
-11:05:18 Build Finished (took 631ms)
+17:41:35 Build Finished (took 172ms)
 
