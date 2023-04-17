@@ -1,5 +1,7 @@
 # Hardware Accelerated Guitar Tuner
 
+![Main Screen](assets/raw/full.png)
+
 ## Overview
 
 The Hardware Accelerated Guitar Tuner is a group project created for SFU ENSC 452 - Advanced Digital System Design. This project uses the Zedboard FPGA platform.

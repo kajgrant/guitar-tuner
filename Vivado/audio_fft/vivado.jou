@@ -16,3 +16,7 @@ open_bd_design {C:/KDevelop/guitar-tuner/Vivado/audio_fft/audio_fft.srcs/sources
 clean
 reset_run synth_1
 reset_project
+startgroup
+set_property -dict [list CONFIG.transform_length {8192} CONFIG.implementation_options {radix_4_burst_io} CONFIG.number_of_stages_using_block_ram_for_data_and_phase_factors {0}] [get_bd_cells accelerator/xfft_0]
+endgroup
+save_bd_design
